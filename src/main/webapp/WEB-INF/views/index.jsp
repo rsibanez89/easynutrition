@@ -23,8 +23,8 @@
 					<img src="<c:url value="/static/resources/gfx/dualbrand_as7eap.png"/>"/>
 				</div>
 
-				<form:form commandName="newMember" id="reg">
-					<h2>Member Registration</h2>
+				<form:form commandName="newPerson" id="reg">
+					<h2>Person Registration</h2>
 					<p>Enforces annotation-based constraints defined on the model class.</p>
 					<table>
 						<tbody>
@@ -54,10 +54,10 @@
 						</tr>
 					</table>
 				</form:form>
-				<h2>Members</h2>
+				<h2>People</h2>
 				<c:choose>
-					<c:when test="${members.size()==0}">
-						<em>No registered members.</em>
+					<c:when test="${people.size()==0}">
+						<em>No registered people.</em>
 					</c:when>
 					<c:otherwise>
 						<table class="simpletablestyle">
@@ -71,20 +71,20 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${members}" var="member">
+								<c:forEach items="${people}" var="person">
 									<tr>
-										<td>${member.id}</td>
-										<td>${member.name}</td>
-										<td>${member.email}</td>
-										<td>${member.phoneNumber}</td>
-										<td><a href="<c:url value="/rest/members/${member.id}"/>">/rest/members/${member.id}</a></td>
+										<td>${person.id}</td>
+										<td>${person.name}</td>
+										<td>${person.email}</td>
+										<td>${person.phoneNumber}</td>
+										<td><a href="<c:url value="/rest/person/${person.id}"/>">/rest/person/${person.id}</a></td>
 								</c:forEach>
 							</tbody>
 						</table>
 						<table class="simpletablestyle">
 							<tr>
 								<td>
-									REST URL for all members: <a href="<c:url value="/rest/members"/>">/rest/members</a>
+									REST URL for all people: <a href="<c:url value="/rest/people"/>">/rest/people</a>
 								</td>
 							</tr>
 						</table>
