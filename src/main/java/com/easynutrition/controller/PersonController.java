@@ -14,7 +14,7 @@ import com.easynutrition.dao.PersonDao;
 import com.easynutrition.entity.Person;
 
 @Controller
-@RequestMapping(value = "/")
+@RequestMapping(value = "/person")
 public class PersonController {
 	@Autowired
 	private PersonDao personDao;
@@ -23,7 +23,7 @@ public class PersonController {
 	public String displaySortedPeople(Model model) {
 		model.addAttribute("newPerson", new Person());
 		model.addAttribute("people", personDao.findAllOrderedByName());
-		return "index";
+		return "person";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
@@ -35,7 +35,7 @@ public class PersonController {
 			return "redirect:/";
 		} else {
 			model.addAttribute("people", personDao.findAllOrderedByName());
-			return "index";
+			return "person";
 		}
 	}
 }
