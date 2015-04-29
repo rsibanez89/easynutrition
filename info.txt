@@ -1,0 +1,38 @@
+--------------------------------------------------------------------------------------------
+											SSH
+--------------------------------------------------------------------------------------------
+ssh://553fd6e9fcf9339a770000e9@easynutrition-rsibanez89.rhcloud.com/~/git/easynutrition.git/
+
+
+--------------------------------------------------------------------------------------------
+										MySQL 5.5 
+--------------------------------------------------------------------------------------------
+Please make note of these credentials: 
+	Root User: adminxxgna9S 
+	Root Password: ADGxCzMdZu6s 
+	Database Name: easynutrition 
+	Connection URL: mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/
+
+
+--------------------------------------------------------------------------------------------
+											URL
+--------------------------------------------------------------------------------------------
+easynutrition-rsibanez89.rhcloud.com
+	
+	
+--------------------------------------------------------------------------------------------
+										Tomcat local
+--------------------------------------------------------------------------------------------
+1. Editar context.xml y agregar:
+
+    <Resource name="jdbc/EasyNutritionDS"
+              url="jdbc:mysql://localhost:3306/easynutrition"
+              driverClassName="com.mysql.jdbc.Driver"
+              username="root"
+              password="root"
+              auth="Container"
+              type="javax.sql.DataSource"
+              maxActive="20"
+              maxIdle="5"
+              maxWait="10000"
+              />

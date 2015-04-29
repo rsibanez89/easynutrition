@@ -17,7 +17,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(name = "member", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class Member implements Serializable
 {
    /** Default value included to remove warning. Remove or modify at will. **/
