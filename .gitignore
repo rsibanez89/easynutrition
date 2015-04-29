@@ -1,8 +1,6 @@
-/target/
 target
 *.iml
 .idea
-.openshift
 .settings
 .classpath
 .project
