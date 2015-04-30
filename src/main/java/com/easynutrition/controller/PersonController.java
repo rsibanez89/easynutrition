@@ -32,7 +32,7 @@ public class PersonController {
 			BindingResult result, Model model) {
 		if (!result.hasErrors()) {
 			personDao.register(newPerson);
-			return "redirect:/";
+			return "redirect:/person";
 		} else {
 			model.addAttribute("people", personDao.findAllOrderedByName());
 			return "person";
