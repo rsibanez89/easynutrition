@@ -15,7 +15,7 @@ import com.easynutrition.entity.Patient;
 
 @Repository
 @Transactional
-public class PatientDAO {
+public class PatientDao {
 	@Autowired
 	private EntityManager em;
 

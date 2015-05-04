@@ -6,15 +6,18 @@
 	<head>
 		<title>Easy Nutrition Application</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<link rel="stylesheet" type="text/css" href="<c:url value="/static/resources/css/screen.css"/>" />
 		<link href="<c:url value="assets/css/bootstrap.css"/>" rel="stylesheet" />
 		<link href="<c:url value="assets/css/font-awesome.css"/>" rel="stylesheet" />
 		<link href="<c:url value="assets/js/morris/morris-0.4.3.min.css"/>" rel="stylesheet" />
 		<link href="<c:url value="assets/css/custom.css"/>" rel="stylesheet" />
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+	    <script src="assets/js/jquery-1.10.2.js"></script>
+	    <script src="assets/js/bootstrap.min.js"></script>
+	    <script src="assets/js/jquery.metisMenu.js"></script>
+	    <script src="assets/js/custom.js"></script>
 	</head>
 	
-	<body>
+	<body onload="$('#name').focus();">
     	<div id="wrapper">
     		<jsp:include page="/WEB-INF/tiles/menu.jsp"/>
 
@@ -32,13 +35,13 @@
 											<div class="col-md-6">											
 												<div class="form-group">
 													<form:label path="name">Name:</form:label>
-													<form:input path="name" cssClass="form-control"/>
+													<form:input path="name" cssClass="form-control" tabindex="1"/>
 													<p><form:errors cssClass="alert alert-danger" role="alert" path="name" /></p>
 												</div>
 												
 												<div class="form-group">
 													<form:label path="phoneNumber">Phone #:</form:label>
-													<form:input path="phoneNumber" cssClass="form-control"/>
+													<form:input path="phoneNumber" cssClass="form-control" tabindex="3"/>
 													<p><form:errors cssClass="alert alert-danger" role="alert" path="phoneNumber" /></p>
 												</div>
 											</div>
@@ -46,7 +49,7 @@
 											<div class="col-md-6">											
 												<div class="form-group">
 													<form:label path="email">Email:</form:label>
-													<form:input path="email" cssClass="form-control"/>
+													<form:input path="email" cssClass="form-control" tabindex="2"/>
 													<p><form:errors cssClass="alert alert-danger" role="alert" path="email" /></p>
 												</div>
 											</div>
@@ -91,7 +94,7 @@
 													</tbody>
 												</table>
 											</div>
-											REST URL for all people: <a href="<c:url value="/rest/people"/>">/rest/people</a>
+											REST URL for all patients: <a href="<c:url value="/rest/patients"/>">/rest/patients</a>
 										</div>
 									</c:otherwise>
 								</c:choose>

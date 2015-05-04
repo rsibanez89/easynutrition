@@ -29,9 +29,7 @@
 
 						</ul></li>
 				</ul></li>
-			<li><a href="blank.html"><i class="fa fa-square-o fa-3x"></i>
-					Blank Page</a></li>
-			<li><a class="active-menu" href="person"><i class="fa fa-square-o fa-3x"></i>Person</a></li>
+			<li><a class="active-menu" href="patient"><i class="fa fa-square-o fa-3x"></i>Patients</a></li>
 		</ul>
 	</div>
 </nav>
