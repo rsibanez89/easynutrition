@@ -32,25 +32,66 @@
 								<div class="panel-body">
 									<form:form commandName="newPatient" id="reg" role="form">
 										<div class="row">
+										
 											<div class="col-md-6">											
 												<div class="form-group">
-													<form:label path="name">Name:</form:label>
+													<form:label path="name">Nombre:</form:label>
 													<form:input path="name" cssClass="form-control" tabindex="1"/>
 													<p><form:errors cssClass="alert alert-danger" role="alert" path="name" /></p>
 												</div>
-												
+											</div>
+											
+											<div class="col-md-3">											
 												<div class="form-group">
-													<form:label path="phoneNumber">Phone #:</form:label>
-													<form:input path="phoneNumber" cssClass="form-control" tabindex="3"/>
-													<p><form:errors cssClass="alert alert-danger" role="alert" path="phoneNumber" /></p>
+													<form:label path="phoneNumber">Sexo:</form:label>
+													<form:input path="phoneNumber" cssClass="form-control" tabindex="2"/>
+													<p><form:errors cssClass="alert alert-danger" role="alert" path="email" /></p>
 												</div>
 											</div>
 											
-											<div class="col-md-6">											
+											<div class="col-md-3">
+												<div class="form-group">
+													<form:label path="phoneNumber">Fecha de nacimiento:</form:label>
+													<form:input path="phoneNumber" cssClass="form-control" tabindex="2"/>
+													<p><form:errors cssClass="alert alert-danger" role="alert" path="email" /></p>
+												</div>
+											</div>
+											
+											<div class="col-md-6">	
+												<div class="form-group">
+													<form:label path="email">Dirección:</form:label>
+													<form:input path="email" cssClass="form-control" tabindex="2"/>
+													<p><form:errors cssClass="alert alert-danger" role="alert" path="email" /></p>
+												</div>																					
+											</div>
+											
+											<div class="col-md-6">	
 												<div class="form-group">
 													<form:label path="email">Email:</form:label>
 													<form:input path="email" cssClass="form-control" tabindex="2"/>
 													<p><form:errors cssClass="alert alert-danger" role="alert" path="email" /></p>
+												</div>																					
+											</div>
+											
+											<div class="col-md-6">
+												<div class="form-group">
+													<form:label path="phoneNumber">Teléfono:</form:label>
+													<form:input path="phoneNumber" cssClass="form-control" tabindex="3"/>
+													<p><form:errors cssClass="alert alert-danger" role="alert" path="phoneNumber" /></p>
+												</div>
+												
+												<div class="form-group">
+													<form:label path="phoneNumber">Observaciones:</form:label>
+													<form:textarea path="phoneNumber" cssClass="form-control" tabindex="3"/>
+													<p><form:errors cssClass="alert alert-danger" role="alert" path="phoneNumber" /></p>
+												</div>
+											</div>
+														
+											<div class="col-md-6">
+												<div class="form-group">
+													<form:label path="phoneNumber">Objetivos:</form:label>
+													<form:textarea path="phoneNumber" cssClass="form-control" tabindex="3"/>
+													<p><form:errors cssClass="alert alert-danger" role="alert" path="phoneNumber" /></p>
 												</div>
 											</div>
 										</div>
