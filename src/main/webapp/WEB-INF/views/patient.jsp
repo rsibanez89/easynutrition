@@ -43,28 +43,31 @@
 											
 											<div class="col-md-3">											
 												<div class="form-group">
-													<form:label path="phoneNumber">Sexo:</form:label>
-													<form:input path="phoneNumber" cssClass="form-control" tabindex="2"/>
-													<p><form:errors cssClass="alert alert-danger" role="alert" path="email" /></p>
+													<form:label path="gender">Sexo:</form:label>
+													<form:select path="gender" cssClass="form-control" tabindex="2">
+														<form:option value="MALE">Masculino</form:option>
+														<form:option value="FEMALE">Femenino</form:option>	
+													</form:select>
+													<p><form:errors cssClass="alert alert-danger" role="alert" path="gender" /></p>
 												</div>
 											</div>
-											
+									<!--  		
 											<div class="col-md-3">
 												<div class="form-group">
-													<form:label path="phoneNumber">Fecha de nacimiento:</form:label>
-													<form:input path="phoneNumber" cssClass="form-control" tabindex="2"/>
+													<form:label path="name">Fecha de nacimiento:</form:label>
+													<form:input path="name" cssClass="form-control" tabindex="2"/>
 													<p><form:errors cssClass="alert alert-danger" role="alert" path="email" /></p>
 												</div>
 											</div>
 											
 											<div class="col-md-6">	
 												<div class="form-group">
-													<form:label path="email">Dirección:</form:label>
-													<form:input path="email" cssClass="form-control" tabindex="2"/>
+													<form:label path="name">Dirección:</form:label>
+													<form:input path="name" cssClass="form-control" tabindex="2"/>
 													<p><form:errors cssClass="alert alert-danger" role="alert" path="email" /></p>
 												</div>																					
 											</div>
-											
+										-->	
 											<div class="col-md-6">	
 												<div class="form-group">
 													<form:label path="email">Email:</form:label>
@@ -79,21 +82,23 @@
 													<form:input path="phoneNumber" cssClass="form-control" tabindex="3"/>
 													<p><form:errors cssClass="alert alert-danger" role="alert" path="phoneNumber" /></p>
 												</div>
-												
+											<!-- 	
 												<div class="form-group">
-													<form:label path="phoneNumber">Observaciones:</form:label>
-													<form:textarea path="phoneNumber" cssClass="form-control" tabindex="3"/>
+													<form:label path="name">Observaciones:</form:label>
+													<form:textarea path="name" cssClass="form-control" tabindex="3"/>
 													<p><form:errors cssClass="alert alert-danger" role="alert" path="phoneNumber" /></p>
 												</div>
+												-->
 											</div>
-														
+											<!-- 			
 											<div class="col-md-6">
 												<div class="form-group">
-													<form:label path="phoneNumber">Objetivos:</form:label>
-													<form:textarea path="phoneNumber" cssClass="form-control" tabindex="3"/>
+													<form:label path="name">Objetivos:</form:label>
+													<form:textarea path="name" cssClass="form-control" tabindex="3"/>
 													<p><form:errors cssClass="alert alert-danger" role="alert" path="phoneNumber" /></p>
 												</div>
 											</div>
+											-->
 										</div>
 										
 										<div class="row">

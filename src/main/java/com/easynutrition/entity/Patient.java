@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -12,6 +13,7 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import javax.persistence.EnumType;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -21,6 +23,10 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Patient  implements Serializable {
 
 	private static final long serialVersionUID = -6894117922254023362L;
+	
+	public enum Gender {
+	    MALE, FEMALE
+	}
 
 	@Id
 	@GeneratedValue
@@ -41,6 +47,9 @@ public class Patient  implements Serializable {
 	@Digits(fraction = 0, integer = 12)
 	@Column(name = "phone_number")
 	private String phoneNumber;
+	
+	private Gender gender;
+	
 	
 	public Long getId() {
 		return id;
@@ -74,7 +83,12 @@ public class Patient  implements Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 	
+	@Enumerated(EnumType.STRING)
+	public Gender getGender() {
+	    return gender;
+	}
 	
-	
-	
+	public void setGender(Gender gender) {
+	    this.gender = gender;
+	}
 }
