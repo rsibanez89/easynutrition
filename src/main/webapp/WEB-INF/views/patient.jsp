@@ -55,9 +55,9 @@
 									  		
 											<div class="col-md-3">
 												<div class="form-group">
-													<form:label path="birthDate">Fecha de nacimiento:</form:label>
-													<form:input path="birthDate" cssClass="form-control" tabindex="2"/>
-													<p><form:errors cssClass="alert alert-danger" role="alert" path="birthDate" /></p>
+													<form:label path="birthday">Fecha de nacimiento:</form:label>
+													<form:input path="birthday" cssClass="form-control" tabindex="2"/>
+													<p><form:errors cssClass="alert alert-danger" role="alert" path="birthday" /></p>
 												</div>
 											</div>
 										<!--	
