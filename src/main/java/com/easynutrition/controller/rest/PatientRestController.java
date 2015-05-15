@@ -1,15 +1,7 @@
 package com.easynutrition.controller.rest;
 
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
 
-import org.codehaus.jackson.JsonGenerator;
-import org.codehaus.jackson.JsonProcessingException;
-import org.codehaus.jackson.map.JsonSerializer;
-import org.codehaus.jackson.map.SerializerProvider;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

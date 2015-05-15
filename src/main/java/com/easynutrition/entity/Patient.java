@@ -1,8 +1,6 @@
 package com.easynutrition.entity;
 
-import java.io.IOException;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import javax.persistence.Column;
@@ -20,29 +18,19 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import org.codehaus.jackson.JsonGenerator;
-import org.codehaus.jackson.JsonProcessingException;
-import org.codehaus.jackson.map.JsonSerializer;
-import org.codehaus.jackson.map.SerializerProvider;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
-import org.codehaus.jackson.map.ser.std.CalendarSerializer;
-import org.codehaus.jackson.map.ser.std.DateSerializer;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.easynutrition.controller.rest.serializer.EasyCalendarSerializer;
+import com.easynutrition.entity.types.TypeGender;
 
 @Entity
 @Table(name = "patient", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class Patient  implements Serializable {
-
 	private static final long serialVersionUID = -6894117922254023362L;
 	
-	public enum Gender {
-	    MALE, FEMALE
-	}
-
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -64,9 +52,10 @@ public class Patient  implements Serializable {
 	private String phoneNumber;
 	
 	@Enumerated(EnumType.STRING)
-	private Gender gender;
+	private TypeGender gender;
 	
 	@JsonSerialize(using = EasyCalendarSerializer.class)
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
     private Calendar birthday;
@@ -104,11 +93,11 @@ public class Patient  implements Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 	
-	public Gender getGender() {
+	public TypeGender getGender() {
 	    return gender;
 	}
 	
-	public void setGender(Gender gender) {
+	public void setGender(TypeGender gender) {
 	    this.gender = gender;
 	}
 
@@ -120,5 +109,4 @@ public class Patient  implements Serializable {
 		this.birthday = birthday;
 	}
 	
-
 }
