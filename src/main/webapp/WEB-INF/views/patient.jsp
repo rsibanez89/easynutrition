@@ -1,3 +1,4 @@
+<%@ page import="com.easynutrition.entity.Patient.Gender"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -45,21 +46,21 @@
 												<div class="form-group">
 													<form:label path="gender">Sexo:</form:label>
 													<form:select path="gender" cssClass="form-control" tabindex="2">
-														<form:option value="MALE">Masculino</form:option>
+														<form:option value="<%=Gender.MALE%>">Masculino</form:option>
 														<form:option value="FEMALE">Femenino</form:option>	
 													</form:select>
 													<p><form:errors cssClass="alert alert-danger" role="alert" path="gender" /></p>
 												</div>
 											</div>
-									<!--  		
+									  		
 											<div class="col-md-3">
 												<div class="form-group">
-													<form:label path="name">Fecha de nacimiento:</form:label>
-													<form:input path="name" cssClass="form-control" tabindex="2"/>
-													<p><form:errors cssClass="alert alert-danger" role="alert" path="email" /></p>
+													<form:label path="birthDate">Fecha de nacimiento:</form:label>
+													<form:input path="birthDate" cssClass="form-control" tabindex="2"/>
+													<p><form:errors cssClass="alert alert-danger" role="alert" path="birthDate" /></p>
 												</div>
 											</div>
-											
+										<!--	
 											<div class="col-md-6">	
 												<div class="form-group">
 													<form:label path="name">Dirección:</form:label>
