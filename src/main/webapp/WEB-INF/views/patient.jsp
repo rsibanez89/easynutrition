@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title>Easy Nutrition Application</title>
+		<title><spring:message code="page.title"/></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		
 		<link href="assets/css/bootstrap.css" rel="stylesheet" />
@@ -32,7 +32,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="panel panel-default">
-								<div class="panel-heading">Registro de pacientes</div>
+								<div class="panel-heading"><spring:message code="patient.subtitle"/></div>
 
 								<div class="panel-body">
 									<form:form commandName="newPatient" id="reg" role="form">
@@ -43,8 +43,8 @@
 
 											<easy:control path="gender" label="patient.gender" cssCol="col-md-3">
 												<form:select path="gender" cssClass="form-control" tabindex="2">
-													<form:option value="MALE">Masculino</form:option>
-													<form:option value="FEMALE">Femenino</form:option>	
+													<form:option value="MALE"><spring:message code="patient.male"/></form:option>
+													<form:option value="FEMALE"><spring:message code="patient.female"/></form:option>	
 												</form:select>
 											</easy:control>
 
@@ -65,7 +65,7 @@
 										
 										<div class="row">
 											<div class="col-md-12">
-												<input type="submit" value="Register" class="btn btn-default" />
+												<button type="submit" class="btn btn-default"><spring:message code="button.register"/></button>
 											</div>
 										</div>
 									</form:form>
