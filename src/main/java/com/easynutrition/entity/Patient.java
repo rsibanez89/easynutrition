@@ -13,7 +13,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -37,19 +36,8 @@ public class Patient  implements Serializable {
 	
 	@NotNull
 	@Size(min = 1, max = 25)
-	@Pattern(regexp = "[A-Za-z ]*", message = "El nombre debe contener solo letras")
+	@Pattern(regexp = "[A-Za-z ]*", message = "{patient.validation.name}")
 	private String name;
-	
-	@NotNull
-	@NotEmpty
-	@Email
-	private String email;
-	
-	@NotNull
-	@Size(min = 10, max = 12)
-	@Digits(fraction = 0, integer = 12)
-	@Column(name = "phone_number")
-	private String phoneNumber;
 	
 	@Enumerated(EnumType.STRING)
 	private TypeGender gender;
@@ -60,7 +48,17 @@ public class Patient  implements Serializable {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
     private Calendar birthday;
 	
+	@NotNull
+	@NotEmpty
+	@Email
+	private String email;
 	
+	@NotNull
+	@Size(min = 10, max = 12)
+	@Column(name = "phone_number")
+	private String phoneNumber;
+
+
 	public Long getId() {
 		return id;
 	}
@@ -77,6 +75,22 @@ public class Patient  implements Serializable {
 		this.name = name;
 	}
 
+	public TypeGender getGender() {
+		return gender;
+	}
+
+	public void setGender(TypeGender gender) {
+		this.gender = gender;
+	}
+
+	public Calendar getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Calendar birthday) {
+		this.birthday = birthday;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -91,22 +105,6 @@ public class Patient  implements Serializable {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
-	}
-	
-	public TypeGender getGender() {
-	    return gender;
-	}
-	
-	public void setGender(TypeGender gender) {
-	    this.gender = gender;
-	}
-
-	public Calendar getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(Calendar birthday) {
-		this.birthday = birthday;
 	}
 	
 }

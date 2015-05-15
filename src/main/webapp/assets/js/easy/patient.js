@@ -6,5 +6,7 @@ $(function() {
 	});
 
 	// set focus
-	$('#name').focus();
+	var control = $("span[id$=errors]:first").siblings().last();
+	control = control.length == 0 ? $("#name") : control[0];
+	control.focus();
 });

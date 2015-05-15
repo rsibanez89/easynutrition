@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="easy" tagdir="/WEB-INF/tags" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -33,62 +33,34 @@
 						<div class="col-md-12">
 							<div class="panel panel-default">
 								<div class="panel-heading">Registro de pacientes</div>
-								<div class="panel-body">
 
+								<div class="panel-body">
 									<form:form commandName="newPatient" id="reg" role="form">
 										<div class="row">
-											<div class="col-md-6">	
-												<spring:bind path="name">										
-													<div class="form-group ${status.error ? 'has-error' : '' }">
-														<form:label path="name">Nombre:</form:label>
-														<form:input path="name" cssClass="form-control" tabindex="1"/>
-														<form:errors cssClass="alert alert-danger col-md-12" role="alert" path="name" />
-													</div>
-												</spring:bind>
-											</div>
-											
-											<div class="col-md-3">											
-												<div class="form-group">
-													<form:label path="gender">Sexo:</form:label>
-													<form:select path="gender" cssClass="form-control" tabindex="2">
-														<form:option value="MALE">Masculino</form:option>
-														<form:option value="FEMALE">Femenino</form:option>	
-													</form:select>
-													<form:errors cssClass="alert alert-danger col-md-12" role="alert" path="gender" />
-												</div>
-											</div>
-									  		
-											<div class="col-md-3">
-												<spring:bind path="birthday">										
-													<div class="form-group ${status.error ? 'has-error' : '' }">
-														<form:label path="birthday">Fecha de nacimiento:</form:label>
-														<form:input path="birthday" cssClass="form-control" tabindex="2"/>
-														<form:errors cssClass="alert alert-danger col-md-12" role="alert" path="birthday" />
-													</div>
-												</spring:bind>
-											</div>
+											<easy:control path="name" label="patient.name" cssCol="col-md-6">
+												<form:input path="name" cssClass="form-control" tabindex="1"/>
+											</easy:control>
+
+											<easy:control path="gender" label="patient.gender" cssCol="col-md-3">
+												<form:select path="gender" cssClass="form-control" tabindex="2">
+													<form:option value="MALE">Masculino</form:option>
+													<form:option value="FEMALE">Femenino</form:option>	
+												</form:select>
+											</easy:control>
+
+											<easy:control path="birthday" label="patient.birthday" cssCol="col-md-3">
+												<form:input path="birthday" cssClass="form-control" tabindex="3"/>
+											</easy:control>
 										</div>
 										
 										<div class="row">
-											<div class="col-md-6">	
-												<spring:bind path="email">										
-													<div class="form-group ${status.error ? 'has-error' : '' }">
-														<form:label path="email">Email:</form:label>
-														<form:input path="email" cssClass="form-control" tabindex="2"/>
-														<form:errors cssClass="alert alert-danger col-md-12" role="alert" path="email" />
-													</div>
-												</spring:bind>																					
-											</div>
-											
-											<div class="col-md-6">
-												<spring:bind path="phoneNumber">										
-													<div class="form-group ${status.error ? 'has-error' : '' }">
-														<form:label path="phoneNumber">Teléfono:</form:label>
-														<form:input path="phoneNumber" cssClass="form-control" tabindex="3"/>
-														<form:errors cssClass="alert alert-danger col-md-12" role="alert" path="phoneNumber" />
-													</div>
-												</spring:bind>
-											</div>
+											<easy:control path="email" label="patient.email" cssCol="col-md-6">
+												<form:input path="email" cssClass="form-control" tabindex="4"/>
+											</easy:control>
+
+											<easy:control path="phoneNumber" label="patient.phoneNumber" cssCol="col-md-6">
+												<form:input path="phoneNumber" cssClass="form-control" tabindex="5"/>
+											</easy:control>
 										</div>
 										
 										<div class="row">
