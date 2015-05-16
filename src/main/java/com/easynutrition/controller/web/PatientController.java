@@ -21,7 +21,7 @@ public class PatientController {
 	@RequestMapping(value = "/patient", method = RequestMethod.GET)
 	public String displaySortedPeople(Model model) {
 		model.addAttribute("newPatient", new Patient());
-		model.addAttribute("patients", patientDao.findAllOrderedByName());
+		model.addAttribute("patients", patientDao.findAll());
 		return "patient";
 	}
 	
@@ -32,7 +32,7 @@ public class PatientController {
 			return "redirect:/patient";
 		} 
 		else {
-			model.addAttribute("patients", patientDao.findAllOrderedByName());
+			model.addAttribute("patients", patientDao.findAll());
 			return "patient";
 		}
 	}

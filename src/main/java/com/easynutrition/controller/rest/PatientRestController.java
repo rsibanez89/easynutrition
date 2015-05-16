@@ -19,7 +19,7 @@ public class PatientRestController {
 
 	@RequestMapping(value = "/rest/patients", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody List<Patient> listAllPeople() {
-		return patientDao.findAllOrderedByName();
+		return patientDao.findAll();
 	}
 
 	@RequestMapping(value = "/rest/patient/{id}", method = RequestMethod.GET, produces = "application/json")

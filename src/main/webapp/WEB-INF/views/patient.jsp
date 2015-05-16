@@ -37,29 +37,35 @@
 								<div class="panel-body">
 									<form:form commandName="newPatient" id="reg" role="form">
 										<div class="row">
-											<easy:control path="name" label="patient.name" cssCol="col-md-6">
-												<form:input path="name" cssClass="form-control" tabindex="1"/>
+											<easy:control path="firstName" label="patient.firstName" cssCol="col-md-6">
+												<form:input path="firstName" cssClass="form-control" tabindex="1"/>
 											</easy:control>
 
+											<easy:control path="lastName" label="patient.lastName" cssCol="col-md-6">
+												<form:input path="lastName" cssClass="form-control" tabindex="2"/>
+											</easy:control>
+										</div>
+
+										<div class="row">
 											<easy:control path="gender" label="patient.gender" cssCol="col-md-3">
-												<form:select path="gender" cssClass="form-control" tabindex="2">
+												<form:select path="gender" cssClass="form-control" tabindex="3">
 													<form:option value="MALE"><spring:message code="patient.male"/></form:option>
 													<form:option value="FEMALE"><spring:message code="patient.female"/></form:option>	
 												</form:select>
 											</easy:control>
 
 											<easy:control path="birthday" label="patient.birthday" cssCol="col-md-3">
-												<form:input path="birthday" cssClass="form-control" tabindex="3"/>
+												<form:input path="birthday" cssClass="form-control" tabindex="4"/>
+											</easy:control>
+										
+											<easy:control path="email" label="patient.email" cssCol="col-md-6">
+												<form:input path="email" cssClass="form-control" tabindex="5"/>
 											</easy:control>
 										</div>
-										
-										<div class="row">
-											<easy:control path="email" label="patient.email" cssCol="col-md-6">
-												<form:input path="email" cssClass="form-control" tabindex="4"/>
-											</easy:control>
 
+										<div class="row">
 											<easy:control path="phoneNumber" label="patient.phoneNumber" cssCol="col-md-6">
-												<form:input path="phoneNumber" cssClass="form-control" tabindex="5"/>
+												<form:input path="phoneNumber" cssClass="form-control" tabindex="6"/>
 											</easy:control>
 										</div>
 										
@@ -83,7 +89,8 @@
 													<thead>
 														<tr>
 															<th>Id</th>
-															<th>Name</th>
+															<th>First Name</th>
+															<th>Last Name</th>
 															<th>Email</th>
 															<th>Phone #</th>
 															<th>REST URL</th>
@@ -93,7 +100,8 @@
 														<c:forEach items="${patients}" var="patient">
 															<tr>
 																<td>${patient.id}</td>
-																<td>${patient.name}</td>
+																<td>${patient.firstName}</td>
+																<td>${patient.lastName}</td>
 																<td>${patient.email}</td>
 																<td>${patient.phoneNumber}</td>
 																<td><a href="<c:url value="/rest/patient/${patient.id}"/>">/rest/patient/${patient.id}</a></td>

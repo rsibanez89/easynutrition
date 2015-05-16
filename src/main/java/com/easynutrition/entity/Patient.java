@@ -24,9 +24,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.easynutrition.controller.rest.serializer.EasyCalendarSerializer;
 import com.easynutrition.entity.types.TypeGender;
+import com.easynutrition.entity.validator.qualifier.ValidatorQualifierPatient;
 
 @Entity
 @Table(name = "patient", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@ValidatorQualifierPatient
 public class Patient  implements Serializable {
 	private static final long serialVersionUID = -6894117922254023362L;
 	
@@ -36,9 +38,14 @@ public class Patient  implements Serializable {
 	
 	@NotNull
 	@Size(min = 1, max = 25)
-	@Pattern(regexp = "[A-Za-z ]*", message = "{patient.validation.name}")
-	private String name;
+	@Pattern(regexp = "[A-Za-z]*", message = "{patient.validation.name}")
+	private String firstName;
 	
+	@NotNull
+	@Size(min = 1, max = 50)
+	@Pattern(regexp = "[A-Za-z]*", message = "{patient.validation.name}")
+	private String lastName;
+
 	@Enumerated(EnumType.STRING)
 	private TypeGender gender;
 	
@@ -67,12 +74,20 @@ public class Patient  implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public TypeGender getGender() {
