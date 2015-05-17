@@ -14,6 +14,7 @@
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 		
+		<version.tiles>3.0.5</version.tiles>
         <version.spring>3.2.8.RELEASE</version.spring>
         <version.hibernate>4.1.0.Final</version.hibernate>
 	</properties>
@@ -38,19 +39,24 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-
+		<dependency>
+		    <groupId>org.apache.tiles</groupId>
+		    <artifactId>tiles-extras</artifactId>
+		    <version>${version.tiles}</version>
+		</dependency>        
+		
         <!-- SPRING -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${version.spring}</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${version.spring}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${version.spring}</version>
+        </dependency>
+		
 		<!-- HIBERNATE -->
 	    <dependency>
     		<groupId>org.hibernate</groupId>

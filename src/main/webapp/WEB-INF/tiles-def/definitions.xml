@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	
+	<!-- DEFAULT TEMPLATE -->
+	<definition name="defaultTemplate" template="/WEB-INF/tiles/template.jsp">
+		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
+		<put-attribute name="sidebar" value="/WEB-INF/tiles/sidebar.jsp" />
+		<put-attribute name="body" value="" />
+	</definition>
+
+	
+	<!-- BOOTSTRAP TEMPLATE -->
+	<definition name="index" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/tiles-body/index.jsp" />
+	</definition>
+
+	<definition name="chart" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/tiles-body/chart.jsp" />
+	</definition>
+	
+	<definition name="form" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/tiles-body/form.jsp" />
+	</definition>
+
+	<definition name="table" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/tiles-body/table.jsp" />
+	</definition>
+	
+	<definition name="tab-panel" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/tiles-body/tab-panel.jsp" />
+	</definition>
+	
+	<definition name="ui" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/tiles-body/ui.jsp" />
+	</definition>
+					
+	
+	<!-- EASY NUTRITION -->
+	<definition name="patient" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/tiles-body/patient.jsp" />
+	</definition>
+</tiles-definitions>
