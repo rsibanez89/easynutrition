@@ -1,4 +1,4 @@
-package com.easynutrition.entity.types;
+package com.easynutrition.entity.type;
 
 public enum TypeGender {
     MALE, FEMALE

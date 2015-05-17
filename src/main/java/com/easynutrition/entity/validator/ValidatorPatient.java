@@ -5,13 +5,14 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.easynutrition.dao.PatientDao;
+import com.easynutrition.dao.DaoPatient;
 import com.easynutrition.entity.Patient;
 import com.easynutrition.entity.validator.qualifier.ValidatorQualifierPatient;
 
 public class ValidatorPatient implements ConstraintValidator<ValidatorQualifierPatient, Patient> {
 	@Autowired
-	private PatientDao patientDao;
+	private DaoPatient daoPatient;
+	
 	
 	@Override
 	public void initialize(ValidatorQualifierPatient constraintAnnotation) {
@@ -25,7 +26,8 @@ public class ValidatorPatient implements ConstraintValidator<ValidatorQualifierP
 			context.disableDefaultConstraintViolation();
 			
 			// email unique
-			if (patientDao.findByEmail(patient.getEmail()) != null) {
+			Patient foundPatient = daoPatient.findByEmail(patient.getEmail());
+			if (foundPatient != null) {
 				context
 					.buildConstraintViolationWithTemplate("{patient.validation.email.unique}")
 					.addNode("email")

@@ -1,4 +1,4 @@
-package com.easynutrition.controller.rest.serializer;
+package com.easynutrition.api.rest.serializer;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -9,7 +9,7 @@ import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.JsonSerializer;
 import org.codehaus.jackson.map.SerializerProvider;
 
-public class EasyCalendarSerializer extends JsonSerializer<Calendar> {
+public class ApiRestSerializerCalendar extends JsonSerializer<Calendar> {
 
 	@Override
 	public void serialize(Calendar value, JsonGenerator jgen,

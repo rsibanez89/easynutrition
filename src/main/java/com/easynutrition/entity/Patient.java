@@ -22,8 +22,8 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.easynutrition.controller.rest.serializer.EasyCalendarSerializer;
-import com.easynutrition.entity.types.TypeGender;
+import com.easynutrition.api.rest.serializer.ApiRestSerializerCalendar;
+import com.easynutrition.entity.type.TypeGender;
 import com.easynutrition.entity.validator.qualifier.ValidatorQualifierPatient;
 
 @Entity
@@ -39,17 +39,19 @@ public class Patient  implements Serializable {
 	@NotNull
 	@Size(min = 1, max = 25)
 	@Pattern(regexp = "[A-Za-z]*", message = "{patient.validation.name}")
+	@Column(name = "first_name")
 	private String firstName;
 	
 	@NotNull
 	@Size(min = 1, max = 50)
 	@Pattern(regexp = "[A-Za-z]*", message = "{patient.validation.name}")
+	@Column(name = "last_name")
 	private String lastName;
 
 	@Enumerated(EnumType.STRING)
 	private TypeGender gender;
 	
-	@JsonSerialize(using = EasyCalendarSerializer.class)
+	@JsonSerialize(using = ApiRestSerializerCalendar.class)
 	@NotNull
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
