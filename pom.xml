@@ -13,10 +13,31 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
-		
+
+		<!-- PROVIDED -->
+		<version.servlet>3.1.0</version.servlet>
+		<version.jsp>2.2</version.jsp>
+
+		<!-- WEB -->
+		<version.jstl>1.2</version.jstl>
 		<version.tiles>3.0.5</version.tiles>
-        <version.spring>3.2.8.RELEASE</version.spring>
-        <version.hibernate>4.1.0.Final</version.hibernate>
+
+		<!-- SPRING -->
+		<version.spring>3.2.8.RELEASE</version.spring>
+
+		<!-- HIBERNATE -->
+		<version.hibernate>4.1.0.Final</version.hibernate>
+		<version.mysql>5.1.26</version.mysql>
+
+		<!-- GENERAL -->
+		<version.jackson>1.9.3</version.jackson>
+		<version.slf4j>1.7.9</version.slf4j>
+
+		<!-- TESTING -->
+		<version.junit>4.8.2</version.junit>
+
+		<!-- MAVEN -->
+		<version.plugin.war>2.5</version.plugin.war>
 	</properties>
 
 	<dependencies>
@@ -24,81 +45,81 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
+			<version>${version.servlet}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
-			<version>2.2</version>
+			<version>${version.jsp}</version>
 		</dependency>
-				
+
 		<!-- WEB -->
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
-			<version>1.2</version>
+			<version>${version.jstl}</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.apache.tiles</groupId>
-		    <artifactId>tiles-extras</artifactId>
-		    <version>${version.tiles}</version>
-		</dependency>        
-		
-        <!-- SPRING -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${version.spring}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${version.spring}</version>
-        </dependency>
-		
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-extras</artifactId>
+			<version>${version.tiles}</version>
+		</dependency>
+
+		<!-- SPRING -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${version.spring}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${version.spring}</version>
+		</dependency>
+
 		<!-- HIBERNATE -->
-	    <dependency>
-    		<groupId>org.hibernate</groupId>
+		<dependency>
+			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>${version.hibernate}</version>
-    		<exclusions>
-      			<exclusion>
-          			<groupId>org.slf4j</groupId>
-          			<artifactId>slf4j-api</artifactId>
-        		</exclusion>
-      		</exclusions>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
-	    <dependency>
-	    	<groupId>org.hibernate</groupId>
-	    	<artifactId>hibernate-entitymanager</artifactId>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${version.hibernate}</version>
-	    </dependency>
+		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.26</version>
+			<version>${version.mysql}</version>
 		</dependency>
 
 		<!-- GENERAL -->
-	    <dependency>
-	      	<groupId>org.codehaus.jackson</groupId>
-	      	<artifactId>jackson-mapper-asl</artifactId>
-	      	<version>1.9.3</version>
-	    </dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${version.jackson}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>1.6.4</version>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${version.slf4j}</version>
 		</dependency>
 
-	    <!-- TESTING -->
-	    <dependency>
-	    	<groupId>junit</groupId>
-	    	<artifactId>junit</artifactId>
-	    	<version>4.8.2</version>
-	    	<scope>test</scope>
-	    </dependency>
+		<!-- TESTING -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${version.junit}</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<profiles>
@@ -116,7 +137,7 @@
 				<plugins>
 					<plugin>
 						<artifactId>maven-war-plugin</artifactId>
-						<version>2.1.1</version>
+						<version>${version.plugin.war}</version>
 						<configuration>
 							<outputDirectory>webapps</outputDirectory>
 							<warName>ROOT</warName>

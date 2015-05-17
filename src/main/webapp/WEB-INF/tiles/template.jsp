@@ -4,6 +4,8 @@
 <%@ taglib prefix="easy" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
+<tiles:importAttribute scope="request"/>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -20,10 +22,8 @@
 	    <script src="assets/js/moment.js"></script>
 		<script src="assets/js/jquery.metisMenu.js"></script>
 		<script src="assets/js/morris/raphael-2.1.0.min.js"></script>
-<!-- 
 		<script src="assets/js/morris/morris.js"></script>
  		<script src="assets/js/custom.js"></script>
--->
  	    <script src="assets/js/bootstrap.min.js"></script>
 	    <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
 	    <script src="assets/js/easy/patient.js"></script>
