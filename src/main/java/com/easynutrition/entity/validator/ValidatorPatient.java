@@ -30,7 +30,7 @@ public class ValidatorPatient implements ConstraintValidator<ValidatorQualifierP
 			if (foundPatient != null) {
 				context
 					.buildConstraintViolationWithTemplate("{patient.validation.email.unique}")
-					.addNode("email")
+					.addPropertyNode("email")
 					.addConstraintViolation();
 				res = false;
 			}

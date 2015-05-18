@@ -23,21 +23,22 @@
 		<version.tiles>3.0.5</version.tiles>
 
 		<!-- SPRING -->
-		<version.spring>3.2.8.RELEASE</version.spring>
+		<version.spring>3.2.13.RELEASE</version.spring>
 
 		<!-- HIBERNATE -->
-		<version.hibernate>4.1.0.Final</version.hibernate>
+		<version.hibernate.validator>5.1.3.Final</version.hibernate.validator>
+		<version.hibernate.entitymanager>4.3.9.Final</version.hibernate.entitymanager>
 		<version.mysql>5.1.26</version.mysql>
 
 		<!-- GENERAL -->
-		<version.jackson>1.9.3</version.jackson>
-		<version.slf4j>1.7.9</version.slf4j>
+		<version.jackson>2.5.3</version.jackson>
+		<version.slf4j>1.7.12</version.slf4j>
 
 		<!-- TESTING -->
-		<version.junit>4.8.2</version.junit>
+		<version.junit>4.12</version.junit>
 
 		<!-- MAVEN -->
-		<version.plugin.war>2.5</version.plugin.war>
+		<version.plugin.war>2.6</version.plugin.war>
 	</properties>
 
 	<dependencies>
@@ -52,6 +53,19 @@
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
 			<version>${version.jsp}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- GENERAL -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${version.jackson}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${version.slf4j}</version>
 		</dependency>
 
 		<!-- WEB -->
@@ -62,7 +76,12 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-extras</artifactId>
+			<artifactId>tiles-jsp</artifactId>
+			<version>${version.tiles}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-el</artifactId>
 			<version>${version.tiles}</version>
 		</dependency>
 
@@ -82,7 +101,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>${version.hibernate}</version>
+			<version>${version.hibernate.validator}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.slf4j</groupId>
@@ -93,24 +112,12 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			<version>${version.hibernate}</version>
+			<version>${version.hibernate.entitymanager}</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${version.mysql}</version>
-		</dependency>
-
-		<!-- GENERAL -->
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>${version.jackson}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>${version.slf4j}</version>
 		</dependency>
 
 		<!-- TESTING -->

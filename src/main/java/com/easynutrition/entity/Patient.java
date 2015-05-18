@@ -12,12 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -25,23 +23,24 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.easynutrition.api.rest.serializer.ApiRestSerializerCalendar;
 import com.easynutrition.entity.type.TypeGender;
 import com.easynutrition.entity.validator.qualifier.ValidatorQualifierPatient;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
-@Table(name = "patient", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(name = "patient")
 @ValidatorQualifierPatient
-public class Patient  implements Serializable {
+public class Patient implements Serializable {
 	private static final long serialVersionUID = -6894117922254023362L;
-	
+
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	@NotNull
 	@Size(min = 1, max = 25)
 	@Pattern(regexp = "[A-Za-z]*", message = "{patient.validation.name}")
 	@Column(name = "first_name")
 	private String firstName;
-	
+
 	@NotNull
 	@Size(min = 1, max = 50)
 	@Pattern(regexp = "[A-Za-z]*", message = "{patient.validation.name}")
@@ -50,23 +49,22 @@ public class Patient  implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	private TypeGender gender;
-	
+
 	@JsonSerialize(using = ApiRestSerializerCalendar.class)
 	@NotNull
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-    private Calendar birthday;
-	
+	private Calendar birthday;
+
 	@NotNull
 	@NotEmpty
 	@Email
 	private String email;
-	
+
 	@NotNull
 	@Size(min = 10, max = 12)
 	@Column(name = "phone_number")
 	private String phoneNumber;
-
 
 	public Long getId() {
 		return id;
@@ -123,5 +121,5 @@ public class Patient  implements Serializable {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	
+
 }
