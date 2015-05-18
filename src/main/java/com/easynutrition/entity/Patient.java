@@ -2,6 +2,7 @@ package com.easynutrition.entity;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -66,7 +68,9 @@ public class Patient  implements Serializable {
 	@Size(min = 10, max = 12)
 	@Column(name = "phone_number")
 	private String phoneNumber;
-
+	
+	@OneToMany
+	private List<Evaluation> evaluations;
 
 	public Long getId() {
 		return id;
@@ -123,5 +127,14 @@ public class Patient  implements Serializable {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+
+	public List<Evaluation> getEvaluations() {
+		return evaluations;
+	}
+
+	public void setEvaluations(List<Evaluation> evaluations) {
+		this.evaluations = evaluations;
+	}
+	
 	
 }
