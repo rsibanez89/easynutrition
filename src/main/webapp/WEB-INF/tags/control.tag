@@ -8,7 +8,7 @@
 <div class="${cssCol}">
 	<spring:bind path="${path}">										
 		<div class="form-group ${status.error ? 'has-error' : '' }">
-			<form:label path="${path}"><spring:message code="${label}"/></form:label>
+			<form:label path="${path}" cssClass="control-label"><spring:message code="${label}"/></form:label>
 			<jsp:doBody/>
 			<form:errors cssClass="alert alert-danger col-md-12" role="alert" path="${path}" />
 		</div>

@@ -3,11 +3,11 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="easy" tagdir="/WEB-INF/tags" %>
 
-<div class="panel-heading"><spring:message code="patient.subtitle"/></div>
-
 <div class="row">
 	<div class="col-md-12">
 		<div class="panel panel-default">
+			<div class="panel-heading"><spring:message code="patient.subtitle"/></div>
+
 			<div class="panel-body">
 				<form:form commandName="newPatient" id="reg" role="form">
 					<div class="row">

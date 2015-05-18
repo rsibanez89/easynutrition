@@ -20,11 +20,26 @@ public class ApiRestPatient {
 
 	@RequestMapping(value = "/rest/patients", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody List<Patient> listAllPeople() {
-		return daoPatient.findAll("id");
+		// finds data
+		List<Patient> patients = daoPatient.findAll("id");
+		
+		// does not serialize evaluations
+		for (Patient patient : patients) {
+			patient.setEvaluations(null);
+		}
+		
+		return patients;
 	}
 
 	@RequestMapping(value = "/rest/patient/{id}", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody Patient lookupPatientById(@PathVariable("id") Long id) {
-		return daoPatient.findById(id);
+		// finds data
+		Patient patient = daoPatient.findById(id);
+		
+		// does not serialize evaluations
+		patient.setEvaluations(null);
+		
+		return patient;
 	}
+	
 }

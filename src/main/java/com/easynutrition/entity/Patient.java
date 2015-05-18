@@ -1,6 +1,7 @@
 package com.easynutrition.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -68,9 +69,10 @@ public class Patient implements Serializable {
 	@Column(name = "phone_number")
 	private String phoneNumber;
 	
-	@OneToMany
-	private List<Evaluation> evaluations;
+	@OneToMany(mappedBy = "patient")
+	private List<Evaluation> evaluations = new ArrayList<>();
 
+	
 	public Long getId() {
 		return id;
 	}
