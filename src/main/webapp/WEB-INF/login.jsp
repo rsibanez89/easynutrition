@@ -30,6 +30,15 @@ html,body {
 	text-align: center;
 }
 
+#logo {
+	background: url(assets/img/logo.png);
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 314px;
+	height: 80px;
+	margin-left: -40px;
+}
+
 #output {
 	position: absolute;
 	width: 300px;
@@ -141,6 +150,7 @@ html,body {
 <body>
 	<div class="container">
 		<div class="login-container">
+			<div id="logo"></div>
 			<div id="output"></div>
 			<div class="avatar"></div>
 			<div class="form-box">
