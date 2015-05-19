@@ -13,7 +13,8 @@
 body {
 	background: #eee url(assets/img/easynutrition_login_bg.jpg);
 	background-repeat: no-repeat;
-	background-size: 100%
+	background-size: cover;
+	background-position: 0%;
 }
 
 html,body {
