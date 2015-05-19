@@ -12,7 +12,7 @@
 		<title><spring:message code="page.title"/></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		
-		<link href="assets/css/bootstrap.css" rel="stylesheet" />
+		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 		<link href="assets/css/font-awesome.css" rel="stylesheet" />
     	<link href="assets/css/morris-0.4.3.min.css" rel="stylesheet" />
 		<link href="assets/css/custom.css" rel="stylesheet" />
