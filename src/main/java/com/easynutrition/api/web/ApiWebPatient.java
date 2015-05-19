@@ -19,6 +19,12 @@ public class ApiWebPatient {
 	private DaoPatient daoPatient;
 
 	
+	@RequestMapping(value = "/patients", method = RequestMethod.GET)
+	public String displayAllPatients(Model model) {
+		model.addAttribute("patients", daoPatient.findAll("id"));
+		return "patients";
+	}
+	
 	@RequestMapping(value = "/patient", method = RequestMethod.GET)
 	public String displaySortedPeople(Model model) {
 		model.addAttribute("newPatient", new Patient());
