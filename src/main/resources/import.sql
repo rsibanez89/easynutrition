@@ -5,7 +5,7 @@ insert into user_role (id, name) values (1, 'ADMIN')
 insert into user_role (id, name) values (2, 'USER')
 
 -- User
-insert into user (id, username, password, enabled, role_id) values (1, 'root', 'dc76e9f0c0006e8f919e0c515c66dbba3982f785', 1, 1) -- root/root
+insert into user (id, username, password, enabled, role_id) values (1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, 1) -- admin/admin
 insert into user (id, username, password, enabled, role_id) values (2, 'user', '12dea96fec20593566ab75692c9949596833adc9', 1, 2) -- user/user
 
 -- Patient

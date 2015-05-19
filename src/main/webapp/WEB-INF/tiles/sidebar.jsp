@@ -1,15 +1,19 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <nav class="navbar-default navbar-side">
 	<div class="sidebar-collapse">
 		<ul class="nav" id="main-menu">
 			<li class="text-center">
 				<img src="assets/img/find_user.png" class="user-image img-responsive" />
 			</li>
-			
+		
+			<sec:authorize access="hasRole('ADMIN')">	
 			<li>
 				<a class="${patient}" href="patient">
 					<i class="fa fa-users fa-3x"></i>&nbsp;Patients
 				</a>
 			</li>
+			</sec:authorize>
 			<li>
 				<a class="${index}" href="index">
 					<i class="fa fa-dashboard fa-3x"></i>&nbsp;Dashboard

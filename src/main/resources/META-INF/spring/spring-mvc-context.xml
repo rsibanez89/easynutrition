@@ -43,7 +43,7 @@
 	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/EasyNutritionDS"
 		expected-type="javax.sql.DataSource" />
 
-	<security:http auto-config="true" use-expressions="true">
+	<security:http use-expressions="true">
 		<security:intercept-url pattern="/assets/**"
 			access="permitAll" />
 
@@ -54,10 +54,16 @@
 			access="hasRole('ADMIN')" />
 
 		<security:intercept-url pattern="/**"
-			access="hasAnyRole('ADMIN', 'USER')" />
+			access="hasAnyRole('ADMIN','USER')" />
 
-		<security:form-login login-page="/login"
-			default-target-url="/index" />
+		<security:form-login 
+		    login-page="/login"
+			login-processing-url="/login_post" 
+			authentication-failure-url="/login?error"
+		    default-target-url="/index"
+		    always-use-default-target="false"
+			username-parameter="username"
+			password-parameter="password" />
 
 		<security:logout logout-url="/logout" />
 	</security:http>
