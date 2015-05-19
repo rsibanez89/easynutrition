@@ -44,23 +44,22 @@
 		expected-type="javax.sql.DataSource" />
 
 	<security:http auto-config="true" use-expressions="true">
-		<security:intercept-url 
-		    pattern="/login"
+		<security:intercept-url pattern="/assets/**"
 			access="permitAll" />
-	    
-	    <security:intercept-url 
-		    pattern="/patient**"
+
+		<security:intercept-url pattern="/login"
+			access="permitAll" />
+
+		<security:intercept-url pattern="/patient**"
 			access="hasRole('ADMIN')" />
 
-		<security:intercept-url 
-		    pattern="/**"
+		<security:intercept-url pattern="/**"
 			access="hasAnyRole('ADMIN', 'USER')" />
-		
-		<security:form-login 
-		    login-page="/login"
-		    default-target-url="/index" />
-		
-		<security:logout logout-url="/logout"/>
+
+		<security:form-login login-page="/login"
+			default-target-url="/index" />
+
+		<security:logout logout-url="/logout" />
 	</security:http>
 
 	<security:authentication-manager>

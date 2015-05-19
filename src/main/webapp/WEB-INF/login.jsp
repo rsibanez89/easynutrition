@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8">
 <title>login form layered - Bootsnipp.com</title>
@@ -111,125 +111,30 @@ html,body {
 	animation-fill-mode: both;
 }
 
-@
--webkit-keyframes fadeInUp { 0% {
-	opacity: 0;
-	-webkit-transform: translateY(20px);
-	transform: translateY(20px);
-}
-
-100%
-{
-opacity
-
-
-:
-
- 
-
-1;
--webkit-transform
-
-
-:
-
- 
-
-translateY
-
-
-(0);
-transform
-
-
-:
-
- 
-
-translateY
-
-
-(0);
-}
-}
-@
-keyframes fadeInUp { 0% {
-	opacity: 0;
-	-webkit-transform: translateY(20px);
-	-ms-transform: translateY(20px);
-	transform: translateY(20px);
-}
-
-100%
-{
-opacity
-
-
-:
-
- 
-
-1;
--webkit-transform
-
-
-:
-
- 
-
-translateY
-
-
-(0);
--ms-transform
-
-
-:
-
- 
-
-translateY
-
-
-(0);
-transform
-
-
-:
-
- 
-
-translateY
-
-
-(0);
-}
-}
 .fadeInUp {
 	-webkit-animation-name: fadeInUp;
 	animation-name: fadeInUp;
 }
 </style>
 <script src="assets/js/jquery-1.11.3.min.js"></script>
-<script
-	src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-	window.alert = function() {
-	};
-	var defaultCSS = document.getElementById('bootstrap-css');
-	function changeCSS(css) {
-		if (css)
-			$('head > link')
-					.filter(':first')
-					.replaceWith(
-							'<link rel="stylesheet" href="'+ css +'" type="text/css" />');
-		else
-			$('head > link').filter(':first').replaceWith(defaultCSS);
-	}
-	$(document).ready(function() {
-		var iframe_height = parseInt($('html').height());
-		window.parent.postMessage(iframe_height, 'http://bootsnipp.com');
-	});
+	/* 	window.alert = function() {
+	 };
+	 var defaultCSS = document.getElementById('bootstrap-css');
+	 function changeCSS(css) {
+	 if (css)
+	 $('head > link')
+	 .filter(':first')
+	 .replaceWith(
+	 '<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+	 else
+	 $('head > link').filter(':first').replaceWith(defaultCSS);
+	 }
+	 $(document).ready(function() {
+	 var iframe_height = parseInt($('html').height());
+	 window.parent.postMessage(iframe_height, 'http://bootsnipp.com');
+	 }); */
 </script>
 </head>
 <body>
@@ -238,8 +143,9 @@ translateY
 			<div id="output"></div>
 			<div class="avatar"></div>
 			<div class="form-box">
-				<form action="<c:url value='/j_spring_security_check'/>" method="POST">
-					<input name="j_username" type="text" placeholder="username"> 
+				<form action="<c:url value='/j_spring_security_check'/>"
+					method="POST">
+					<input name="j_username" type="text" placeholder="username">
 					<input name="j_password" type="password" placeholder="password">
 					<button class="btn btn-info btn-block login" type="submit">Login</button>
 				</form>
@@ -250,60 +156,7 @@ translateY
 	<script type="text/javascript">
 		$(function() {
 			$("input[name=j_username]").focus();
-/* 			var textfield = $("input[name=user]");
-			$('button[type="submit"]')
-					.click(
-							function(e) {
-								e.preventDefault();
-								//little validation just to check username
-								if (textfield.val() != "") {
-									//$("body").scrollTo("#output");
-									$("#output")
-											.addClass(
-													"alert alert-success animated fadeInUp")
-											.html(
-													"Welcome back "
-															+ "<span style='text-transform:uppercase'>"
-															+ textfield.val()
-															+ "</span>");
-									$("#output").removeClass(' alert-danger');
-									$("input").css({
-										"height" : "0",
-										"padding" : "0",
-										"margin" : "0",
-										"opacity" : "0"
-									});
-									//change button text 
-									$('button[type="submit"]').html("continue")
-											.removeClass("btn-info").addClass(
-													"btn-default").click(
-													function() {
-														$("input").css({
-															"height" : "auto",
-															"padding" : "10px",
-															"opacity" : "1"
-														}).val("");
-													});
-
-									//show avatar
-									$(".avatar")
-											.css(
-													{
-														"background-image" : "url('http://api.randomuser.me/0.3.2/portraits/women/35.jpg')"
-													});
-								} else {
-									//remove success mesage replaced with error message
-									$("#output").removeClass(
-											' alert alert-success');
-									$("#output")
-											.addClass(
-													"alert alert-danger animated fadeInUp")
-											.html("sorry enter a username ");
-								}
-								//console.log(textfield.val());
-
-							});
- */		});
+		});
 	</script>
 </body>
 </html>
