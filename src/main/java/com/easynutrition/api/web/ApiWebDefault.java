@@ -12,7 +12,7 @@ public class ApiWebDefault {
 	private static final Logger logger = LoggerFactory.getLogger(ApiWebDefault.class);
 	
 	
-	@RequestMapping(value = "/{path:^index$|^chart$|^form$|^table$|^tab-panel$|^ui$|^login$}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{path:^home$|^login$|^error$}", method = RequestMethod.GET)
 	public String action(@PathVariable String path) {
 		logger.info("Probando: " + path);
 		return path;
