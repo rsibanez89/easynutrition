@@ -21,22 +21,22 @@ public class ApiWebPatient {
 	
 	@RequestMapping(value = "/patients", method = RequestMethod.GET)
 	public String displayAllPatients(Model model) {
-		model.addAttribute("patients", daoPatient.findAll("id"));
+		// shows patients page
 		return "patients";
-	}
+	}	
 	
-	@RequestMapping(value = "/patient", method = RequestMethod.GET)
+	@RequestMapping(value = "/patient/add", method = RequestMethod.GET)
 	public String displaySortedPeople(Model model) {
+		// shows patient page
 		model.addAttribute("newPatient", new Patient());
-		model.addAttribute("patients", daoPatient.findAll("id"));
 		return "patient";
 	}
 	
-	@RequestMapping(value = "/patient", method = RequestMethod.POST)
+	@RequestMapping(value = "/patient/add", method = RequestMethod.POST)
 	public String registerNewPerson(@Valid @ModelAttribute("newPatient") Patient newPatient, BindingResult result, Model model) {
 		if (!result.hasErrors()) {
 			daoPatient.persist(newPatient);
-			return "redirect:/patient";
+			return "redirect:/patients";
 		} 
 		else {
 			model.addAttribute("patients", daoPatient.findAll("id"));

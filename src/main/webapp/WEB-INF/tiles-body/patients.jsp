@@ -8,43 +8,28 @@
 		<div class="panel panel-default">
 			<div class="panel-heading"><spring:message code="patients.subtitle"/></div>
 			
-			<c:choose>
-				<c:when test="${patients.size()==0}">
-					<em>No hay pacientes registrados</em>
-				</c:when>
-				<c:otherwise>
-					<div class="panel-body">
-						<div class="table-responsive">
-							<table class="table table-striped table-bordered table-hover"
-								id="dataTables-example">
-								<thead>
-									<tr>
-										<th>Id</th>
-										<th>First Name</th>
-										<th>Last Name</th>
-										<th>Email</th>
-										<th>Phone #</th>
-										<th>REST URL</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${patients}" var="patient">
-										<tr>
-											<td>${patient.id}</td>
-											<td>${patient.firstName}</td>
-											<td>${patient.lastName}</td>
-											<td>${patient.email}</td>
-											<td>${patient.phoneNumber}</td>
-											<td><a href="<c:url value="/rest/patient/${patient.id}"/>">/rest/patient/${patient.id}</a></td>
-										</tr>									
-									</c:forEach>
-								</tbody>
-							</table>
+			<div class="panel-body">
+				<table id="patients" class="table table-striped table-bordered" cellspacing="0" width="100%">
+					<thead>
+						<tr>
+							<th><spring:message code="patient.firstName"/></th>
+							<th><spring:message code="patient.lastName"/></th>
+							<th><spring:message code="patient.email"/></th>
+							<th><spring:message code="patient.phoneNumber"/></th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+				
+				<form:form id="form" action="patient/add" role="form" method="GET">
+					<div class="row">
+						<div class="col-md-12">
+							<button type="submit" class="btn btn-default"><spring:message code="button.register"/></button>
 						</div>
-						REST URL for all patients: <a href="<c:url value="/rest/patients"/>">/rest/patients</a>
 					</div>
-				</c:otherwise>
-			</c:choose>
+				</form:form>
+			</div>			
 		</div>
 	</div>
 </div>

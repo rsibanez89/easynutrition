@@ -4,54 +4,40 @@
 
 	<!-- DEFAULT TEMPLATE -->
 	<definition name="defaultTemplate" template="/WEB-INF/tiles/template.jsp">
-	    <put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
+		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
 		<put-attribute name="sidebar" value="/WEB-INF/tiles/sidebar.jsp" />
 		<put-attribute name="body" value="" />
 	</definition>
 
 
 	<!-- BOOTSTRAP TEMPLATE -->
-	<definition name="index" extends="defaultTemplate">
-		<put-attribute name="index" value="active-menu" />
-		<put-attribute name="body" value="/WEB-INF/tiles-body/index.jsp" />
-	</definition>
-
-	<definition name="chart" extends="defaultTemplate">
-		<put-attribute name="chart" value="active-menu" />
-		<put-attribute name="body" value="/WEB-INF/tiles-body/chart.jsp" />
-	</definition>
-
-	<definition name="form" extends="defaultTemplate">
-		<put-attribute name="form" value="active-menu" />
-		<put-attribute name="body" value="/WEB-INF/tiles-body/form.jsp" />
-	</definition>
-
-	<definition name="table" extends="defaultTemplate">
-		<put-attribute name="table" value="active-menu" />
-		<put-attribute name="body" value="/WEB-INF/tiles-body/table.jsp" />
-	</definition>
-
-	<definition name="tab-panel" extends="defaultTemplate">
-		<put-attribute name="tab_panel" value="active-menu" />
-		<put-attribute name="body" value="/WEB-INF/tiles-body/tab-panel.jsp" />
-	</definition>
-
-	<definition name="ui" extends="defaultTemplate">
-		<put-attribute name="ui" value="active-menu" />
-		<put-attribute name="body" value="/WEB-INF/tiles-body/ui.jsp" />
+	<definition name="home" extends="defaultTemplate">
+		<put-attribute name="home" value="active-menu" />
+		<put-attribute name="body" value="/WEB-INF/tiles-body/home.jsp" />
 	</definition>
 
 
 	<!-- EASY NUTRITION -->
 	<definition name="login" template="/WEB-INF/login.jsp" />
 
-	<definition name="patient" extends="defaultTemplate">
-		<put-attribute name="patient" value="active-menu" />
-		<put-attribute name="body" value="/WEB-INF/tiles-body/patient.jsp" />
+	<definition name="error" extends="defaultTemplate">
+		<put-attribute name="home" value="active-menu" />
+		<put-attribute name="body" value="/WEB-INF/tiles-body/error.jsp" />
 	</definition>
-	
+		
+	<definition name="patient" extends="defaultTemplate">
+		<put-attribute name="patients" value="active-menu" />
+		<put-attribute name="body" value="/WEB-INF/tiles-body/patient.jsp" />
+		<put-list-attribute name="scripts">
+			<add-attribute value="patient.js" />
+		</put-list-attribute>
+	</definition>
+
 	<definition name="patients" extends="defaultTemplate">
-		<put-attribute name="patient" value="active-menu" />
+		<put-attribute name="patients" value="active-menu" />
 		<put-attribute name="body" value="/WEB-INF/tiles-body/patients.jsp" />
+		<put-list-attribute name="scripts">
+			<add-attribute value="patients.js" />
+		</put-list-attribute>
 	</definition>
 </tiles-definitions>

@@ -8,12 +8,14 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		
 		<link rel="shortcut icon" href="<c:url value='/assets/img/easynutrition.ico'/>" />
-		<link href="<c:url value='/assets/css/bootstrap.min.css'/>" rel="stylesheet" />
-		<link href="<c:url value='/assets/css/easy-login.css'/>" rel="stylesheet" />
+		<link rel="apple-touch-icon" href="<c:url value='/assets/img/easynutrition128.png'/>" />
+
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="<c:url value='/assets/css/login.css'/>" rel="stylesheet" />
 		
-		<script src="<c:url value='/assets/js/jquery-1.11.3.min.js'/>"></script>
-		<script src="<c:url value='/assets/js/bootstrap.min.js'/>"></script>
-		<script src="<c:url value='/assets/js/easy-login.js'/>"></script>
+	    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+ 	    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script src="<c:url value='/assets/js/login.js'/>"></script>
 	</head>
 	<body>
 		<div class="container">
