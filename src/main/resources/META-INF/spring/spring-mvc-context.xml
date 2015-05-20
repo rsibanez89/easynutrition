@@ -44,10 +44,14 @@
 		expected-type="javax.sql.DataSource" />
 
 	<security:http use-expressions="true">
-		<security:intercept-url pattern="/assets/**"
+		<!-- From more specific to less specific (filter chain) -->
+		<security:intercept-url pattern="/favicon.ico" 
+			access="IS_AUTHENTICATED_ANONYMOUSLY" />
+	
+		<security:intercept-url pattern="/login"
 			access="permitAll" />
 
-		<security:intercept-url pattern="/login"
+		<security:intercept-url pattern="/assets/**"
 			access="permitAll" />
 
 		<security:intercept-url pattern="/patient**"

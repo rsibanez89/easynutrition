@@ -12,21 +12,22 @@
 		<title><spring:message code="page.title"/></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		
-		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-		<link href="assets/css/font-awesome.css" rel="stylesheet" />
-    	<link href="assets/css/morris-0.4.3.min.css" rel="stylesheet" />
-		<link href="assets/css/custom.css" rel="stylesheet" />
-		<link href="assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+		<link rel="shortcut icon" href="<c:url value='/assets/img/easynutrition.ico'/>" />
+		<link href="<c:url value='/assets/css/bootstrap.min.css'/>" rel="stylesheet" />
+		<link href="<c:url value='/assets/css/font-awesome.css'/>" rel="stylesheet" />
+    	<link href="<c:url value='/assets/css/morris-0.4.3.min.css'/>" rel="stylesheet" />
+		<link href="<c:url value='/assets/css/custom.css'/>" rel="stylesheet" />
+		<link href="<c:url value='/assets/css/bootstrap-datetimepicker.min.css'/>" rel="stylesheet" />
 	    
-	    <script src="assets/js/jquery-1.11.3.min.js"></script>
-	    <script src="assets/js/moment.js"></script>
-		<script src="assets/js/jquery.metisMenu.js"></script>
-		<script src="assets/js/morris/raphael-2.1.0.min.js"></script>
-		<script src="assets/js/morris/morris.js"></script>
- 		<script src="assets/js/custom.js"></script>
- 	    <script src="assets/js/bootstrap.min.js"></script>
-	    <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
-	    <script src="assets/js/easy/patient.js"></script>
+	    <script src="<c:url value='/assets/js/jquery-1.11.3.min.js'/>"></script>
+	    <script src="<c:url value='/assets/js/moment.js'/>"></script>
+		<script src="<c:url value='/assets/js/jquery.metisMenu.js'/>"></script>
+		<script src="<c:url value='/assets/js/morris/raphael-2.1.0.min.js'/>"></script>
+		<script src="<c:url value='/assets/js/morris/morris.js'/>"></script>
+ 		<script src="<c:url value='/assets/js/custom.js'/>"></script>
+ 	    <script src="<c:url value='/assets/js/bootstrap.min.js'/>"></script>
+	    <script src="<c:url value='/assets/js/bootstrap-datetimepicker.min.js'/>"></script>
+	    <script src="<c:url value='/assets/js/easy/patient.js'/>"></script>
 	</head>
 	
 	<body>

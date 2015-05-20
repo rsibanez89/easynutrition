@@ -7,12 +7,13 @@
 		<title><spring:message code="page.title" /></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		
-		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-		<link href="assets/css/easy-login.css" rel="stylesheet" />
+		<link rel="shortcut icon" href="<c:url value='/assets/img/easynutrition.ico'/>" />
+		<link href="<c:url value='/assets/css/bootstrap.min.css'/>" rel="stylesheet" />
+		<link href="<c:url value='/assets/css/easy-login.css'/>" rel="stylesheet" />
 		
-		<script src="assets/js/jquery-1.11.3.min.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
-		<script src="assets/js/easy-login.js"></script>
+		<script src="<c:url value='/assets/js/jquery-1.11.3.min.js'/>"></script>
+		<script src="<c:url value='/assets/js/bootstrap.min.js'/>"></script>
+		<script src="<c:url value='/assets/js/easy-login.js'/>"></script>
 	</head>
 	<body>
 		<div class="container">
