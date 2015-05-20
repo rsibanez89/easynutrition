@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -28,6 +29,7 @@ public class Evaluation implements Serializable {
 	private Long id;
 	
 	@ManyToOne
+	@JoinColumn(name="patient_id")
     private Patient patient;
 	
 	@JsonSerialize(using = ApiRestSerializerCalendar.class)
@@ -43,10 +45,10 @@ public class Evaluation implements Serializable {
 	private double height;
 	
 	@Column(name = "waist_circumference")
-	private double waistCircumference;
+	private Double waistCircumference;
 	
 	@Column(name = "hip_circumference")
-	private double hipCircumference;
+	private Double hipCircumference;
 	
 	private String observation;
 
@@ -90,19 +92,19 @@ public class Evaluation implements Serializable {
 		this.height = height;
 	}
 
-	public double getWaistCircumference() {
+	public Double getWaistCircumference() {
 		return waistCircumference;
 	}
 
-	public void setWaistCircumference(double waistCircumference) {
+	public void setWaistCircumference(Double waistCircumference) {
 		this.waistCircumference = waistCircumference;
 	}
 
-	public double getHipCircumference() {
+	public Double getHipCircumference() {
 		return hipCircumference;
 	}
 
-	public void setHipCircumference(double hipCircumference) {
+	public void setHipCircumference(Double hipCircumference) {
 		this.hipCircumference = hipCircumference;
 	}
 
