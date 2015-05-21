@@ -26,6 +26,7 @@
 			<link href="<c:url value='/assets/css/${css}'/>" rel="stylesheet" />
 		</c:forEach>
 
+		<script type="text/javascript">var locale = "${pageContext.response.locale}";</script>
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
  	    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>

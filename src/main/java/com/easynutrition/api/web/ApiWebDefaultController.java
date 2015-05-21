@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class ApiWebDefault {
-	private static final Logger logger = LoggerFactory.getLogger(ApiWebDefault.class);
+public class ApiWebDefaultController {
+	private static final Logger logger = LoggerFactory.getLogger(ApiWebDefaultController.class);
 	
 	
 	@RequestMapping(value = "/{path:^home$|^login$|^error$}", method = RequestMethod.GET)

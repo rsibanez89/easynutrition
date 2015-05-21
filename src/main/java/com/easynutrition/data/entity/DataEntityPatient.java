@@ -1,4 +1,4 @@
-package com.easynutrition.entity;
+package com.easynutrition.data.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,14 +24,14 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.easynutrition.api.rest.serializer.ApiRestSerializerCalendar;
-import com.easynutrition.entity.type.TypeGender;
-import com.easynutrition.entity.validator.qualifier.ValidatorQualifierPatient;
+import com.easynutrition.data.type.DataTypeGender;
+import com.easynutrition.data.validator.qualifier.DataValidatorQualifierPatient;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name = "patient")
-@ValidatorQualifierPatient
-public class Patient implements Serializable {
+@DataValidatorQualifierPatient
+public class DataEntityPatient implements Serializable {
 	private static final long serialVersionUID = -6894117922254023362L;
 
 	@Id
@@ -51,7 +51,7 @@ public class Patient implements Serializable {
 	private String lastName;
 
 	@Enumerated(EnumType.STRING)
-	private TypeGender gender;
+	private DataTypeGender gender;
 
 	@JsonSerialize(using = ApiRestSerializerCalendar.class)
 	@NotNull
@@ -70,7 +70,7 @@ public class Patient implements Serializable {
 	private String phoneNumber;
 	
 	@OneToMany(mappedBy = "patient")
-	private List<Evaluation> evaluations = new ArrayList<>();
+	private List<DataEntityEvaluation> evaluations = new ArrayList<>();
 
 	
 	public Long getId() {
@@ -97,11 +97,11 @@ public class Patient implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public TypeGender getGender() {
+	public DataTypeGender getGender() {
 		return gender;
 	}
 
-	public void setGender(TypeGender gender) {
+	public void setGender(DataTypeGender gender) {
 		this.gender = gender;
 	}
 
@@ -129,11 +129,11 @@ public class Patient implements Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public List<Evaluation> getEvaluations() {
+	public List<DataEntityEvaluation> getEvaluations() {
 		return evaluations;
 	}
 
-	public void setEvaluations(List<Evaluation> evaluations) {
+	public void setEvaluations(List<DataEntityEvaluation> evaluations) {
 		this.evaluations = evaluations;
 	}
 	

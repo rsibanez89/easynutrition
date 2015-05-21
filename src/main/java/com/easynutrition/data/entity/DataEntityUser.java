@@ -1,4 +1,4 @@
-package com.easynutrition.entity;
+package com.easynutrition.data.entity;
 
 import java.io.Serializable;
 
@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user")
-public class User implements Serializable {
+public class DataEntityUser implements Serializable {
 	private static final long serialVersionUID = -720854735618273426L;
 
 	@Id
@@ -24,7 +24,7 @@ public class User implements Serializable {
 	private boolean enabled;
 
 	@ManyToOne
-	private UserRole role;
+	private DataEntityUserRole role;
 
 	
 	public Long getId() {
@@ -59,11 +59,11 @@ public class User implements Serializable {
 		this.enabled = enabled;
 	}
 
-	public UserRole getRole() {
+	public DataEntityUserRole getRole() {
 		return role;
 	}
 
-	public void setRole(UserRole role) {
+	public void setRole(DataEntityUserRole role) {
 		this.role = role;
 	}
 	

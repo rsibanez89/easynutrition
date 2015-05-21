@@ -23,7 +23,7 @@
 		<version.tiles>3.0.5</version.tiles>
 
 		<!-- SPRING -->
-		<version.spring>3.2.13.RELEASE</version.spring>
+		<version.spring>4.1.6.RELEASE</version.spring>
 		<version.spring.security>3.2.7.RELEASE</version.spring.security>
 
 		<!-- HIBERNATE -->
@@ -41,6 +41,18 @@
 		<!-- MAVEN -->
 		<version.plugin.war>2.6</version.plugin.war>
 	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-framework-bom</artifactId>
+				<version>${version.spring}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<dependencies>
 		<!-- PROVIDED -->
@@ -90,7 +102,6 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>${version.spring}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -110,7 +121,6 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>${version.spring}</version>
 		</dependency>
 
 		<!-- HIBERNATE -->

@@ -1,32 +1,32 @@
 package com.easynutrition.api.rest;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.easynutrition.api.rest.table.ApiRestTablePatient;
-import com.easynutrition.dao.DaoPatient;
-import com.easynutrition.entity.Patient;
+import com.easynutrition.data.dao.DataDaoPatient;
+import com.easynutrition.data.entity.DataEntityPatient;
 
-@Controller
+@RestController
 public class ApiRestPatient {
 	@Autowired
-	private DaoPatient daoPatient;
+	private DataDaoPatient daoPatient;
 	
 
 	@RequestMapping(value = "/rest/patients", method = RequestMethod.GET, produces = "application/json")
-	public @ResponseBody List<Patient> listAllPeople() {
+	public List<DataEntityPatient> listPatients() {
 		// finds data
-		List<Patient> patients = daoPatient.findAll("lastName");
+		List<DataEntityPatient> patients = daoPatient.findAll("lastName");
 		
 		// does not serialize evaluations
-		for (Patient patient : patients) {
+		for (DataEntityPatient patient : patients) {
 			patient.setEvaluations(null);
 		}
 		
@@ -34,19 +34,23 @@ public class ApiRestPatient {
 	}
 
 	@RequestMapping(value = "/rest/table/patients", method = RequestMethod.GET, produces = "application/json")
-	public @ResponseBody ApiRestTablePatient listAllPeopleTable(@RequestParam("draw") int draw) {
+	public Map<String, Object> listPatientsTable(@RequestParam("draw") int draw) {
 		// finds data
-		List<Patient> data = listAllPeople();
+		List<DataEntityPatient> data = listPatients();
 		
-		ApiRestTablePatient result = new ApiRestTablePatient(draw, data.size(), data.size(), data);
+		Map<String, Object> result = new LinkedHashMap<>();
+		result.put("draw", draw);
+		result.put("recordsTotal", data.size());
+		result.put("recordsFiltered", data.size());
+		result.put("data", data);
 		
 		return result;
 	}
 
 	@RequestMapping(value = "/rest/patient/{id}", method = RequestMethod.GET, produces = "application/json")
-	public @ResponseBody Patient lookupPatientById(@PathVariable("id") Long id) {
+	public DataEntityPatient lookupPatientById(@PathVariable("id") Long id) {
 		// finds data
-		Patient patient = daoPatient.findById(id);
+		DataEntityPatient patient = daoPatient.findById(id);
 		
 		// does not serialize evaluations
 		patient.setEvaluations(null);

@@ -1,4 +1,4 @@
-package com.easynutrition.dao;
+package com.easynutrition.data.dao;
 
 import java.util.List;
 
@@ -11,13 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-public abstract class AbstractDao<T> {
+public abstract class DataDaoAbstract<T> {
 	protected Class<T> clazz; 
 	@Autowired
 	protected EntityManager em;
 
 	
-	public AbstractDao(Class<T> clazz) {
+	public DataDaoAbstract(Class<T> clazz) {
 		this.clazz = clazz;
 	}
 

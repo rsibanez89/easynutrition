@@ -1,4 +1,4 @@
-package com.easynutrition.entity;
+package com.easynutrition.data.entity;
 
 import java.io.Serializable;
 
@@ -9,11 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.easynutrition.entity.type.TypeUserRole;
+import com.easynutrition.data.type.DataTypeUserRole;
 
 @Entity
 @Table(name = "user_role")
-public class UserRole implements Serializable {
+public class DataEntityUserRole implements Serializable {
 	private static final long serialVersionUID = -720854735618273426L;
 
 	@Id
@@ -21,7 +21,7 @@ public class UserRole implements Serializable {
 	private Long id;
 	
 	@Enumerated(EnumType.STRING)
-	private TypeUserRole name;
+	private DataTypeUserRole name;
 	
 	public Long getId() {
 		return id;
@@ -31,11 +31,11 @@ public class UserRole implements Serializable {
 		this.id = id;
 	}
 
-	public TypeUserRole getName() {
+	public DataTypeUserRole getName() {
 		return name;
 	}
 
-	public void setName(TypeUserRole name) {
+	public void setName(DataTypeUserRole name) {
 		this.name = name;
 	}
 

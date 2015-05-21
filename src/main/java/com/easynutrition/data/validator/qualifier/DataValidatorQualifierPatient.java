@@ -1,4 +1,4 @@
-package com.easynutrition.entity.validator.qualifier;
+package com.easynutrition.data.validator.qualifier;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,13 +10,13 @@ import javax.validation.Payload;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import com.easynutrition.entity.validator.ValidatorPatient;
+import com.easynutrition.data.validator.DataValidatorPatient;
 
 @Qualifier
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.TYPE })
-@Constraint(validatedBy = ValidatorPatient.class)
-public @interface ValidatorQualifierPatient {
+@Constraint(validatedBy = DataValidatorPatient.class)
+public @interface DataValidatorQualifierPatient {
 	String message() default "<empty>"; 
 
 	Class<?>[] groups() default {};

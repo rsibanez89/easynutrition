@@ -10,15 +10,13 @@
 	</definition>
 
 
-	<!-- BOOTSTRAP TEMPLATE -->
+	<!-- PAGES -->
+	<definition name="login" template="/WEB-INF/login.jsp" />
+
 	<definition name="home" extends="defaultTemplate">
 		<put-attribute name="home" value="active-menu" />
 		<put-attribute name="body" value="/WEB-INF/tiles-body/home.jsp" />
 	</definition>
-
-
-	<!-- EASY NUTRITION -->
-	<definition name="login" template="/WEB-INF/login.jsp" />
 
 	<definition name="error" extends="defaultTemplate">
 		<put-attribute name="home" value="active-menu" />

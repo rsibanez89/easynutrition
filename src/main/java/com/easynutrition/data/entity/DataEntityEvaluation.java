@@ -1,4 +1,4 @@
-package com.easynutrition.entity;
+package com.easynutrition.data.entity;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name = "evaluation")
-public class Evaluation implements Serializable {
+public class DataEntityEvaluation implements Serializable {
 	private static final long serialVersionUID = -1757573848016133050L;
 	
 	@Id
@@ -30,7 +30,7 @@ public class Evaluation implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="patient_id")
-    private Patient patient;
+    private DataEntityPatient patient;
 	
 	@JsonSerialize(using = ApiRestSerializerCalendar.class)
 	@NotNull
@@ -60,11 +60,11 @@ public class Evaluation implements Serializable {
 		this.id = id;
 	}
 
-	public Patient getPatient() {
+	public DataEntityPatient getPatient() {
 		return patient;
 	}
 
-	public void setPatient(Patient patient) {
+	public void setPatient(DataEntityPatient patient) {
 		this.patient = patient;
 	}
 

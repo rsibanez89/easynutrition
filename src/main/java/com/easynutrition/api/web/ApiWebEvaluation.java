@@ -7,16 +7,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.easynutrition.dao.DaoEvaluation;
-import com.easynutrition.dao.DaoPatient;
+import com.easynutrition.data.dao.DataDaoEvaluation;
+import com.easynutrition.data.dao.DataDaoPatient;
 
 @Controller
 public class ApiWebEvaluation {
 	@Autowired
-	private DaoPatient daoPatient;
+	private DataDaoPatient daoPatient;
 	
 	@Autowired
-	private DaoEvaluation daoEvaluation;
+	private DataDaoEvaluation daoEvaluation;
 	
 	@RequestMapping(value = "/patient/{patientId}", method = RequestMethod.GET)
 	public String displayAllPatientEvaluations(@PathVariable("patientId") Long patientId, Model model) {
