@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="easy" tagdir="/WEB-INF/tags" %>
@@ -6,11 +7,11 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="panel panel-default">
-			<div class="panel-heading"><spring:message code="patients.subtitle"/></div>
+			<div class="panel-heading"><spring:message code="evaluations.subtitle"/>: ${patient.firstName} ${patient.lastName}</div>
 			
 			<c:choose>
-				<c:when test="${patients.size()==0}">
-					<em>No hay pacientes registrados</em>
+				<c:when test="${evaluations.size()==0}">
+					<em>No hay evaluaciones para el paciente</em>
 				</c:when>
 				<c:otherwise>
 					<div class="panel-body">
@@ -28,7 +29,7 @@
 								<tbody>
 									<c:forEach items="${evaluations}" var="evaluation">
 										<tr>
-											<td>${evaluation.date}</td>
+											<td><fmt:formatDate value="${evaluation.date.getTime()}" pattern="dd/MM/yyyy"/></td>
 											<td>${evaluation.weight}</td>
 											<td>${evaluation.height}</td>
 											<td>${evaluation.observation}</td>
