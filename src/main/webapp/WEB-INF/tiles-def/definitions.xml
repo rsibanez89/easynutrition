@@ -40,4 +40,9 @@
 			<add-attribute value="patients.js" />
 		</put-list-attribute>
 	</definition>
+	
+	<definition name="evaluations" extends="defaultTemplate">
+		<put-attribute name="patients" value="active-menu" />
+		<put-attribute name="body" value="/WEB-INF/tiles-body/evaluations.jsp" />
+	</definition>
 </tiles-definitions>

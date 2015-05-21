@@ -44,6 +44,8 @@
 		expected-type="javax.sql.DataSource" />
 
 	<security:http use-expressions="true">
+		<security:access-denied-handler error-page="/error"/>
+		
 		<!-- From more specific to less specific (filter chain) -->
 		<security:intercept-url pattern="/favicon.ico" 
 			access="IS_AUTHENTICATED_ANONYMOUSLY" />

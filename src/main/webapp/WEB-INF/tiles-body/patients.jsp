@@ -25,7 +25,7 @@
 				<form:form id="form" action="patient/add" role="form" method="GET">
 					<div class="row">
 						<div class="col-md-12">
-							<button type="submit" class="btn btn-default"><spring:message code="button.register"/></button>
+							<button type="submit" class="btn btn-default"><spring:message code="button.add"/></button>
 						</div>
 					</div>
 				</form:form>

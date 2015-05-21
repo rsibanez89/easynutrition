@@ -45,7 +45,7 @@
 					
 					<div class="row">
 						<div class="col-md-12">
-							<button type="submit" class="btn btn-default"><spring:message code="button.register"/></button>
+							<button type="submit" class="btn btn-default"><spring:message code="button.accept"/></button>
 						</div>
 					</div>
 				</form:form>
