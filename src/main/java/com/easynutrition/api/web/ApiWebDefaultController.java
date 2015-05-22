@@ -1,5 +1,8 @@
 package com.easynutrition.api.web;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -16,6 +19,12 @@ public class ApiWebDefaultController {
 	public String action(@PathVariable String path) {
 		logger.info("Probando: " + path);
 		return path;
+	}
+
+	@RequestMapping(value = "/error-redirect", method = RequestMethod.GET)
+	public String errorPage(HttpServletRequest req, HttpServletResponse resp) {
+		logger.info("HTTP ERROR STATUS: " + resp.getStatus());
+		return "redirect:/error";
 	}
 	
 }

@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <nav class="navbar-default navbar-side">
@@ -11,13 +12,13 @@
 			<sec:authorize access="hasRole('ADMIN')">	
 			<li>
 				<a class="${patients}" href="<c:url value='/patients'/>">
-					<i class="fa fa-users fa-3x"></i>&nbsp;Patients
+					<i class="fa fa-users fa-3x"></i>&nbsp;<spring:message code="menu.patients"/>
 				</a>
 			</li>
 			</sec:authorize>
 			<li>
 				<a class="${home}" href="<c:url value='/home'/>">
-					<i class="fa fa-dashboard fa-3x"></i>&nbsp;Dashboard
+					<i class="fa fa-dashboard fa-3x"></i>&nbsp;<spring:message code="menu.dashboard"/>
 				</a>
 			</li>
 		</ul>
