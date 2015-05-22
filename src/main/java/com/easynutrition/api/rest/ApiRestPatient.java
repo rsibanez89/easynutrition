@@ -69,6 +69,11 @@ public class ApiRestPatient {
 		return result;
 	}
 
+	@RequestMapping(value = "/rest/patient/{id}", method = RequestMethod.DELETE)
+	public void deletePatient(@PathVariable("id") Long id) {
+		daoPatient.delete(id);
+	}
+	
 	@RequestMapping(value = "/rest/patient/{id}", method = RequestMethod.GET, produces = "application/json")
 	public DataEntityPatient lookupPatientById(@PathVariable("id") Long id) {
 		// finds data

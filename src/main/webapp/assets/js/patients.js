@@ -8,39 +8,79 @@ $(document).ready(function() {
 
 	// data columns
 	var columns = [
-	    { "data": "firstName" },
-	    { "data": "lastName" },
-	    { "data": "email" },
-	    { "data": "phoneNumber" },
-        {
-            data: null,
-            className: "centered",
-            render: function (data, type, row) {
-            	return $("<div>").append($("#buttons .edit").clone()).html();
-            }
-        },	
-        {
-            data: null,
-            className: "centered",
-            render: function (data, type, full) {
-            	return $("<div>").append($("#buttons .delete").clone()).html();
-            }
-        }
+//	    { data: "id", className: "hidden"},
+	    { data: "firstName" },
+	    { data: "lastName" },
+	    { data: "email" },
+	    { data: "phoneNumber" },
+//        { data: null, className: "centered",
+//            render: function (data, type, full) {
+//            	return $("<div>").append($("#buttons .edit").clone()).html();
+//            }
+//        },	
+//        { data: null, className: "centered",
+//            render: function (data, type, full) {
+//            	return $("<div>").append($("#buttons .delete").clone()).html();
+//            }
+//        }
 	];
 	
 	// data table loading
-	$('#patients').dataTable({
+	var table = $('#patients').DataTable({
 		processing: true,
 		serverSide: true,
 		ajax: {
 			url: 'rest/table/patients',
 			data: {
-				columnsFilter: [columns[0].data, columns[1].data, columns[2].data]
+				columnsFilter: ["firstName", "lastName", "email", "phoneNumber"]
 			}
 		},
 		language: {
 			url: url
 		},
-		columns: columns
+		columns: columns,
+		initComplete: function(settings, json) {
+			complete(json);
+		}
 	});
+	
+	// modal panel event handler
+	$('#patientModal').on('show.bs.modal', function(e) {
+	    // get patient id
+	    var patientId = $(e.relatedTarget).data('id');
+	    
+	    // set patient id
+	    $('#buttonDelete', e.currentTarget).data('id', patientId);
+	});
+	
+	// delete button handler
+	$('#buttonDelete').on('click', function() {
+		// close modal
+		$('#patientModal').modal('toggle');
+		
+		// delete patient
+		var patientId = $(this).data('id');
+		$.ajax({
+			url: 'rest/patient/' + patientId,
+			method: 'DELETE',
+			success: function() {
+				table.ajax.reload(complete);
+			}
+		});
+	});
+	
+	// utility function
+	function complete(json) {
+		$("#patients tbody tr").each(function(index, elem) {
+			// add row buttons
+			addButton(elem, ".edit", json.data[index]);
+			addButton(elem, ".delete", json.data[index]);
+    	});
+	}
+	
+	function addButton(tableRow, selector, data) {
+		var button = $(selector, "#buttons").clone().data("id", data.id);
+		var td = $("<td class='centered'/>").append(button);
+		$(tableRow).append(td);
+	};
 });

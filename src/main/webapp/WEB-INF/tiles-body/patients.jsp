@@ -32,9 +32,24 @@
 					</div>
 				</form:form>
 				
+				<div id="patientModal" class="modal fade" tabindex="-1">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title" id="myModalLabel"><spring:message code="patient.delete.title"/></h4>
+							</div>
+							<div class="modal-body"><spring:message code="patient.delete.body"/></div>
+							<div class="modal-footer">
+								<button id="buttonDelete" type="button" class="btn btn-primary"><spring:message code="button.accept"/></button>
+								<button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.close"/></button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
 				<div id="buttons">
 					<button class="btn btn-sm primary edit"><i class="fa fa-pencil"></i><spring:message code="button.edit"/></button>
-					<button class="btn btn-sm btn-danger delete"><i class="fa fa-pencil"></i><spring:message code="button.delete"/></button>
+					<button class="btn btn-sm btn-danger delete" data-toggle="modal" data-target="#patientModal"><i class="fa fa-pencil"></i><spring:message code="button.delete"/></button>
 				</div>
 			</div>			
 		</div>
