@@ -18,7 +18,7 @@ public class ApiWebEvaluation {
 	@Autowired
 	private DataDaoEvaluation daoEvaluation;
 	
-	@RequestMapping(value = "/patient/{patientId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/patient/{patientId}/evaluations", method = RequestMethod.GET)
 	public String displayAllPatientEvaluations(@PathVariable("patientId") Long patientId, Model model) {
 		model.addAttribute("patient", daoPatient.findById(patientId));
 		model.addAttribute("evaluations", daoEvaluation.findByPatientId(patientId));

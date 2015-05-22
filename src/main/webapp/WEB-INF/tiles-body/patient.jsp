@@ -9,7 +9,9 @@
 			<div class="panel-heading"><spring:message code="patient.subtitle"/></div>
 
 			<div class="panel-body">
-				<form:form id="form" commandName="newPatient" role="form">
+				<form:form id="form" commandName="patient" role="form">
+					<form:hidden path="id"/>
+					
 					<div class="row">
 						<easy:control path="firstName" label="patient.firstName" cssCol="col-md-6">
 							<form:input path="firstName" cssClass="form-control" tabindex="1"/>

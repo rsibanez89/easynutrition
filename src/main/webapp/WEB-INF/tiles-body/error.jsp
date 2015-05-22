@@ -12,7 +12,7 @@
 		</div>
 
 		<div class="error-actions">
-			<a href="<c:url value='/home'/>" class="btn btn-primary btn-lg"> 
+			<a href='<c:url value="/home"/>' class="btn btn-primary btn-lg"> 
 				<i class="fa fa-chevron-left"></i>&nbsp;<spring:message code="error.back"/>
 			</a> 
 			<a href="mailto:easynutrition.info@gmail.com" class="btn btn-default btn-lg"> 

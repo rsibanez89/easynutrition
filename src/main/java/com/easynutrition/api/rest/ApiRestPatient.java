@@ -23,7 +23,7 @@ public class ApiRestPatient {
 	
 
 	@RequestMapping(value = "/rest/patients", method = RequestMethod.GET, produces = "application/json")
-	public List<DataEntityPatient> listPatients() {
+	public List<DataEntityPatient> patients() {
 		// finds data
 		List<DataEntityPatient> patients = daoPatient.findAll("lastName");
 		
@@ -35,8 +35,8 @@ public class ApiRestPatient {
 		return patients;
 	}
 
-	@RequestMapping(value = "/rest/table/patients", method = RequestMethod.GET, produces = "application/json")
-	public Map<String, Object> listPatientsTable(@RequestParam("draw") int draw, 
+	@RequestMapping(value = "/rest/patients/table", method = RequestMethod.GET, produces = "application/json")
+	public Map<String, Object> patientsTable(@RequestParam("draw") int draw, 
 			@RequestParam("start") int start, @RequestParam("length") int length,
 			@RequestParam("order[0][column]") int orderColumn, @RequestParam("order[0][dir]") String orderDir,
 			@RequestParam("search[value]") String filterValue, HttpServletRequest req) {
@@ -70,12 +70,12 @@ public class ApiRestPatient {
 	}
 
 	@RequestMapping(value = "/rest/patient/{id}", method = RequestMethod.DELETE)
-	public void deletePatient(@PathVariable("id") Long id) {
+	public void patientDelete(@PathVariable("id") Long id) {
 		daoPatient.delete(id);
 	}
 	
 	@RequestMapping(value = "/rest/patient/{id}", method = RequestMethod.GET, produces = "application/json")
-	public DataEntityPatient lookupPatientById(@PathVariable("id") Long id) {
+	public DataEntityPatient patientGet(@PathVariable("id") Long id) {
 		// finds data
 		DataEntityPatient patient = daoPatient.findById(id);
 		

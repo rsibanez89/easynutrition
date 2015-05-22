@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -20,22 +21,29 @@ public class ApiWebPatient {
 
 	
 	@RequestMapping(value = "/patients", method = RequestMethod.GET)
-	public String displayAllPatients(Model model) {
+	public String patients(Model model) {
 		// shows patients page
 		return "patients";
 	}	
 	
-	@RequestMapping(value = "/patient/add", method = RequestMethod.GET)
-	public String displaySortedPeople(Model model) {
+	@RequestMapping(value = "/patient", method = RequestMethod.GET)
+	public String patientGet(Model model) {
 		// shows patient page
-		model.addAttribute("newPatient", new DataEntityPatient());
+		model.addAttribute("patient", new DataEntityPatient());
 		return "patient";
 	}
 	
-	@RequestMapping(value = "/patient/add", method = RequestMethod.POST)
-	public String registerNewPerson(@Valid @ModelAttribute("newPatient") DataEntityPatient newPatient, BindingResult result, Model model) {
+	@RequestMapping(value = "/patient/{id}", method = RequestMethod.GET)
+	public String patientGetById(@PathVariable("id") long id, Model model) {
+		// shows patient page
+		model.addAttribute("patient", daoPatient.findById(id));
+		return "patient";
+	}
+	
+	@RequestMapping(value = {"/patient", "/patient/*"}, method = RequestMethod.POST)
+	public String patientPost(@Valid @ModelAttribute("patient") DataEntityPatient patient, BindingResult result, Model model) {
 		if (!result.hasErrors()) {
-			daoPatient.persist(newPatient);
+			daoPatient.merge(patient);
 			return "redirect:/patients";
 		} 
 		else {

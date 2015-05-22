@@ -26,14 +26,14 @@ public class DataValidatorPatient implements ConstraintValidator<DataValidatorQu
 			context.disableDefaultConstraintViolation();
 			
 			// email unique
-			DataEntityPatient foundPatient = daoPatient.findByEmail(patient.getEmail());
-			if (foundPatient != null) {
-				context
-					.buildConstraintViolationWithTemplate("{patient.validation.email.unique}")
-					.addPropertyNode("email")
-					.addConstraintViolation();
-				res = false;
-			}
+//			DataEntityPatient foundPatient = daoPatient.findByEmail(patient.getEmail());
+//			if (foundPatient != null) {
+//				context
+//					.buildConstraintViolationWithTemplate("{patient.validation.email.unique}")
+//					.addPropertyNode("email")
+//					.addConstraintViolation();
+//				res = false;
+//			}
 		}
 		
 		return res;

@@ -8,13 +8,13 @@
 			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
 			<span class="icon-bar"></span> <span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="index"><spring:message code="page.title"/></a>
+		<a class="navbar-brand" href='<c:url value="home"/>'><spring:message code="page.title"/></a>
 	</div>
 	<div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">
 		<span style="margin-right: 20px">
 			<sec:authentication property="principal.username" />
 		</span>
-		<a href="<c:url value='/logout'/>" class="btn btn-danger square-btn-adjust">
+		<a href='<c:url value="/logout"/>' class="btn btn-danger square-btn-adjust">
 			<spring:message code="button.logout"/>
 		</a>
 	</div>

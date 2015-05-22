@@ -9,7 +9,7 @@
 			<div class="panel-heading"><spring:message code="patients.subtitle"/></div>
 			
 			<div class="panel-body">
-				<table id="patients" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+				<table id="patients" class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
 							<th><spring:message code="patient.firstName"/></th>
@@ -24,7 +24,7 @@
 					</tbody>
 				</table>
 				
-				<form:form id="form" action="patient/add" role="form" method="GET">
+				<form:form id="form" action="patient" role="form" method="GET">
 					<div class="row">
 						<div class="col-md-12">
 							<button type="submit" class="btn btn-default"><spring:message code="button.add"/></button>
