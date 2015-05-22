@@ -11,7 +11,17 @@ insert into user (id, username, password, enabled, role_id) values (2, 'user', '
 -- Patient
 insert into patient (id, first_name, last_name, gender, birthday, email, phone_number) values (1, 'John', 'Smith', 'MALE', '1989-01-20', 'john.smith@mailinator.com', '2125551212')
 insert into patient (id, first_name, last_name, gender, birthday, email, phone_number) values (2, 'Juan', 'Perez', 'MALE', '1970-01-01', 'juan.perez@gmail.com', '19197543700')
-insert into patient (id, first_name, last_name, gender, birthday, email, phone_number) values (3, 'Rodrigo', 'Ibanez', 'MALE', '1989-01-20', 'rsibanez89@gmail.com', '2494347121')
+insert into patient (id, first_name, last_name, gender, birthday, email, phone_number) values (3, 'Rodrigo01', 'Ibanez', 'MALE', '1989-01-20', 'rsibanez89@gmail.com', '2494347121')
+insert into patient (id, first_name, last_name, gender, birthday, email, phone_number) values (4, 'Rodrigo02', 'Ibanez', 'MALE', '1989-01-20', 'rsibanez89@gmail.com', '2494347121')
+insert into patient (id, first_name, last_name, gender, birthday, email, phone_number) values (5, 'Rodrigo03', 'Ibanez', 'MALE', '1989-01-20', 'rsibanez89@gmail.com', '2494347121')
+insert into patient (id, first_name, last_name, gender, birthday, email, phone_number) values (6, 'Rodrigo04', 'Ibanez', 'MALE', '1989-01-20', 'rsibanez89@gmail.com', '2494347121')
+insert into patient (id, first_name, last_name, gender, birthday, email, phone_number) values (7, 'Rodrigo05', 'Ibanez', 'MALE', '1989-01-20', 'rsibanez89@gmail.com', '2494347121')
+insert into patient (id, first_name, last_name, gender, birthday, email, phone_number) values (8, 'Rodrigo06', 'Ibanez', 'MALE', '1989-01-20', 'rsibanez89@gmail.com', '2494347121')
+insert into patient (id, first_name, last_name, gender, birthday, email, phone_number) values (9, 'Rodrigo07', 'Ibanez', 'MALE', '1989-01-20', 'rsibanez89@gmail.com', '2494347121')
+insert into patient (id, first_name, last_name, gender, birthday, email, phone_number) values (10, 'Rodrigo08', 'Ibanez', 'MALE', '1989-01-20', 'rsibanez89@gmail.com', '2494347121')
+insert into patient (id, first_name, last_name, gender, birthday, email, phone_number) values (11, 'Rodrigo09', 'Ibanez', 'MALE', '1989-01-20', 'rsibanez89@gmail.com', '2494347121')
+insert into patient (id, first_name, last_name, gender, birthday, email, phone_number) values (12, 'Rodrigo10', 'Ibanez', 'MALE', '1989-01-20', 'rsibanez89@gmail.com', '2494347121')
+insert into patient (id, first_name, last_name, gender, birthday, email, phone_number) values (13, 'Rodrigo11', 'Ibanez', 'MALE', '1989-01-20', 'rsibanez89@gmail.com', '2494347121')
 
 -- Evaluation
 insert into evaluation (id, date, height, weight, waist_circumference, hip_circumference, observation, patient_id) values (1, '2015-01-01', 1.75, 87, 76, 101, 'El paciente se encuentra motivado.', 3)
