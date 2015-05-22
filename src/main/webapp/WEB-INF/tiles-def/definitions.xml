@@ -34,6 +34,9 @@
 	<definition name="patients" extends="defaultTemplate">
 		<put-attribute name="patients" value="active-menu" />
 		<put-attribute name="body" value="/WEB-INF/tiles-body/patients.jsp" />
+		<put-list-attribute name="styles">
+			<add-attribute value="patients.css" />
+		</put-list-attribute>
 		<put-list-attribute name="scripts">
 			<add-attribute value="patients.js" />
 		</put-list-attribute>

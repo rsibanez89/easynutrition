@@ -9,13 +9,15 @@
 			<div class="panel-heading"><spring:message code="patients.subtitle"/></div>
 			
 			<div class="panel-body">
-				<table id="patients" class="table table-striped table-bordered" cellspacing="0" width="100%">
+				<table id="patients" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 					<thead>
 						<tr>
 							<th><spring:message code="patient.firstName"/></th>
 							<th><spring:message code="patient.lastName"/></th>
 							<th><spring:message code="patient.email"/></th>
 							<th><spring:message code="patient.phoneNumber"/></th>
+							<th><spring:message code="button.edit"/></th>
+							<th><spring:message code="button.delete"/></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -29,6 +31,11 @@
 						</div>
 					</div>
 				</form:form>
+				
+				<div id="buttons">
+					<button class="btn btn-sm primary edit"><i class="fa fa-pencil"></i><spring:message code="button.edit"/></button>
+					<button class="btn btn-sm btn-danger delete"><i class="fa fa-pencil"></i><spring:message code="button.delete"/></button>
+				</div>
 			</div>			
 		</div>
 	</div>

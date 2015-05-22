@@ -39,14 +39,9 @@ public class ApiRestPatient {
 	public Map<String, Object> listPatientsTable(@RequestParam("draw") int draw, 
 			@RequestParam("start") int start, @RequestParam("length") int length,
 			@RequestParam("order[0][column]") int orderColumn, @RequestParam("order[0][dir]") String orderDir,
-			@RequestParam("search[value]") String filterValue, @RequestParam("columnNumber") int columnNumber,
-			HttpServletRequest req) {
-		
+			@RequestParam("search[value]") String filterValue, HttpServletRequest req) {
 		// columns to filter
-		String[] filterColumns = new String[columnNumber];
-		for (int i = 0; i < columnNumber; i++) {
-			filterColumns[i] = req.getParameter(String.format("columns[%d][data]", i));
-		}
+		String[] filterColumns = req.getParameterValues("columnsFilter[]");
 		
 		// column to order
 		String orderColumnName = req.getParameter(String.format("columns[%d][data]", orderColumn));

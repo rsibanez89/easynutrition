@@ -9,6 +9,11 @@
 				<img src="<c:url value='/assets/img/find_user.png'/>" class="user-image img-responsive" />
 			</li>
 		
+			<li>
+				<a class="${home}" href="<c:url value='/home'/>">
+					<i class="fa fa-dashboard fa-3x"></i>&nbsp;<spring:message code="menu.dashboard"/>
+				</a>
+			</li>
 			<sec:authorize access="hasRole('ADMIN')">	
 			<li>
 				<a class="${patients}" href="<c:url value='/patients'/>">
@@ -16,11 +21,6 @@
 				</a>
 			</li>
 			</sec:authorize>
-			<li>
-				<a class="${home}" href="<c:url value='/home'/>">
-					<i class="fa fa-dashboard fa-3x"></i>&nbsp;<spring:message code="menu.dashboard"/>
-				</a>
-			</li>
 		</ul>
 	</div>
 </nav>
