@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.easynutrition.data.dao.DataDaoEvaluation;
 import com.easynutrition.data.dao.DataDaoPatient;
 import com.easynutrition.data.entity.DataEntityPatient;
 
@@ -18,10 +19,13 @@ import com.easynutrition.data.entity.DataEntityPatient;
 public class ApiWebPatient {
 	@Autowired
 	private DataDaoPatient daoPatient;
+	
+	@Autowired
+	private DataDaoEvaluation daoEvaluation;
 
 	
 	@RequestMapping(value = "/patients", method = RequestMethod.GET)
-	public String patients(Model model) {
+	public String patientsGet(Model model) {
 		// shows patients page
 		return "patients";
 	}	
@@ -33,8 +37,16 @@ public class ApiWebPatient {
 		return "patient";
 	}
 	
-	@RequestMapping(value = "/patient/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/patient/{id}/", method = RequestMethod.GET)
 	public String patientGetById(@PathVariable("id") long id, Model model) {
+		// shows patient profile
+		model.addAttribute("patient", daoPatient.findById(id));
+		model.addAttribute("evaluations", daoEvaluation.findByPatientId(id));
+		return "profile";
+	}
+	
+	@RequestMapping(value = "/patient/{id}/edit", method = RequestMethod.GET)
+	public String patientEditById(@PathVariable("id") long id, Model model) {
 		// shows patient page
 		model.addAttribute("patient", daoPatient.findById(id));
 		return "patient";

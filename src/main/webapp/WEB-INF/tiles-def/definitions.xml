@@ -42,6 +42,14 @@
 		</put-list-attribute>
 	</definition>
 	
+	<definition name="profile" extends="defaultTemplate">
+		<put-attribute name="patients" value="active-menu" />
+		<put-attribute name="body" value="/WEB-INF/tiles-body/profile.jsp" />
+		<put-list-attribute name="styles">
+			<add-attribute value="profile.css" />
+		</put-list-attribute>
+	</definition>
+	
 	<definition name="evaluations" extends="defaultTemplate">
 		<put-attribute name="patients" value="active-menu" />
 		<put-attribute name="body" value="/WEB-INF/tiles-body/evaluations.jsp" />
