@@ -24,13 +24,11 @@
 					</tbody>
 				</table>
 				
-				<form:form id="form" action="patient" role="form" method="GET">
-					<div class="row">
-						<div class="col-md-12">
-							<button type="submit" class="btn btn-default"><spring:message code="button.add"/></button>
-						</div>
+				<div class="row">
+					<div class="col-md-12">
+						<button type="submit" class="btn btn-default" onclick="location.href='patient';"><spring:message code="button.add"/></button>
 					</div>
-				</form:form>
+				</div>
 				
 				<div id="patientModal" class="modal fade" tabindex="-1">
 					<div class="modal-dialog">
@@ -40,7 +38,7 @@
 							</div>
 							<div class="modal-body"><spring:message code="patient.delete.body"/></div>
 							<div class="modal-footer">
-								<button id="buttonDelete" type="button" class="btn btn-primary"><spring:message code="button.accept"/></button>
+								<button id="buttonModalAccept" type="button" class="btn btn-primary"><spring:message code="button.accept"/></button>
 								<button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.close"/></button>
 							</div>
 						</div>
@@ -48,8 +46,8 @@
 				</div>
 				
 				<div id="buttons">
-					<button class="btn btn-sm primary edit"><i class="fa fa-pencil"></i><spring:message code="button.edit"/></button>
-					<button class="btn btn-sm btn-danger delete" data-toggle="modal" data-target="#patientModal"><i class="fa fa-pencil"></i><spring:message code="button.delete"/></button>
+					<button class="btn btn-sm btn-info edit" title='<spring:message code="button.edit"/>'><i class="fa fa-pencil"></i></button>
+					<button class="btn btn-sm btn-danger delete" data-toggle="modal" data-target="#patientModal" title='<spring:message code="button.delete"/>'><i class="fa fa-remove"></i></button>
 				</div>
 			</div>			
 		</div>

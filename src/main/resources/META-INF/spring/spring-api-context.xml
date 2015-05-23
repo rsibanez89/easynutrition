@@ -2,13 +2,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:security="http://www.springframework.org/schema/security"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="
-		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
-		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-	
+
 	<mvc:annotation-driven />
 
 	<!-- TILES -->
@@ -23,7 +24,7 @@
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
 			<list>
-				<value>literals</value>
+				<value>literals\literals</value>
 			</list>
 		</property>
 	</bean>
@@ -45,9 +46,9 @@
 
 	<security:http use-expressions="true">
 		<!-- From more specific to less specific (filter chain) -->
-		<security:intercept-url pattern="/favicon.ico" 
+		<security:intercept-url pattern="/favicon.ico"
 			access="IS_AUTHENTICATED_ANONYMOUSLY" />
-	
+
 		<security:intercept-url pattern="/login"
 			access="permitAll" />
 
@@ -60,14 +61,10 @@
 		<security:intercept-url pattern="/**"
 			access="hasAnyRole('ADMIN','USER')" />
 
-		<security:form-login 
-		    login-page="/login"
-			login-processing-url="/login_post" 
-			authentication-failure-url="/login?error"
-		    default-target-url="/home"
-		    always-use-default-target="false"
-			username-parameter="username"
-			password-parameter="password" />
+		<security:form-login login-page="/login"
+			login-processing-url="/login_post" authentication-failure-url="/login?error"
+			default-target-url="/home" always-use-default-target="false"
+			username-parameter="username" password-parameter="password" />
 
 		<security:logout logout-url="/logout" />
 	</security:http>

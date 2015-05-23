@@ -44,6 +44,7 @@ $(document).ready(function() {
 			url: url
 		},
 		columns: columns,
+		scrollX: true
 	});
 	
 	
@@ -53,12 +54,12 @@ $(document).ready(function() {
 	    var patientId = $(e.relatedTarget).data('id');
 	    
 	    // set patient id
-	    $('#buttonDelete', e.currentTarget).data('id', patientId);
+	    $('#buttonModalAccept', e.currentTarget).data('id', patientId);
 	});
 	
 	
-	// delete button handler
-	$('#buttonDelete').on('click', function() {
+	// modal accept button handler
+	$('#buttonModalAccept').on('click', function() {
 		// close modal
 		$('#patientModal').modal('toggle');
 		

@@ -21,7 +21,6 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.easynutrition.api.rest.serializer.ApiRestSerializerCalendar;
@@ -60,8 +59,6 @@ public class DataEntityPatient implements Serializable {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Calendar birthday;
 
-	@NotNull
-	@NotEmpty
 	@Email
 	private String email;
 

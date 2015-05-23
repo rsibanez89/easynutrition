@@ -5,8 +5,10 @@
 <nav class="navbar navbar-default navbar-cls-top "style="margin-bottom: 0">
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
-			<span class="icon-bar"></span> <span class="icon-bar"></span>
+			<span class="sr-only">Toggle navigation</span> 
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span> 
+			<span class="icon-bar"></span>
 		</button>
 		<a class="navbar-brand" href='<c:url value="home"/>'><spring:message code="page.title"/></a>
 	</div>

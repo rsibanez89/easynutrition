@@ -23,7 +23,7 @@ public class DataValidatorPatient implements ConstraintValidator<DataValidatorQu
 		boolean res = true;
 		
 		if (patient != null) {
-			context.disableDefaultConstraintViolation();
+//			context.disableDefaultConstraintViolation();
 			
 			// email unique
 //			DataEntityPatient foundPatient = daoPatient.findByEmail(patient.getEmail());

@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<nav class="navbar-default navbar-side">
+<nav class="navbar-default navbar-side" role="navigation">
 	<div class="sidebar-collapse">
 		<ul class="nav" id="main-menu">
 			<li class="text-center">

@@ -12,18 +12,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class ApiWebDefaultController {
-	private static final Logger logger = LoggerFactory.getLogger(ApiWebDefaultController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ApiWebDefaultController.class);
 	
 	
 	@RequestMapping(value = "/{path:^home$|^login$|^error$}", method = RequestMethod.GET)
 	public String action(@PathVariable String path) {
-		logger.info("Probando: " + path);
+		LOGGER.info("Probando: " + path);
 		return path;
 	}
 
 	@RequestMapping(value = "/error-redirect", method = RequestMethod.GET)
 	public String errorPage(HttpServletRequest req, HttpServletResponse resp) {
-		logger.info("HTTP ERROR STATUS: " + resp.getStatus());
+		LOGGER.info("HTTP ERROR STATUS: " + resp.getStatus());
 		return "redirect:/error";
 	}
 	

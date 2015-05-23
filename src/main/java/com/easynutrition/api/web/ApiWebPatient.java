@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.easynutrition.business.mail.BusinessMailSender;
 import com.easynutrition.data.dao.DataDaoPatient;
 import com.easynutrition.data.entity.DataEntityPatient;
 
 @Controller
 public class ApiWebPatient {
+	@Autowired
+	private BusinessMailSender sender;
 	@Autowired
 	private DataDaoPatient daoPatient;
 
@@ -43,7 +46,15 @@ public class ApiWebPatient {
 	@RequestMapping(value = {"/patient", "/patient/*"}, method = RequestMethod.POST)
 	public String patientPost(@Valid @ModelAttribute("patient") DataEntityPatient patient, BindingResult result, Model model) {
 		if (!result.hasErrors()) {
+			// sends mail on patient create
+			if (patient.getId() == null && !patient.getEmail().isEmpty()) {
+				sender.sendMail(patient.getEmail());
+			}
+				
+			// persists data
 			daoPatient.merge(patient);
+			
+			// goes to patients view
 			return "redirect:/patients";
 		} 
 		else {
