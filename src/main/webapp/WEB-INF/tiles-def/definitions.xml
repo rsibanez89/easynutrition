@@ -48,6 +48,9 @@
 		<put-list-attribute name="styles">
 			<add-attribute value="profile.css" />
 		</put-list-attribute>
+		<put-list-attribute name="scripts">
+			<add-attribute value="profile.js" />
+		</put-list-attribute>
 	</definition>
 	
 	<definition name="evaluations" extends="defaultTemplate">

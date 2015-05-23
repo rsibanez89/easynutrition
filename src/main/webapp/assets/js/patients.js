@@ -76,5 +76,5 @@ $(document).ready(function() {
 
 
 function goToEdit(button) {
-	location.href = 'patient/' +  $(button).data('id');
+	location.href = 'patient/' +  $(button).data('id') + "/edit";
 }

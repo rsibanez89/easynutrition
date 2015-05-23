@@ -21,9 +21,9 @@
   						</div>
   					</div>
   					<div class="col-md-2">
-  							<form action='/patient/${patient.id}/edit'>
-    							<button type="submit" class="btn btn-default pull-right"><spring:message code="button.edit"/></button>
-							</form>
+  							
+    							<button id="editButton" class="btn btn-default pull-right"><spring:message code="button.edit"/></button>
+							
   					</div>
 				</div>
 			</div>
