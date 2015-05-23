@@ -47,9 +47,12 @@
 		<put-attribute name="body" value="/WEB-INF/tiles-body/profile.jsp" />
 		<put-list-attribute name="styles">
 			<add-attribute value="profile.css" />
+			<add-attribute value="morris-0.4.3.min.css" />
 		</put-list-attribute>
 		<put-list-attribute name="scripts">
 			<add-attribute value="profile.js" />
+			<add-attribute value="raphael-2.1.0.min.js" />
+			<add-attribute value="morris.js" />
 		</put-list-attribute>
 	</definition>
 	

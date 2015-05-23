@@ -21,11 +21,13 @@
   						</div>
   					</div>
   					<div class="col-md-2">
-  							
-    							<button id="editButton" class="btn btn-default pull-right"><spring:message code="button.edit"/></button>
-							
+    					<button id="editButton" class="btn btn-default pull-right"><spring:message code="button.edit"/></button>	
   					</div>
 				</div>
+			</div>
+			
+			<div class="panel-body">
+				<div id="morris-line-chart"></div>
 			</div>
 			
 			<c:choose>
