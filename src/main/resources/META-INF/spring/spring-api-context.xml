@@ -24,7 +24,7 @@
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
 			<list>
-				<value>literals\literals</value>
+				<value>literals/literals</value>
 			</list>
 		</property>
 	</bean>
