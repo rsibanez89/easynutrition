@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.easynutrition.business.mail.BusinessMailSender;
+import com.easynutrition.data.dao.DataDaoEvaluation;
 import com.easynutrition.data.dao.DataDaoPatient;
 import com.easynutrition.data.entity.DataEntityPatient;
 
@@ -21,10 +22,13 @@ public class ApiWebPatient {
 	private BusinessMailSender sender;
 	@Autowired
 	private DataDaoPatient daoPatient;
+	
+	@Autowired
+	private DataDaoEvaluation daoEvaluation;
 
 	
 	@RequestMapping(value = "/patients", method = RequestMethod.GET)
-	public String patients(Model model) {
+	public String patientsGet(Model model) {
 		// shows patients page
 		return "patients";
 	}	
@@ -36,8 +40,16 @@ public class ApiWebPatient {
 		return "patient";
 	}
 	
+	@RequestMapping(value = "/patient/{id}/profile", method = RequestMethod.GET)
+	public String patientProfileGet(@PathVariable("id") long id, Model model) {
+		// shows patient profile
+		model.addAttribute("patient", daoPatient.findById(id));
+		model.addAttribute("evaluations", daoEvaluation.findByPatientId(id));
+		return "profile";
+	}
+	
 	@RequestMapping(value = "/patient/{id}", method = RequestMethod.GET)
-	public String patientGetById(@PathVariable("id") long id, Model model) {
+	public String patientEditGet(@PathVariable("id") long id, Model model) {
 		// shows patient page
 		model.addAttribute("patient", daoPatient.findById(id));
 		return "patient";

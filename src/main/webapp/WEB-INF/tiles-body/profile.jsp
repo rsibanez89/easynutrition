@@ -7,12 +7,12 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="panel panel-default">
-			<div class="panel-heading"><spring:message code="evaluations.subtitle"/>: ${patient.firstName} ${patient.lastName}</div>
+			<div class="panel-heading"><spring:message code="profile.subtitle"/></div>
 			
 			<div class="panel-body">
 				<div class="row">
   					<div class="col-md-2"><img src='<c:url value="/assets/img/find_user.png"/>' class="img-thumbnail"></div>
-  					<div class="col-md-10">
+  					<div class="col-md-8">
   						<div class="patient-detail">
 	  						<p><strong><spring:message code="patient.firstName"/>:</strong> ${patient.firstName}</p>
 	  						<p><strong><spring:message code="patient.lastName"/>:</strong> ${patient.lastName}</p>
@@ -20,7 +20,14 @@
 	  						<p><strong><spring:message code="patient.phoneNumber"/>:</strong> ${patient.phoneNumber}</p>
   						</div>
   					</div>
+  					<div class="col-md-2">
+    					<button id="editButton" class="btn btn-default pull-right"><spring:message code="button.edit"/></button>	
+  					</div>
 				</div>
+			</div>
+			
+			<div class="panel-body">
+				<div id="morris-line-chart"></div>
 			</div>
 			
 			<c:choose>
