@@ -27,8 +27,8 @@ public class BusinessMailSender {
 	private JavaMailSenderImpl mailSender;
 	@Value("classpath:email/template-email.html")
 	private Resource template;
-	@Value("${easy.webcontext}")
-	private String webcontext;
+	@Value("${easy.url}")
+	private String url;
 	
 	
 	@Async
@@ -41,12 +41,11 @@ public class BusinessMailSender {
 
 			// subject
 			String text = readEmailTemplate()
-				.replace("${webContext}", webcontext)
+				.replace("${url}", url)
 				.replace("${user}", "TODO1")
 				.replace("${password}", "TODO2")
-				.replace("${url}", "TODO3")
 				.replace("${nutritionist}", "TODO4");
-			LOGGER.info(text);
+//			LOGGER.info(text);
 			
 			// message
 			helper.setFrom(FROM);
