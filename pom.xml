@@ -167,6 +167,18 @@
 		</dependency>
 	</dependencies>
 
+	<build>
+		<filters>
+			<filter>src/main/filters/dev.properties</filter>
+		</filters>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>
+
 	<profiles>
 		<profile>
 			<!-- When built in OpenShift the 'openshift' profile will be used when 
@@ -179,6 +191,9 @@
 			<id>openshift</id>
 			<build>
 				<finalName>easynutrition</finalName>
+				<filters>
+					<filter>src/main/filters/prod.properties</filter>
+				</filters>
 				<plugins>
 					<plugin>
 						<artifactId>maven-war-plugin</artifactId>

@@ -39,10 +39,12 @@ public class BusinessMailSender {
 
 			// subject
 			String text = readEmailTemplate()
+				.replace("${webContext}", "http://easynutrition-rsibanez89.rhcloud.com")
 				.replace("${user}", "TODO1")
 				.replace("${password}", "TODO2")
 				.replace("${url}", "TODO3")
 				.replace("${nutritionist}", "TODO4");
+			LOGGER.info(text);
 			
 			// message
 			helper.setFrom(FROM);

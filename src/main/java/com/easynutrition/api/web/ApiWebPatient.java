@@ -40,6 +40,13 @@ public class ApiWebPatient {
 		return "patient";
 	}
 	
+	@RequestMapping(value = "/patient/{id}", method = RequestMethod.GET)
+	public String patientEditGet(@PathVariable("id") long id, Model model) {
+		// shows patient page
+		model.addAttribute("patient", daoPatient.findById(id));
+		return "patient";
+	}
+	
 	@RequestMapping(value = "/patient/{id}/profile", method = RequestMethod.GET)
 	public String patientProfileGet(@PathVariable("id") long id, Model model) {
 		// shows patient profile
@@ -48,13 +55,16 @@ public class ApiWebPatient {
 		return "profile";
 	}
 	
-	@RequestMapping(value = "/patient/{id}", method = RequestMethod.GET)
-	public String patientEditGet(@PathVariable("id") long id, Model model) {
-		// shows patient page
-		model.addAttribute("patient", daoPatient.findById(id));
-		return "patient";
-	}
-	
+	/**
+	 * Post method for:
+	 * 		/patient 		-> create
+	 * 		/patient/{id}	-> update
+	 * 
+	 * @param patient
+	 * @param result
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = {"/patient", "/patient/*"}, method = RequestMethod.POST)
 	public String patientPost(@Valid @ModelAttribute("patient") DataEntityPatient patient, BindingResult result, Model model) {
 		if (!result.hasErrors()) {
