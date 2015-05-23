@@ -27,6 +27,8 @@ public class BusinessMailSender {
 	private JavaMailSenderImpl mailSender;
 	@Value("classpath:email/template-email.html")
 	private Resource template;
+	@Value("${easy.webcontext}")
+	private String webcontext;
 	
 	
 	@Async
@@ -39,7 +41,7 @@ public class BusinessMailSender {
 
 			// subject
 			String text = readEmailTemplate()
-				.replace("${webContext}", "http://easynutrition-rsibanez89.rhcloud.com")
+				.replace("${webContext}", webcontext)
 				.replace("${user}", "TODO1")
 				.replace("${password}", "TODO2")
 				.replace("${url}", "TODO3")
