@@ -32,26 +32,27 @@ public class BusinessMailSender {
 	
 	
 	@Async
-	public void sendMail(String to) {
+	public void sendMailNewPatient(String to, String username, String password, String nutricionist, Locale locale) {
 		MimeMessage message = mailSender.createMimeMessage();
 		MimeMessageHelper helper;
 		
 		try {
 			helper = new MimeMessageHelper(message);
 
-			// subject
-			String text = readEmailTemplate()
-				.replace("${url}", url)
-				.replace("${user}", "TODO1")
-				.replace("${password}", "TODO2")
-				.replace("${nutritionist}", "TODO4");
-//			LOGGER.info(text);
+			// mail text
+			String mailContent = readEmailTemplate();
+			mailContent = replace(mailContent, "${email.title}", "email.title", locale, new String[0]);
+			mailContent = replace(mailContent, "${email.subtitle}", "email.subtitle", locale, new String[0]);
+			mailContent = replace(mailContent, "${email.username}", "email.username", locale, new String[]{username});
+			mailContent = replace(mailContent, "${email.password}", "email.password", locale, new String[]{password});
+			mailContent = replace(mailContent, "${email.url}", "email.url", locale, new String[]{url});
+			mailContent = replace(mailContent, "${email.nutritionist}", "email.nutritionist", locale, new String[]{nutricionist});
 			
 			// message
 			helper.setFrom(FROM);
 			helper.setTo(to);
-			helper.setSubject(messageSource.getMessage("email.subject", null, Locale.ENGLISH));
-			helper.setText(text, true);
+			helper.setSubject(messageSource.getMessage("email.subject", null, locale));
+			helper.setText(mailContent, true);
 
 			// send
 			mailSender.send(message);
@@ -65,4 +66,8 @@ public class BusinessMailSender {
 		return new String(encoded);
 	}
 
+	String replace(String text, String templateKey, String messageKey, Locale locale, String...param) {
+		return text.replace(templateKey, messageSource.getMessage(messageKey, param, locale));
+	}
+	
 }

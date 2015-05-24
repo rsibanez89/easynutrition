@@ -47,24 +47,24 @@
 					<!-- BEGIN BODY -->
 					<table cellspacing="0" cellpadding="0" width="600" style="background-color: #81B0E0; width: 600px; padding-left: 30px">
 						<tr>
-							<td><h2>Bienvenido a EasyNutrition</h2></td>
+							<td><h2>${email.title}</h2></td>
 						</tr>
 						<tr>
-							<td><h3>Sus datos son los siguientes:</h3></td>
+							<td><h3>${email.subtitle}</h3></td>
 						</tr>
 						<tr>
 							<td>
 								<ul>
-									<li>User: ${user}</li>
-									<li>Password: ${password}</li>
+									<li>${email.username}</li>
+									<li>${email.password}</li>
 								</ul>
 							</td>
 						</tr>
 						<tr>
-							<td><h4>Puede acceder desde la siguiente URL: ${url}</h4></td>
+							<td><h4>${email.url}</h4></td>
 						</tr>
 						<tr>
-							<td style="padding: 30px; text-align: right;">Nutricionista: ${nutritionist}</td>
+							<td style="padding: 30px; text-align: right;">${email.nutritionist}</td>
 						</tr>
 					</table>
 					<!-- END BODY -->
