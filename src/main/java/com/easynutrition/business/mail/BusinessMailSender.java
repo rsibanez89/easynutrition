@@ -40,6 +40,7 @@ public class BusinessMailSender {
 
 			// mail text
 			String mailContent = readEmailTemplate();
+			mailContent = mailContent.replace("${url}", url);
 			mailContent = replace(mailContent, "${email.title}", "email.title", locale, new String[0]);
 			mailContent = replace(mailContent, "${email.subtitle}", "email.subtitle", locale, new String[0]);
 			mailContent = replace(mailContent, "${email.username}", "email.username", locale, new String[]{username});

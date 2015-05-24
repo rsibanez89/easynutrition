@@ -10,7 +10,7 @@
 			<span class="icon-bar"></span> 
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href='<c:url value="home"/>'><spring:message code="page.title"/></a>
+		<a class="navbar-brand" href='<c:url value="/home"/>'><spring:message code="page.title"/></a>
 	</div>
 	<div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">
 		<span style="margin-right: 20px">
