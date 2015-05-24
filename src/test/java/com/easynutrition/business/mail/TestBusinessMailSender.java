@@ -28,8 +28,7 @@ public class TestBusinessMailSender {
 	
 	@BeforeClass
 	public static void setUpClass() throws Exception {
-		// Sets JNDI Mock for Spring Security
-		// This does not work for Hibernate, so we override persistence.xml
+		// Sets JNDI Mock for Spring Security and JPA
 		SimpleNamingContextBuilder builder = SimpleNamingContextBuilder.emptyActivatedContextBuilder();
 	    
 	    DriverManagerDataSource ds = new DriverManagerDataSource();
