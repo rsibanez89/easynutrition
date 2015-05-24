@@ -20,7 +20,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class BusinessMailSender {
 	private static final Logger LOGGER = LoggerFactory.getLogger(BusinessMailSender.class);
-	private static final String FROM = "easynutrition.info@gmail.com";
     @Autowired
     private MessageSource messageSource;
 	@Autowired
@@ -49,7 +48,7 @@ public class BusinessMailSender {
 			mailContent = replace(mailContent, "${email.nutritionist}", "email.nutritionist", locale, new String[]{nutricionist});
 			
 			// message
-			helper.setFrom(FROM);
+			helper.setFrom(mailSender.getUsername());
 			helper.setTo(to);
 			helper.setSubject(messageSource.getMessage("email.subject", null, locale));
 			helper.setText(mailContent, true);

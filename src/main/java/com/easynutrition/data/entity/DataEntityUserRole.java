@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 import com.easynutrition.data.type.DataTypeUserRole;
 
-@Entity
+@Entity(name = "userRole")
 @Table(name = "user_role")
 public class DataEntityUserRole implements Serializable {
 	private static final long serialVersionUID = -720854735618273426L;

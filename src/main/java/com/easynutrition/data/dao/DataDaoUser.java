@@ -11,4 +11,11 @@ public class DataDaoUser extends DataDaoAbstract<DataEntityUser> {
 		super(DataEntityUser.class);
 	}
 
+	public void delete(String username) {
+		em
+			.createQuery("DELETE FROM user WHERE username = :username")
+			.setParameter("username", username)
+			.executeUpdate();
+	}
+
 }

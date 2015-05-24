@@ -13,27 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.easynutrition.data.dao.DataDaoPatient;
+import com.easynutrition.business.facade.BusinessFacadePatient;
 import com.easynutrition.data.entity.DataEntityPatient;
 
 @RestController
 public class ApiRestPatient {
 	@Autowired
-	private DataDaoPatient daoPatient;
+	private BusinessFacadePatient facadePatient;
 	
-
-	@RequestMapping(value = "/rest/patients", method = RequestMethod.GET, produces = "application/json")
-	public List<DataEntityPatient> patients() {
-		// finds data
-		List<DataEntityPatient> patients = daoPatient.findAll("lastName");
-		
-		// does not serialize evaluations
-		for (DataEntityPatient patient : patients) {
-			patient.setEvaluations(null);
-		}
-		
-		return patients;
-	}
 
 	@RequestMapping(value = "/rest/patients/table", method = RequestMethod.GET, produces = "application/json")
 	public Map<String, Object> patientsTable(@RequestParam("draw") int draw, 
@@ -47,13 +34,13 @@ public class ApiRestPatient {
 		String orderColumnName = req.getParameter(String.format("columns[%d][data]", orderColumn));
 		
 		// counts total number of records
-		long countTotal = daoPatient.getCount();
+		long countTotal = facadePatient.getCount();
 
 		// counts number of records filtered
-		long countFiltered = daoPatient.getCount(filterColumns, filterValue);
+		long countFiltered = facadePatient.getCount(filterColumns, filterValue);
 		
 		// finds data
-		List<DataEntityPatient> data = daoPatient.findAll(start, length, orderColumnName, orderDir, filterColumns, filterValue);
+		List<DataEntityPatient> data = facadePatient.findAll(start, length, orderColumnName, orderDir, filterColumns, filterValue);
 		
 		// does not serialize evaluations
 		for (DataEntityPatient patient : data) {
@@ -71,18 +58,7 @@ public class ApiRestPatient {
 
 	@RequestMapping(value = "/rest/patient/{id}", method = RequestMethod.DELETE)
 	public void patientDelete(@PathVariable("id") Long id) {
-		daoPatient.delete(id);
-	}
-	
-	@RequestMapping(value = "/rest/patient/{id}", method = RequestMethod.GET, produces = "application/json")
-	public DataEntityPatient patientGet(@PathVariable("id") Long id) {
-		// finds data
-		DataEntityPatient patient = daoPatient.findById(id);
-		
-		// does not serialize evaluations
-		patient.setEvaluations(null);
-		
-		return patient;
+		facadePatient.delete(id);
 	}
 	
 }

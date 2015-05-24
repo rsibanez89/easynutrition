@@ -21,6 +21,13 @@
 				</a>
 			</li>
 			</sec:authorize>
+			<sec:authorize access="hasRole('USER')">	
+			<li>
+				<a class="${profile}" href='<c:url value="/patient/${patientId}/profile"/>'>
+					<i class="fa fa-table fa-3x"></i>&nbsp;<spring:message code="menu.profile"/>
+				</a>
+			</li>
+			</sec:authorize>
 		</ul>
 	</div>
 </nav>

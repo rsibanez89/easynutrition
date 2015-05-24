@@ -19,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.easynutrition.api.rest.serializer.ApiRestSerializerCalendar;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-@Entity
+@Entity(name = "evaluation")
 @Table(name = "evaluation")
 public class DataEntityEvaluation implements Serializable {
 	private static final long serialVersionUID = -1757573848016133050L;

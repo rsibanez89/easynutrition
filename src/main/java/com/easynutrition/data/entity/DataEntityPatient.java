@@ -28,7 +28,7 @@ import com.easynutrition.data.type.DataTypeGender;
 import com.easynutrition.data.validator.qualifier.DataValidatorQualifierPatient;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-@Entity
+@Entity(name = "patient")
 @Table(name = "patient")
 @DataValidatorQualifierPatient
 public class DataEntityPatient implements Serializable {
