@@ -31,7 +31,7 @@
 
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"
 		p:session-ref="mailSession" p:username="easynutrition.info@gmail.com"
-		p:password="easynutrition123" />
+		p:password="easynutrition123" p:defaultEncoding="ISO-8859-1"/>
 
 	<task:annotation-driven executor="mailExecutor"
 		scheduler="mailScheduler" />
