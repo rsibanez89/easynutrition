@@ -24,8 +24,10 @@ import org.hibernate.validator.constraints.Email;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.easynutrition.api.rest.serializer.ApiRestSerializerCalendar;
+import com.easynutrition.api.rest.view.ApiRestView.ApiRestViewPatientOnly;
 import com.easynutrition.data.type.DataTypeGender;
 import com.easynutrition.data.validator.qualifier.DataValidatorQualifierPatient;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity(name = "patient")
@@ -36,35 +38,42 @@ public class DataEntityPatient implements Serializable {
 
 	@Id
 	@GeneratedValue
+	@JsonView(ApiRestViewPatientOnly.class)
 	private Long id;
 
 	@NotNull
 	@Size(min = 1, max = 25)
 	@Pattern(regexp = "[A-Za-z]*", message = "{patient.validation.name}")
 	@Column(name = "first_name")
+	@JsonView(ApiRestViewPatientOnly.class)
 	private String firstName;
 
 	@NotNull
 	@Size(min = 1, max = 50)
 	@Pattern(regexp = "[A-Za-z]*", message = "{patient.validation.name}")
 	@Column(name = "last_name")
+	@JsonView(ApiRestViewPatientOnly.class)
 	private String lastName;
 
 	@Enumerated(EnumType.STRING)
+	@JsonView(ApiRestViewPatientOnly.class)
 	private DataTypeGender gender;
 
-	@JsonSerialize(using = ApiRestSerializerCalendar.class)
 	@NotNull
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@JsonSerialize(using = ApiRestSerializerCalendar.class)
+	@JsonView(ApiRestViewPatientOnly.class)
 	private Calendar birthday;
 
 	@Email
+	@JsonView(ApiRestViewPatientOnly.class)
 	private String email;
 
 	@NotNull
 	@Size(min = 10, max = 12)
 	@Column(name = "phone_number")
+	@JsonView(ApiRestViewPatientOnly.class)
 	private String phoneNumber;
 	
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.REMOVE)

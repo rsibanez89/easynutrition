@@ -16,6 +16,8 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.easynutrition.api.rest.serializer.ApiRestSerializerCalendar;
+import com.easynutrition.api.rest.view.ApiRestView.ApiRestViewPatientOnly;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity(name = "evaluation")
@@ -25,30 +27,38 @@ public class DataEntityEvaluation implements Serializable {
 	
 	@Id
 	@GeneratedValue
+	@JsonView(ApiRestViewPatientOnly.class)
 	private Long id;
 	
 	@ManyToOne
     private DataEntityPatient patient;
 	
-	@JsonSerialize(using = ApiRestSerializerCalendar.class)
 	@NotNull
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@JsonSerialize(using = ApiRestSerializerCalendar.class)
+	@JsonView(ApiRestViewPatientOnly.class)
     private Calendar date;
 	
 	@NotNull
+	@JsonSerialize(using = ApiRestSerializerCalendar.class)
 	private double weight;
 	
 	@NotNull
+	@JsonSerialize(using = ApiRestSerializerCalendar.class)
 	private double height;
 	
 	@Column(name = "waist_circumference")
+	@JsonSerialize(using = ApiRestSerializerCalendar.class)
 	private Double waistCircumference;
 	
 	@Column(name = "hip_circumference")
+	@JsonSerialize(using = ApiRestSerializerCalendar.class)
 	private Double hipCircumference;
 	
+	@JsonSerialize(using = ApiRestSerializerCalendar.class)
 	private String observation;
+
 
 	public Long getId() {
 		return id;

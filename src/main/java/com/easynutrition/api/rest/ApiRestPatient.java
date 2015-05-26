@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.easynutrition.api.rest.view.ApiRestView.ApiRestViewPatientOnly;
 import com.easynutrition.business.facade.BusinessFacadePatient;
 import com.easynutrition.data.entity.DataEntityPatient;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
 public class ApiRestPatient {
@@ -22,6 +24,7 @@ public class ApiRestPatient {
 	private BusinessFacadePatient facadePatient;
 	
 
+	@JsonView(ApiRestViewPatientOnly.class)
 	@RequestMapping(value = "/rest/patients/table", method = RequestMethod.GET, produces = "application/json")
 	public Map<String, Object> patientsTable(@RequestParam("draw") int draw, 
 			@RequestParam("start") int start, @RequestParam("length") int length,
@@ -42,11 +45,7 @@ public class ApiRestPatient {
 		// finds data
 		List<DataEntityPatient> data = facadePatient.findAll(start, length, orderColumnName, orderDir, filterColumns, filterValue);
 		
-		// does not serialize evaluations
-		for (DataEntityPatient patient : data) {
-			patient.setEvaluations(null);
-		}
-
+		// creates result
 		Map<String, Object> result = new LinkedHashMap<>();
 		result.put("draw", draw);
 		result.put("recordsTotal", countTotal);
