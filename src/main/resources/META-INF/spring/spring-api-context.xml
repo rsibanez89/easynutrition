@@ -24,7 +24,7 @@
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
 			<list>
-				<value>literals\literals</value>
+				<value>literals/literals</value>
 			</list>
 		</property>
 	</bean>
@@ -75,10 +75,12 @@
 				data-source-ref="dataSource"
 				users-by-username-query="SELECT username, password, enabled FROM user where username = ?"
 				authorities-by-username-query="SELECT u.username, ur.name FROM user u INNER JOIN user_role ur ON u.role_id = ur.id where u.username = ?" />
-			<security:password-encoder hash="sha" />
+			<security:password-encoder hash="bcrypt"/>
 		</security:authentication-provider>
 	</security:authentication-manager>
-
+	
+	<bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+	
 	<!-- DEFAULT HANDLER -->
 	<mvc:default-servlet-handler />
 

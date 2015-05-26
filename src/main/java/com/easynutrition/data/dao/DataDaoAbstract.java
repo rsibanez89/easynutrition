@@ -28,15 +28,15 @@ public abstract class DataDaoAbstract<T> {
 	public List<T> findAll(String... orders) {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		
-		CriteriaQuery<T> q = cb.createQuery(clazz);
-		Root<T> root = q.from(clazz);
-		q.select(root);
+		CriteriaQuery<T> criteria = cb.createQuery(clazz);
+		Root<T> root = criteria.from(clazz);
+		criteria.select(root);
 		
 		for (String order : orders) {
-			q.orderBy(cb.asc(root.get(order)));
+			criteria.orderBy(cb.asc(root.get(order)));
 		}
 		
-		return em.createQuery(q).getResultList();
+		return em.createQuery(criteria).getResultList();
 	}
 	
 	protected T getSingleResult(List<T> res) {

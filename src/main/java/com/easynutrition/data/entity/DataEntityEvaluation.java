@@ -7,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -19,7 +18,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.easynutrition.api.rest.serializer.ApiRestSerializerCalendar;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-@Entity
+@Entity(name = "evaluation")
 @Table(name = "evaluation")
 public class DataEntityEvaluation implements Serializable {
 	private static final long serialVersionUID = -1757573848016133050L;
@@ -29,7 +28,6 @@ public class DataEntityEvaluation implements Serializable {
 	private Long id;
 	
 	@ManyToOne
-	@JoinColumn(name="patient_id")
     private DataEntityPatient patient;
 	
 	@JsonSerialize(using = ApiRestSerializerCalendar.class)

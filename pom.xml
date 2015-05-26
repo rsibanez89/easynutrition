@@ -13,6 +13,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
+		<skipTests>true</skipTests>
 
 		<!-- PROVIDED -->
 		<version.servlet>3.1.0</version.servlet>
@@ -42,6 +43,7 @@
 
 		<!-- MAVEN -->
 		<version.plugin.war>2.6</version.plugin.war>
+		<version.plugin.resources>2.7</version.plugin.resources>
 	</properties>
 
 	<dependencyManagement>
@@ -165,7 +167,33 @@
 			<version>${version.junit}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
 	</dependencies>
+
+	<build>
+		<filters>
+			<filter>src/main/filters/dev.properties</filter>
+		</filters>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${version.plugin.resources}</version>
+				<configuration>
+					<encoding>ISO-8859-1</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 	<profiles>
 		<profile>
@@ -179,6 +207,9 @@
 			<id>openshift</id>
 			<build>
 				<finalName>easynutrition</finalName>
+				<filters>
+					<filter>src/main/filters/prod.properties</filter>
+				</filters>
 				<plugins>
 					<plugin>
 						<artifactId>maven-war-plugin</artifactId>

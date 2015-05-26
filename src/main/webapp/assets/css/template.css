@@ -213,7 +213,7 @@ p {
 }
 
 .navbar-cls-top .navbar-brand {
-	color: #fff;
+	color: #fff!important;
 	background: #51a351;
 	width: 260px;
 	text-align: center;
@@ -329,11 +329,10 @@ p {
 }
 
 .navbar-header {
-	background: #A70303;
+	background: #51a351;
 }
 
-.navbar-default .navbar-toggle:hover,.navbar-default .navbar-toggle:focus
-	{
+.navbar-default .navbar-toggle:hover,.navbar-default .navbar-toggle:focus {
 	background-color: #B40101;
 }
 
