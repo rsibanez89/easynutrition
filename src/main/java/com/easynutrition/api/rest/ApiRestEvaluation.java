@@ -25,6 +25,8 @@ public class ApiRestEvaluation {
 	@RequestMapping(value = "/rest/patient/{patientId}/evaluations", method = RequestMethod.GET, produces = "application/json")
 	public List<DataEntityEvaluation> displayAllPatientEvaluations(@PathVariable("patientId") Long patientId, Model model) {
 		List<DataEntityEvaluation> evaluations = daoEvaluation.findByPatientId(patientId);
+		for(DataEntityEvaluation ev : evaluations)
+			ev.setPatient(null);
 		return evaluations;
 	}
 
