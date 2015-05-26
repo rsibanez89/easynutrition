@@ -1,8 +1,20 @@
+var jsonResponse;
+
 $(document).ready(function(){
 	document.getElementById("editButton").onclick = function () {
         location.href = 'edit';
     };
+    
+    jQuery.ajax({
+        url: "/publicaciones",
+        dataType: 'json',
+        success: handleJsonResponse
+    });
 });
+
+function handleJsonResponse(data) {
+	jsonResponse = data;
+}
 
 
 (function ($) {
@@ -13,7 +25,8 @@ $(document).ready(function(){
         	
         	Morris.Line({
                 element: 'morris-line-chart',
-                data: [{
+                data: jsonResponse
+                /*data: [{
                     y: '2006',
                     a: 100,
                     b: 90
@@ -41,7 +54,7 @@ $(document).ready(function(){
                     y: '2012',
                     a: 100,
                     b: 90
-                }],
+                }]*/,
                 xkey: 'y',
                 ykeys: ['a', 'b'],
                 labels: ['Peso', 'Circunferencia de cintura'],

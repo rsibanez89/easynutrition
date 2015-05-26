@@ -2,7 +2,7 @@ body {
 	background: #eee url(../img/easynutrition_login_bg.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: 0%;
+	background-position: center;
 }
 
 html,body {
