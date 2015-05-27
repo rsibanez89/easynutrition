@@ -27,7 +27,47 @@
 			</div>
 			
 			<div class="panel-body">
-				<div id="morris-line-chart"></div>
+				<div class="row">                     
+	               <div class="col-md-6 col-sm-12 col-xs-12">                     
+	                    <div class="panel panel-default">
+	                        <div class="panel-heading">Peso</div>
+	                        <div class="panel-body">
+	                            <div id="weight-chart"></div>
+	                        </div>
+	                    </div>            
+	                </div>
+	                
+	                <div class="col-md-6 col-sm-12 col-xs-12">                     
+	                    <div class="panel panel-default">
+	                        <div class="panel-heading">Altura</div>
+	                        <div class="panel-body">
+	                            <div id="height-chart"></div>
+	                        </div>
+	                    </div>            
+	                </div> 
+	           	</div>
+			</div>
+			
+			<div class="panel-body">
+				<div class="row">                     
+	               <div class="col-md-6 col-sm-12 col-xs-12">                     
+	                    <div class="panel panel-default">
+	                        <div class="panel-heading">Circunferencia de cintura</div>
+	                        <div class="panel-body">
+	                            <div id="waist-chart"></div>
+	                        </div>
+	                    </div>            
+	                </div>
+	                
+	                <div class="col-md-6 col-sm-12 col-xs-12">                     
+	                    <div class="panel panel-default">
+	                        <div class="panel-heading">Circunferencia de cadera</div>
+	                        <div class="panel-body">
+	                            <div id="hip-chart"></div>
+	                        </div>
+	                    </div>            
+	                </div> 
+	           	</div>
 			</div>
 			
 			<c:choose>

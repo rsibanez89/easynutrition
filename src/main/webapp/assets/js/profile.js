@@ -6,75 +6,64 @@ $(document).ready(function(){
     };
     
     jQuery.ajax({
-        url: "/publicaciones",
+        url: "/easynutrition/rest/patient/1/evaluations",
         dataType: 'json',
         success: handleJsonResponse
     });
 });
 
 function handleJsonResponse(data) {
+	
+	for (var i = 0; i < data.length; i++) {
+		data[i].date = changeDateFormat(data[i].date);
+	}
+	
 	jsonResponse = data;
+	
+	Morris.Line({
+	    element: 'weight-chart',
+	    data: jsonResponse,
+		xkey: 'date',
+	    ykeys: ['weight'],
+	    labels: ['Peso'],
+	    hideHover: 'auto',
+	    resize: true
+	});
+	
+	Morris.Line({
+	    element: 'height-chart',
+	    data: jsonResponse,
+		xkey: 'date',
+	    ykeys: ['height'],
+	    labels: ['Altura'],
+	    hideHover: 'auto',
+	    resize: true
+	});
+	
+	Morris.Line({
+	    element: 'waist-chart',
+	    data: jsonResponse,
+		xkey: 'date',
+	    ykeys: ['waistCircumference'],
+	    labels: ['Circunferencia de cintura'],
+	    hideHover: 'auto',
+	    resize: true
+	});
+	
+	Morris.Line({
+	    element: 'hip-chart',
+	    data: jsonResponse,
+		xkey: 'date',
+	    ykeys: ['hipCircumference'],
+	    labels: ['Circunferencia de cadera'],
+	    hideHover: 'auto',
+	    resize: true
+	});
+        
 }
 
-
-(function ($) {
-    "use strict";
-    var mainApp = {
-
-        main_fun: function () {
-        	
-        	Morris.Line({
-                element: 'morris-line-chart',
-                data: jsonResponse
-                /*data: [{
-                    y: '2006',
-                    a: 100,
-                    b: 90
-                }, {
-                    y: '2007',
-                    a: 75,
-                    b: 65
-                }, {
-                    y: '2008',
-                    a: 50,
-                    b: 40
-                }, {
-                    y: '2009',
-                    a: 75,
-                    b: 65
-                }, {
-                    y: '2010',
-                    a: 50,
-                    b: 40
-                }, {
-                    y: '2011',
-                    a: 75,
-                    b: 65
-                }, {
-                    y: '2012',
-                    a: 100,
-                    b: 90
-                }]*/,
-                xkey: 'y',
-                ykeys: ['a', 'b'],
-                labels: ['Peso', 'Circunferencia de cintura'],
-                hideHover: 'auto',
-                resize: true
-            });
-           
-     
-        },
-
-        initialization: function () {
-            mainApp.main_fun();
-
-        }
-
-    };
-    // Initializing ///
-
-    $(document).ready(function () {
-        mainApp.main_fun();
-    });
-
-}(jQuery));
+function changeDateFormat(date)
+{
+	var parts = date.split('/');
+	return parts[2] + "-" + parts[1] + "-" + parts[0]; 
+}
