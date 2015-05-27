@@ -1,8 +1,6 @@
-var jsonResponse;
-
 $(document).ready(function(){
 	document.getElementById("editButton").onclick = function () {
-        location.href = 'edit';
+        location.href = getAbsoluteUrl('/patient/' + patientId);
     };
     
     jQuery.ajax({
@@ -14,51 +12,55 @@ $(document).ready(function(){
 
 function handleJsonResponse(data) {
 	
-	for (var i = 0; i < data.length; i++) {
-		data[i].date = changeDateFormat(data[i].date);
+	if (data.length > 0) {
+		for (var i = 0; i < data.length; i++) {
+			data[i].date = changeDateFormat(data[i].date);
+		}
+		
+		var jsonResponse = data;
+		
+		Morris.Line({
+		    element: 'weight-chart',
+		    data: jsonResponse,
+			xkey: 'date',
+		    ykeys: ['weight'],
+		    labels: ['Peso'],
+		    hideHover: 'auto',
+		    pointFillColors:['#ffffff'],
+		    pointStrokeColors: ['black'],
+		    resize: true
+		});
+		
+		Morris.Line({
+		    element: 'height-chart',
+		    data: jsonResponse,
+			xkey: 'date',
+		    ykeys: ['height'],
+		    labels: ['Altura'],
+		    hideHover: 'auto',
+		    resize: true
+		});
+		
+		Morris.Line({
+		    element: 'waist-chart',
+		    data: jsonResponse,
+			xkey: 'date',
+		    ykeys: ['waistCircumference'],
+		    labels: ['Circunferencia de cintura'],
+		    hideHover: 'auto',
+		    resize: true
+		});
+		
+		Morris.Line({
+		    element: 'hip-chart',
+		    data: jsonResponse,
+			xkey: 'date',
+		    ykeys: ['hipCircumference'],
+		    labels: ['Circunferencia de cadera'],
+		    hideHover: 'auto',
+		    resize: true
+		});
 	}
-	
-	jsonResponse = data;
-	
-	Morris.Line({
-	    element: 'weight-chart',
-	    data: jsonResponse,
-		xkey: 'date',
-	    ykeys: ['weight'],
-	    labels: ['Peso'],
-	    hideHover: 'auto',
-	    resize: true
-	});
-	
-	Morris.Line({
-	    element: 'height-chart',
-	    data: jsonResponse,
-		xkey: 'date',
-	    ykeys: ['height'],
-	    labels: ['Altura'],
-	    hideHover: 'auto',
-	    resize: true
-	});
-	
-	Morris.Line({
-	    element: 'waist-chart',
-	    data: jsonResponse,
-		xkey: 'date',
-	    ykeys: ['waistCircumference'],
-	    labels: ['Circunferencia de cintura'],
-	    hideHover: 'auto',
-	    resize: true
-	});
-	
-	Morris.Line({
-	    element: 'hip-chart',
-	    data: jsonResponse,
-		xkey: 'date',
-	    ykeys: ['hipCircumference'],
-	    labels: ['Circunferencia de cadera'],
-	    hideHover: 'auto',
-	    resize: true
-	});
         
 }
 
