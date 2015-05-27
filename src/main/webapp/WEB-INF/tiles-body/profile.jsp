@@ -9,6 +9,10 @@
 		<div class="panel panel-default">
 			<div class="panel-heading"><spring:message code="profile.subtitle"/></div>
 			
+			<form> 
+				<input id="patientId" type="hidden" value="${patient.id}" />
+			</form>
+			
 			<div class="panel-body">
 				<div class="row">
   					<div class="col-md-2"><img src='<c:url value="/assets/img/find_user.png"/>' class="img-thumbnail"></div>

@@ -27,3 +27,8 @@
     });
 
 }(jQuery));
+
+function getAbsoluteUrl(relativeUrl)
+{
+	return absoluteUrl + relativeUrl;
+}
