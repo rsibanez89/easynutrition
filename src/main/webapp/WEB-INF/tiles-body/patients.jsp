@@ -16,6 +16,7 @@
 							<th><spring:message code="patient.lastName"/></th>
 							<th><spring:message code="patient.email"/></th>
 							<th><spring:message code="patient.phoneNumber"/></th>
+							<th><spring:message code="button.view"/></th>
 							<th><spring:message code="button.edit"/></th>
 							<th><spring:message code="button.delete"/></th>
 						</tr>
@@ -46,6 +47,7 @@
 				</div>
 				
 				<div id="buttons">
+					<button class="btn btn-sm btn-success view" title='<spring:message code="button.view"/>'><i class="fa fa-eye"></i></button>
 					<button class="btn btn-sm btn-info edit" title='<spring:message code="button.edit"/>'><i class="fa fa-pencil"></i></button>
 					<button class="btn btn-sm btn-danger delete" data-toggle="modal" data-target="#patientModal" title='<spring:message code="button.delete"/>'><i class="fa fa-remove"></i></button>
 				</div>

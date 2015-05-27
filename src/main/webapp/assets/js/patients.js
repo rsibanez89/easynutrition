@@ -16,10 +16,18 @@ $(document).ready(function() {
             data: null,
             className: 'centered',
             render: function (data, type, row, meta) {
+            	var button = $('#buttons .view').clone().attr('data-id', data.id).attr('onclick', 'goToProfile(this)');
+            	return $('<div>').append(button).html();
+            }
+        },
+        {
+            data: null,
+            className: 'centered',
+            render: function (data, type, row, meta) {
             	var button = $('#buttons .edit').clone().attr('data-id', data.id).attr('onclick', 'goToEdit(this)');
             	return $('<div>').append(button).html();
             }
-        },	
+        },
         {
             data: null,
             className: 'centered',
@@ -75,7 +83,10 @@ $(document).ready(function() {
 	});
 });
 
+function goToProfile(button) {
+	location.href = 'patient/' + $(button).data('id') + '/profile';
+}
 
 function goToEdit(button) {
-	location.href = 'patient/' +  $(button).data('id');
+	location.href = 'patient/' + $(button).data('id');
 }
