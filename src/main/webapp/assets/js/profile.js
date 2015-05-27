@@ -5,8 +5,6 @@ $(document).ready(function(){
         location.href = 'edit';
     };
     
-    var patientId = document.getElementById('patientId').value;
-    
     jQuery.ajax({
         url: getAbsoluteUrl("/rest/patient/" + patientId + "/evaluations"),
         dataType: 'json',

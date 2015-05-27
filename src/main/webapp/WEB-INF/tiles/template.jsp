@@ -30,6 +30,7 @@
 		<script type="text/javascript">
 			var absoluteUrl = "${pageContext.servletContext.contextPath}"; // o <c:url value="/"/>
 			var locale = "${pageContext.response.locale}";
+			var patientId = "${patient.id}";
 		</script>
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
  	    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
