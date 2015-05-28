@@ -57,4 +57,9 @@
 		<put-attribute name="patients" value="active-menu" />
 		<put-attribute name="body" value="/WEB-INF/tiles-body/evaluations.jsp" />
 	</definition>
+	
+	<definition name="evaluation" extends="defaultTemplate">
+		<put-attribute name="patients" value="active-menu" />
+		<put-attribute name="body" value="/WEB-INF/tiles-body/evaluation.jsp" />
+	</definition>
 </tiles-definitions>

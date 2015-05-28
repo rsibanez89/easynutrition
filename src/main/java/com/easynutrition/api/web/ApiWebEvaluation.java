@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.easynutrition.business.facade.BusinessFacadePatient;
+import com.easynutrition.data.entity.DataEntityEvaluation;
+import com.easynutrition.data.entity.DataEntityPatient;
 
 @Controller
 public class ApiWebEvaluation {
@@ -20,6 +22,13 @@ public class ApiWebEvaluation {
 		model.addAttribute("patient", facadePatient.findById(patientId));
 		model.addAttribute("evaluations", facadePatient.findEvaluations(patientId));
 		return "evaluations";
+	}
+	
+	@RequestMapping(value = "/patient/{patientId}/evaluation", method = RequestMethod.GET)
+	public String patientGet(Model model) {
+		// shows evaluation page
+		model.addAttribute("evaluation", new DataEntityEvaluation());
+		return "evaluation";
 	}
 
 }
