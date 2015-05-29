@@ -29,9 +29,9 @@ public class ApiWebDefaultController {
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(HttpServletRequest req) {
-		Object id = req.getSession().getAttribute("patientId");
+		Object patientId = req.getSession().getAttribute("patientId");
 
-		if (id == null && req.isUserInRole("USER")) {
+		if (patientId == null && req.isUserInRole("USER")) {
 			String email = req.getUserPrincipal().getName();
 			DataEntityPatient patient = daoPatient.findByEmail(email);
 			req.getSession().setAttribute("patientId", patient.getId());

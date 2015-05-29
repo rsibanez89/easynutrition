@@ -43,7 +43,7 @@ $(document).ready(function() {
 		processing: true,
 		serverSide: true,
 		ajax: {
-			url: 'rest/patients/table',
+			url: absoluteUrl('rest/patients/table'),
 			data: {
 				columnsFilter: ['firstName', 'lastName', 'email', 'phoneNumber']
 			}
@@ -74,7 +74,7 @@ $(document).ready(function() {
 		// delete patient
 		var patientId = $(this).data('id');
 		$.ajax({
-			url: 'rest/patient/' + patientId,
+			url: absoluteUrl('rest/patient/' + patientId),
 			method: 'DELETE',
 			success: function() {
 				table.ajax.reload();

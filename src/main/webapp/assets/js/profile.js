@@ -1,71 +1,80 @@
 $(document).ready(function(){
-	document.getElementById("editButton").onclick = function () {
-        location.href = getAbsoluteUrl('/patient/' + patientId);
-    };
-    
-    jQuery.ajax({
-        url: getAbsoluteUrl("/rest/patient/" + patientId + "/evaluations"),
-        dataType: 'json',
-        success: handleJsonResponse
+	// event handler
+	$('#editButton').on('click', function () {
+        location.href = absoluteUrl('patient/' + patientId);
     });
+    
+	// get i18n
+	$.getJSON(absoluteUrl('assets/json/morris-patient-profile_' + locale + '.json'),
+        function(i18n) {
+			// get evaluations
+            $.ajax({
+                url: absoluteUrl('rest/patient/' + patientId + '/evaluations'),
+                success: function(data) {
+                	handleData(i18n, data);
+                }
+            });
+   	});
+
+    
+    // FUNCTIONS
+    function handleData(i18n, data) {
+    	
+    	if (data.length > 0) {
+    		Morris.Line({
+    		    element: 'weight-chart',
+    		    data: data,
+    			xkey: 'date',
+    		    ykeys: ['weight'],
+    		    labels: [i18n.weight],
+    		    hideHover: 'auto',
+    		    pointFillColors:['#ffffff'],
+    		    pointStrokeColors: ['black'],
+    		    resize: true,
+    		    dateFormat: dateFormat,
+    		    xLabelFormat: dateFormat
+    		});
+
+    		Morris.Line({
+    		    element: 'height-chart',
+    		    data: data,
+    			xkey: 'date',
+    		    ykeys: ['height'],
+    		    labels: [i18n.height],
+    		    hideHover: 'auto',
+    		    resize: true,
+    		    dateFormat: dateFormat,
+    		    xLabelFormat: dateFormat
+    		});
+    		
+    		Morris.Line({
+    		    element: 'waist-chart',
+    		    data: data,
+    			xkey: 'date',
+    		    ykeys: ['waistCircumference'],
+    		    labels: [i18n.waist],
+    		    hideHover: 'auto',
+    		    resize: true,
+    		    dateFormat: dateFormat,
+    		    xLabelFormat: dateFormat
+    		});
+    		
+    		Morris.Line({
+    		    element: 'hip-chart',
+    		    data: data,
+    			xkey: 'date',
+    		    ykeys: ['hipCircumference'],
+    		    labels: [i18n.hip],
+    		    hideHover: 'auto',
+    		    resize: true,
+    		    dateFormat: dateFormat,
+    		    xLabelFormat: dateFormat
+    		});
+    	}
+    }
+
+    
+    function dateFormat(value) {
+		return new Date(value).toLocaleDateString(locale);
+    } 
 });
-
-function handleJsonResponse(data) {
-	
-	if (data.length > 0) {
-		for (var i = 0; i < data.length; i++) {
-			data[i].date = changeDateFormat(data[i].date);
-		}
-		
-		var jsonResponse = data;
-		
-		Morris.Line({
-		    element: 'weight-chart',
-		    data: jsonResponse,
-			xkey: 'date',
-		    ykeys: ['weight'],
-		    labels: ['Peso'],
-		    hideHover: 'auto',
-		    pointFillColors:['#ffffff'],
-		    pointStrokeColors: ['black'],
-		    resize: true
-		});
-		
-		Morris.Line({
-		    element: 'height-chart',
-		    data: jsonResponse,
-			xkey: 'date',
-		    ykeys: ['height'],
-		    labels: ['Altura'],
-		    hideHover: 'auto',
-		    resize: true
-		});
-		
-		Morris.Line({
-		    element: 'waist-chart',
-		    data: jsonResponse,
-			xkey: 'date',
-		    ykeys: ['waistCircumference'],
-		    labels: ['Circunferencia de cintura'],
-		    hideHover: 'auto',
-		    resize: true
-		});
-		
-		Morris.Line({
-		    element: 'hip-chart',
-		    data: jsonResponse,
-			xkey: 'date',
-		    ykeys: ['hipCircumference'],
-		    labels: ['Circunferencia de cadera'],
-		    hideHover: 'auto',
-		    resize: true
-		});
-	}
-        
-}
-
-function changeDateFormat(date)
-{
-	var parts = date.split('/');
-	return parts[2] + "-" + parts[1] + "-" + parts[0]; 
-}

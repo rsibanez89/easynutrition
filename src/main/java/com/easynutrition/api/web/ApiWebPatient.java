@@ -36,25 +36,26 @@ public class ApiWebPatient {
 		return "patient";
 	}
 	
-	@RequestMapping(value = "/patient/{id}", method = RequestMethod.GET)
-	public String patientEditGet(@PathVariable("id") long id, Model model) {
+	@RequestMapping(value = "/patient/{patientId}", method = RequestMethod.GET)
+	public String patientEditGet(@PathVariable("patientId") long patientId, Model model) {
 		// shows patient page
-		model.addAttribute("patient", facadePatient.findById(id));
+		model.addAttribute("patient", facadePatient.findById(patientId));
 		return "patient";
 	}
 	
-	@RequestMapping(value = "/patient/{id}/profile", method = RequestMethod.GET)
-	public String patientProfileGet(@PathVariable("id") long id, Model model) {
+	@RequestMapping(value = "/patient/{patientId}/profile", method = RequestMethod.GET)
+	public String patientProfileGet(@PathVariable("patientId") long patientId, Model model) {
 		// shows patient profile
-		model.addAttribute("patient", facadePatient.findById(id));
-		model.addAttribute("evaluations", facadePatient.findEvaluations(id));
+		model.addAttribute("patient", facadePatient.findById(patientId));
+		model.addAttribute("patientId", patientId);
+		model.addAttribute("evaluations", facadePatient.findEvaluations(patientId));
 		return "profile";
 	}
 	
 	/**
 	 * Post method for:
-	 * 		/patient 		-> create
-	 * 		/patient/{id}	-> update
+	 * 		/patient 				-> create
+	 * 		/patient/{patientId}	-> update
 	 * 
 	 * @param patient
 	 * @param result

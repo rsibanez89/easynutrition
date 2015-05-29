@@ -23,12 +23,10 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.easynutrition.api.rest.serializer.ApiRestSerializerCalendar;
 import com.easynutrition.api.rest.view.ApiRestView.ApiRestViewPatientOnly;
 import com.easynutrition.data.type.DataTypeGender;
 import com.easynutrition.data.validator.qualifier.DataValidatorQualifierPatient;
 import com.fasterxml.jackson.annotation.JsonView;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity(name = "patient")
 @Table(name = "patient")
@@ -62,7 +60,6 @@ public class DataEntityPatient implements Serializable {
 	@NotNull
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@JsonSerialize(using = ApiRestSerializerCalendar.class)
 	@JsonView(ApiRestViewPatientOnly.class)
 	private Calendar birthday;
 
