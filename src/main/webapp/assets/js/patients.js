@@ -12,30 +12,9 @@ $(document).ready(function() {
 	    { data: 'lastName' },
 	    { data: 'email' },
 	    { data: 'phoneNumber' },
-        {
-            data: null,
-            className: 'centered',
-            render: function (data, type, row, meta) {
-            	var button = $('#buttons .view').clone().attr('data-id', data.id).attr('onclick', 'goToProfile(this)');
-            	return $('<div>').append(button).html();
-            }
-        },
-        {
-            data: null,
-            className: 'centered',
-            render: function (data, type, row, meta) {
-            	var button = $('#buttons .edit').clone().attr('data-id', data.id).attr('onclick', 'goToEdit(this)');
-            	return $('<div>').append(button).html();
-            }
-        },
-        {
-            data: null,
-            className: 'centered',
-            render: function (data, type, row, meta) {
-            	var button = $('#buttons .delete').clone().attr('data-id', data.id);
-            	return $('<div>').append(button).html();
-            }
-        }
+	    addButton('.view', 'goToProfile(this)'),
+	    addButton('.edit', 'goToEdit(this)'),
+	    addButton('.delete', '')
 	];
 	
 	// data table loading
@@ -81,6 +60,18 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
+	// FUNCTIONS
+	function addButton(cssClass, onclickHandler) {
+		return {
+			data: null,
+			className: 'centered',
+			render: function (data, type, row, meta) {
+				var button = $(cssClass, '#buttons').clone().attr('data-id', data.id).attr('onclick', onclickHandler);
+				return $('<div>').append(button).html();
+			}
+		};
+	}	
 });
 
 function goToProfile(button) {

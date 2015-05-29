@@ -35,7 +35,7 @@
 						<div class="row">                     
 			               <div class="col-md-6 col-sm-12 col-xs-12">                     
 			                    <div class="panel panel-default">
-			                        <div class="panel-heading">Peso</div>
+			                        <div class="panel-heading"><spring:message code="profile.weight"/></div>
 			                        <div class="panel-body">
 			                            <div id="weight-chart"></div>
 			                        </div>
@@ -44,7 +44,7 @@
 			                
 			                <div class="col-md-6 col-sm-12 col-xs-12">                     
 			                    <div class="panel panel-default">
-			                        <div class="panel-heading">Altura</div>
+			                        <div class="panel-heading"><spring:message code="profile.height"/></div>
 			                        <div class="panel-body">
 			                            <div id="height-chart"></div>
 			                        </div>
@@ -57,7 +57,7 @@
 						<div class="row">                     
 			               <div class="col-md-6 col-sm-12 col-xs-12">                     
 			                    <div class="panel panel-default">
-			                        <div class="panel-heading">Circunferencia de cintura</div>
+			                        <div class="panel-heading"><spring:message code="profile.waist"/></div>
 			                        <div class="panel-body">
 			                            <div id="waist-chart"></div>
 			                        </div>
@@ -66,7 +66,7 @@
 			                
 			                <div class="col-md-6 col-sm-12 col-xs-12">                     
 			                    <div class="panel panel-default">
-			                        <div class="panel-heading">Circunferencia de cadera</div>
+			                        <div class="panel-heading"><spring:message code="profile.hip"/></div>
 			                        <div class="panel-body">
 			                            <div id="hip-chart"></div>
 			                        </div>
@@ -88,10 +88,10 @@
 								id="dataTables-example">
 								<thead>
 									<tr>
-										<th>Date</th>
-										<th>Weight</th>
-										<th>Height</th>
-										<th>Observation</th>
+										<th><spring:message code="profile.date"/></th>
+										<th><spring:message code="profile.weight"/></th>
+										<th><spring:message code="profile.height"/></th>
+										<th><spring:message code="profile.observation"/></th>
 									</tr>
 								</thead>
 								<tbody>

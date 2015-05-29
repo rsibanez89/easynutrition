@@ -1,6 +1,7 @@
 package com.easynutrition.api.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,16 +17,18 @@ public class ApiWebEvaluation {
 	private BusinessFacadePatient facadePatient;
 
 	
+	@PreAuthorize("hasRole('ADMIN') OR @businessFacadePatient.findById(#patientId).getEmail().equals(authentication.name)")
 	@RequestMapping(value = "/patient/{patientId}/evaluations", method = RequestMethod.GET)
-	public String displayAllPatientEvaluations(@PathVariable("patientId") Long patientId, Model model) {
+	public String evaluationsGet(@PathVariable("patientId") Long patientId, Model model) {
 		model.addAttribute("patient", facadePatient.findById(patientId));
 		model.addAttribute("patientId", patientId);
 		model.addAttribute("evaluations", facadePatient.findEvaluations(patientId));
 		return "evaluations";
 	}
 	
+	@PreAuthorize("hasRole('ADMIN') OR @businessFacadePatient.findById(#patientId).getEmail().equals(authentication.name)")
 	@RequestMapping(value = "/patient/{patientId}/evaluation", method = RequestMethod.GET)
-	public String patientGet(Model model) {
+	public String evaluationGet(@PathVariable("patientId") Long patientId, Model model) {
 		// shows evaluation page
 		model.addAttribute("evaluation", new DataEntityEvaluation());
 		return "evaluation";

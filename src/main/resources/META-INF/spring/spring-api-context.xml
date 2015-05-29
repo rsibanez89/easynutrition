@@ -44,6 +44,8 @@
 	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/EasyNutritionDS"
 		expected-type="javax.sql.DataSource" />
 
+	<security:global-method-security pre-post-annotations="enabled" />
+	
 	<security:http use-expressions="true">
 		<!-- From more specific to less specific (filter chain) -->
 		<security:intercept-url pattern="/favicon.ico"
@@ -54,9 +56,6 @@
 
 		<security:intercept-url pattern="/assets/**"
 			access="permitAll" />
-
-		<security:intercept-url pattern="/patient**"
-			access="hasRole('ADMIN')" />
 
 		<security:intercept-url pattern="/**"
 			access="hasAnyRole('ADMIN','USER')" />

@@ -19,62 +19,35 @@ $(document).ready(function(){
     
     // FUNCTIONS
     function handleData(i18n, data) {
-    	
     	if (data.length > 0) {
-    		Morris.Line({
-    		    element: 'weight-chart',
-    		    data: data,
-    			xkey: 'date',
-    		    ykeys: ['weight'],
-    		    labels: [i18n.weight],
-    		    hideHover: 'auto',
-    		    pointFillColors:['#ffffff'],
-    		    pointStrokeColors: ['black'],
-    		    resize: true,
-    		    dateFormat: dateFormat,
-    		    xLabelFormat: dateFormat
-    		});
-
-    		Morris.Line({
-    		    element: 'height-chart',
-    		    data: data,
-    			xkey: 'date',
-    		    ykeys: ['height'],
-    		    labels: [i18n.height],
-    		    hideHover: 'auto',
-    		    resize: true,
-    		    dateFormat: dateFormat,
-    		    xLabelFormat: dateFormat
-    		});
-    		
-    		Morris.Line({
-    		    element: 'waist-chart',
-    		    data: data,
-    			xkey: 'date',
-    		    ykeys: ['waistCircumference'],
-    		    labels: [i18n.waist],
-    		    hideHover: 'auto',
-    		    resize: true,
-    		    dateFormat: dateFormat,
-    		    xLabelFormat: dateFormat
-    		});
-    		
-    		Morris.Line({
-    		    element: 'hip-chart',
-    		    data: data,
-    			xkey: 'date',
-    		    ykeys: ['hipCircumference'],
-    		    labels: [i18n.hip],
-    		    hideHover: 'auto',
-    		    resize: true,
-    		    dateFormat: dateFormat,
-    		    xLabelFormat: dateFormat
-    		});
+    		morrisLine('weight-chart', data, 'weight', i18n.weight);
+    		morrisLine('height-chart', data, 'height', i18n.height);
+    		morrisLine('waist-chart', data, 'waistCircumference', i18n.waist);
+    		morrisLine('hip-chart', data, 'hipCircumference', i18n.hip);
     	}
     }
-
     
+	function morrisLine(element, data, ykey, label) {
+		Morris.Line({
+		    element: element,
+		    data: data,
+			xkey: 'date',
+		    ykeys: [ykey],
+		    labels: [label],
+		    hideHover: 'auto',
+		    pointFillColors:['#ffffff'],
+		    pointStrokeColors: ['black'],
+		    resize: true,
+		    dateFormat: dateFormat,
+		    xLabelFormat: xLabelFormat
+		});
+	}
+	
     function dateFormat(value) {
 		return new Date(value).toLocaleDateString(locale);
-    } 
+    }
+    
+	function xLabelFormat(date) {
+		return (date.getMonth() + 1) + "/" + date.getFullYear();
+	}
 });

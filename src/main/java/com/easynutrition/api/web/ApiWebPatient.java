@@ -6,6 +6,7 @@ import java.util.Locale;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,12 +24,14 @@ public class ApiWebPatient {
 	private BusinessFacadePatient facadePatient;
 
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@RequestMapping(value = "/patients", method = RequestMethod.GET)
 	public String patientsGet(Model model) {
 		// shows patients page
 		return "patients";
 	}	
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@RequestMapping(value = "/patient", method = RequestMethod.GET)
 	public String patientGet(Model model) {
 		// shows patient page
@@ -36,6 +39,7 @@ public class ApiWebPatient {
 		return "patient";
 	}
 	
+	@PreAuthorize("hasRole('ADMIN') OR @businessFacadePatient.findById(#patientId).getEmail().equals(authentication.name)")
 	@RequestMapping(value = "/patient/{patientId}", method = RequestMethod.GET)
 	public String patientEditGet(@PathVariable("patientId") long patientId, Model model) {
 		// shows patient page
@@ -43,6 +47,7 @@ public class ApiWebPatient {
 		return "patient";
 	}
 	
+	@PreAuthorize("hasRole('ADMIN') OR @businessFacadePatient.findById(#patientId).getEmail().equals(authentication.name)")
 	@RequestMapping(value = "/patient/{patientId}/profile", method = RequestMethod.GET)
 	public String patientProfileGet(@PathVariable("patientId") long patientId, Model model) {
 		// shows patient profile
@@ -62,6 +67,7 @@ public class ApiWebPatient {
 	 * @param model
 	 * @return
 	 */
+	@PreAuthorize("hasRole('ADMIN') OR @businessFacadePatient.findById(#patient.id).getEmail().equals(authentication.name)")
 	@RequestMapping(value = {"/patient", "/patient/*"}, method = RequestMethod.POST)
 	public String patientPost(@Valid @ModelAttribute("patient") DataEntityPatient patient, 
 			BindingResult result, Model model, Principal principal, Locale locale) {
@@ -70,11 +76,9 @@ public class ApiWebPatient {
 			// creates patient
 			facadePatient.createPatient(patient, principal.getName(), locale);
 			
-			// goes to patients view
-			return "redirect:/patients";
-		} 
-		else {
-			model.addAttribute("patients", facadePatient.findAll());
+			// goes to home
+			return "redirect:/home";
+		} else {
 			return "patient";
 		}
 	}

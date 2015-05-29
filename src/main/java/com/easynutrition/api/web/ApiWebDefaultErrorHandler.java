@@ -13,7 +13,7 @@ public class ApiWebDefaultErrorHandler {
 	
 	@ExceptionHandler(Throwable.class)
 	public ModelAndView handleException(Exception ex) {
-		LOGGER.warn("There was an error with message {}", ex.getMessage());
+		LOGGER.error("There was an exception", ex);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("error");
