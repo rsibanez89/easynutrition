@@ -66,6 +66,7 @@ $(document).ready(function() {
 		return {
 			data: null,
 			className: 'centered',
+			orderable: false,
 			render: function (data, type, row, meta) {
 				var button = $(cssClass, '#buttons').clone().attr('data-id', data.id).attr('onclick', onclickHandler);
 				return $('<div>').append(button).html();

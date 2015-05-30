@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath*:META-INF/spring/*-context.xml")
+@ContextConfiguration(locations = "classpath:META-INF/spring/*-context.xml")
 @WebAppConfiguration
 public class TestBusinessMailSender {
 	@Autowired
@@ -46,7 +46,7 @@ public class TestBusinessMailSender {
 
 	@Test
 	public void testSendMailNewPatient() throws Exception {
-		final String[] mails = {};
+		final String[] mails = {"juanfeldman11@gmail.com"};
 		
 		for (String mail : mails) {
 			mailSender.sendMailNewPatient(mail, "username", "password", "nutricionist", new Locale("es"));

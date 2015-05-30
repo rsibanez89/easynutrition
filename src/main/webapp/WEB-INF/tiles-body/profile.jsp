@@ -28,60 +28,23 @@
 			
 			<c:choose>
 				<c:when test="${evaluations.size()==0}">
-					<em></em>
+					<em><spring:message code="profile.evaluations.empty"/></em>
 				</c:when>
 				<c:otherwise>
 					<div class="panel-body">
-						<div class="row">                     
-			               <div class="col-md-6 col-sm-12 col-xs-12">                     
-			                    <div class="panel panel-default">
-			                        <div class="panel-heading"><spring:message code="profile.weight"/></div>
-			                        <div class="panel-body">
-			                            <div id="weight-chart"></div>
-			                        </div>
-			                    </div>            
-			                </div>
-			                
-			                <div class="col-md-6 col-sm-12 col-xs-12">                     
-			                    <div class="panel panel-default">
-			                        <div class="panel-heading"><spring:message code="profile.height"/></div>
-			                        <div class="panel-body">
-			                            <div id="height-chart"></div>
-			                        </div>
-			                    </div>            
-			                </div> 
+						<div class="row">                    
+			               <easy:chart id="weight-chart" label="profile.weight"/>
+			               <easy:chart id="height-chart" label="profile.height"/>
 			           	</div>
 					</div>
 					
 					<div class="panel-body">
 						<div class="row">                     
-			               <div class="col-md-6 col-sm-12 col-xs-12">                     
-			                    <div class="panel panel-default">
-			                        <div class="panel-heading"><spring:message code="profile.waist"/></div>
-			                        <div class="panel-body">
-			                            <div id="waist-chart"></div>
-			                        </div>
-			                    </div>            
-			                </div>
-			                
-			                <div class="col-md-6 col-sm-12 col-xs-12">                     
-			                    <div class="panel panel-default">
-			                        <div class="panel-heading"><spring:message code="profile.hip"/></div>
-			                        <div class="panel-body">
-			                            <div id="hip-chart"></div>
-			                        </div>
-			                    </div>            
-			                </div> 
+			               <easy:chart id="waist-chart" label="profile.waist"/>
+			               <easy:chart id="hip-chart" label="profile.hip"/>
 			           	</div>
 					</div>
-				</c:otherwise>
-			</c:choose>
-			
-			<c:choose>
-				<c:when test="${evaluations.size()==0}">
-					<em>No hay evaluaciones para el paciente</em>
-				</c:when>
-				<c:otherwise>
+
 					<div class="panel-body">
 						<div class="table-responsive">
 							<table class="table table-striped table-bordered table-hover"
