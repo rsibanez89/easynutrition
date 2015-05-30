@@ -14,8 +14,6 @@ import javax.persistence.criteria.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.easynutrition.data.entity.DataEntityPatient;
-
 @Transactional
 public abstract class DataDaoAbstract<T> {
 	protected Class<T> clazz;
@@ -81,7 +79,7 @@ public abstract class DataDaoAbstract<T> {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 
 		CriteriaQuery<Long> criteria = cb.createQuery(Long.class);
-		Root<DataEntityPatient> root = criteria.from(DataEntityPatient.class);
+		Root<T> root = criteria.from(clazz);
 
 		criteria.select(cb.count(root));
 
@@ -92,7 +90,7 @@ public abstract class DataDaoAbstract<T> {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 
 		CriteriaQuery<Long> criteria = cb.createQuery(Long.class);
-		Root<DataEntityPatient> root = criteria.from(DataEntityPatient.class);
+		Root<T> root = criteria.from(clazz);
 
 		criteria.select(cb.count(root));
 		criteria.where(getFiltering(filterColumns, filterValue, cb, root));

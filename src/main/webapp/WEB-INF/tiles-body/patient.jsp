@@ -35,19 +35,27 @@
 						</easy:control>
 					
 						<easy:control path="email" label="patient.email" cssCol="col-md-6">
-							<form:input path="email" cssClass="form-control" tabindex="5"/>
+							<div class="form-group">
+								<div class="col-md-8" style="padding: 0;">
+									<form:input path="email" cssClass="form-control" tabindex="5"/>
+								</div>
+								<div class="col-md-4">
+									<input name="sendmail" type="checkbox" tabindex="6"/>
+									<label><spring:message code="patient.sendmail"/></label>
+								</div>
+							</div>
 						</easy:control>
 					</div>
 			
 					<div class="row">
 						<easy:control path="phoneNumber" label="patient.phoneNumber" cssCol="col-md-6">
-							<form:input path="phoneNumber" cssClass="form-control" tabindex="6"/>
+							<form:input path="phoneNumber" cssClass="form-control" tabindex="7"/>
 						</easy:control>
 					</div>
 					
 					<div class="row">
 						<div class="col-md-12">
-							<button type="submit" class="btn btn-default"><spring:message code="button.accept"/></button>
+							<button type="submit" class="btn btn-default" tabindex="8"><spring:message code="button.accept"/></button>
 						</div>
 					</div>
 				</form:form>

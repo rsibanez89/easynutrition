@@ -68,7 +68,7 @@ public class BusinessFacadePatient {
 		daoUser.delete(patient.getEmail());
 	}
 
-	public void createPatient(DataEntityPatient patient, String nutricionist, Locale locale) {
+	public void createPatient(DataEntityPatient patient, String nutricionist, Locale locale, boolean sendmail) {
 		// checks if it is a create action
 		if (patient.getId() == null && !patient.getEmail().isEmpty()) {
 			// gets data
@@ -84,7 +84,9 @@ public class BusinessFacadePatient {
 			daoUser.persist(user);
 			
 			// sends mail on patient create
-			sender.sendMailNewPatient(username, username, password, nutricionist, locale);
+			if (sendmail) {
+				sender.sendMailNewPatient(username, username, password, nutricionist, locale);
+			}
 		}
 		
 		// persists data

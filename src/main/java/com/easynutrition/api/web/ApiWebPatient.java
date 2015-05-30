@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.easynutrition.business.facade.BusinessFacadePatient;
 import com.easynutrition.data.entity.DataEntityPatient;
@@ -70,11 +71,12 @@ public class ApiWebPatient {
 	@PreAuthorize("hasRole('ADMIN') OR @businessFacadePatient.findById(#patient.id).getEmail().equals(authentication.name)")
 	@RequestMapping(value = {"/patient", "/patient/*"}, method = RequestMethod.POST)
 	public String patientPost(@Valid @ModelAttribute("patient") DataEntityPatient patient, 
-			BindingResult result, Model model, Principal principal, Locale locale) {
+			BindingResult result, Principal principal, Locale locale, 
+			@RequestParam(value = "sendmail", defaultValue = "false") boolean sendmail) {
 		
 		if (!result.hasErrors()) {
-			// creates patient
-			facadePatient.createPatient(patient, principal.getName(), locale);
+			// persists patient
+			facadePatient.createPatient(patient, principal.getName(), locale, sendmail);
 			
 			// goes to home
 			return "redirect:/home";
