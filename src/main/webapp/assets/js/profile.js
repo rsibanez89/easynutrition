@@ -16,7 +16,25 @@ $(document).ready(function(){
             });
    	});
 
-    
+	// table columns
+	var columns = [
+	    { data: 'date', 
+	      render: function (data, type, row) {
+	    	  return dateFormat(data);
+	      }
+	    },
+	    { data: 'weight' },
+	    { data: 'height' },
+	    { data: 'observation' }
+	];
+	
+	// table columns to filter
+	var columnsFilter = ['date', 'weight', 'height', 'observation'];
+	
+	// table loading
+	dataTableCreate('#evaluations', 'rest/patient/' + patientId + '/evaluations/table', columns, columnsFilter);
+	
+	
     // FUNCTIONS
     function handleData(i18n, data) {
     	if (data.length > 0) {
@@ -43,10 +61,6 @@ $(document).ready(function(){
 		});
 	}
 	
-    function dateFormat(value) {
-		return new Date(value).toLocaleDateString(locale);
-    }
-    
 	function xLabelFormat(date) {
 		return (date.getMonth() + 1) + "/" + date.getFullYear();
 	}

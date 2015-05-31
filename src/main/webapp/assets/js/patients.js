@@ -1,12 +1,5 @@
 $(document).ready(function() {
-	// data table i18n
-	var urls = {
-			es: '//cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json',
-			en: '//cdn.datatables.net/plug-ins/1.10.7/i18n/English.json'
-	};
-	var url = urls[locale];
-
-	// data columns
+	// table columns
 	var columns = [
 	    { data: 'firstName' },
 	    { data: 'lastName' },
@@ -17,22 +10,11 @@ $(document).ready(function() {
 	    addButton('.delete', '')
 	];
 	
-	// data table loading
-	var table = $('#patients').DataTable({
-		processing: true,
-		serverSide: true,
-		ajax: {
-			url: absoluteUrl('rest/patients/table'),
-			data: {
-				columnsFilter: ['firstName', 'lastName', 'email', 'phoneNumber']
-			}
-		},
-		language: {
-			url: url
-		},
-		columns: columns,
-		scrollX: true
-	});
+	// table columns to filter
+	var columnsFilter = ['firstName', 'lastName', 'email', 'phoneNumber'];
+	
+	// table loading
+	var table = dataTableCreate('#patients', 'rest/patients/table', columns, columnsFilter);
 	
 	
 	// modal panel event handler

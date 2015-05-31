@@ -20,10 +20,14 @@ public abstract class DataDaoAbstract<T> {
 	@Autowired
 	protected EntityManager em;
 
+
 	public DataDaoAbstract(Class<T> clazz) {
 		this.clazz = clazz;
 	}
 
+	/*
+	 * ============================ CRUD METHODS ============================
+	 */
 	public T findById(Long id) {
 		return em.find(clazz, id);
 	}
@@ -52,9 +56,6 @@ public abstract class DataDaoAbstract<T> {
 		}
 	}
 
-	/*
-	 * ============================ CRUD METHODS ============================
-	 */
 	public void persist(T t) {
 		em.persist(t);
 	}
@@ -127,7 +128,7 @@ public abstract class DataDaoAbstract<T> {
 			CriteriaBuilder cb, Root<?> root) {
 		List<Predicate> likes = new ArrayList<>();
 		for (String filterColumn : filterColumns) {
-			Expression<String> exp = root.get(filterColumn);
+			Expression<String> exp = root.get(filterColumn).as(String.class);
 			likes.add(cb.like(exp, filterValue + "%"));
 		}
 		return cb.or(likes.toArray(new Predicate[0]));

@@ -47,8 +47,7 @@
 
 					<div class="panel-body">
 						<div class="table-responsive">
-							<table class="table table-striped table-bordered table-hover"
-								id="dataTables-example">
+							<table id="evaluations" class="table table-striped table-bordered table-hover">
 								<thead>
 									<tr>
 										<th><spring:message code="profile.date"/></th>
@@ -58,14 +57,6 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${evaluations}" var="evaluation">
-										<tr>
-											<td><fmt:formatDate value="${evaluation.date.getTime()}" pattern="dd/MM/yyyy"/></td>
-											<td>${evaluation.weight}</td>
-											<td>${evaluation.height}</td>
-											<td>${evaluation.observation}</td>
-										</tr>									
-									</c:forEach>
 								</tbody>
 							</table>
 						</div>

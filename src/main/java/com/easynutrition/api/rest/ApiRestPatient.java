@@ -1,7 +1,5 @@
 package com.easynutrition.api.rest;
 
-import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,13 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.easynutrition.api.rest.view.ApiRestView.ApiRestViewPatientOnly;
 import com.easynutrition.business.facade.BusinessFacadePatient;
-import com.easynutrition.data.entity.DataEntityPatient;
+import com.easynutrition.business.facade.BusinessFacadeTable;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
 public class ApiRestPatient {
 	@Autowired
 	private BusinessFacadePatient facadePatient;
+	@Autowired
+	private BusinessFacadeTable facadeTable;
 	
 
 	@JsonView(ApiRestViewPatientOnly.class)
@@ -30,29 +30,7 @@ public class ApiRestPatient {
 			@RequestParam("start") int start, @RequestParam("length") int length,
 			@RequestParam("order[0][column]") int orderColumn, @RequestParam("order[0][dir]") String orderDir,
 			@RequestParam("search[value]") String filterValue, HttpServletRequest req) {
-		// columns to filter
-		String[] filterColumns = req.getParameterValues("columnsFilter[]");
-		
-		// column to order
-		String orderColumnName = req.getParameter(String.format("columns[%d][data]", orderColumn));
-		
-		// counts total number of records
-		long countTotal = facadePatient.getCount();
-
-		// counts number of records filtered
-		long countFiltered = facadePatient.getCount(filterColumns, filterValue);
-		
-		// finds data
-		List<DataEntityPatient> data = facadePatient.findAll(start, length, orderColumnName, orderDir, filterColumns, filterValue);
-		
-		// creates result
-		Map<String, Object> result = new LinkedHashMap<>();
-		result.put("draw", draw);
-		result.put("recordsTotal", countTotal);
-		result.put("recordsFiltered", countFiltered);
-		result.put("data", data);
-		
-		return result;
+		return facadeTable.patientsTable("patient", draw, start, length, orderColumn, orderDir, filterValue, req);
 	}
 
 	@RequestMapping(value = "/rest/patient/{id}", method = RequestMethod.DELETE)
