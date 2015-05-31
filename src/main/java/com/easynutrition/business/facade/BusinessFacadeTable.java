@@ -18,16 +18,20 @@ import com.easynutrition.data.dao.DataDaoPatient;
 @Service
 @Transactional
 public class BusinessFacadeTable {
-	private Map<String, DataDaoAbstract<?>> daos = new HashMap<>();
+	private Map<Entity, DataDaoAbstract<?>> daos = new HashMap<>();
 
+	public static enum Entity {
+		PATIENT, EVALUATION
+	}
+	
 	
 	@Autowired
 	public BusinessFacadeTable(DataDaoPatient daoPatient, DataDaoEvaluation daoEvaluation) {
-		daos.put("patient", daoPatient);
-		daos.put("evaluation", daoEvaluation);
+		daos.put(Entity.PATIENT, daoPatient);
+		daos.put(Entity.EVALUATION, daoEvaluation);
 	}
 	
-	public Map<String, Object> patientsTable(String entity, int draw,
+	public Map<String, Object> getTable(Entity entity, int draw,
 			int start, int length, int orderColumn, String orderDir,
 			String filterValue, HttpServletRequest req) {
 		// columns to filter
@@ -35,15 +39,18 @@ public class BusinessFacadeTable {
 		
 		// column to order
 		String orderColumnName = req.getParameter(String.format("columns[%d][data]", orderColumn));
-		
+
+		// get dao
+		DataDaoAbstract<?> dao = daos.get(entity);
+	
 		// counts total number of records
-		long countTotal = getCount(entity);
+		long countTotal = dao.getCount();
 
 		// counts number of records filtered
-		long countFiltered = getCount(entity, filterColumns, filterValue);
+		long countFiltered = dao.getCount(filterColumns, filterValue);
 		
 		// finds data
-		List<?> data = findAll(entity, start, length, orderColumnName, orderDir, filterColumns, filterValue);
+		List<?> data = dao.findAll(start, length, orderColumnName, orderDir, filterColumns, filterValue);
 		
 		// creates result
 		Map<String, Object> result = new LinkedHashMap<>();
@@ -53,20 +60,6 @@ public class BusinessFacadeTable {
 		result.put("data", data);
 		
 		return result;
-	}
-	
-	long getCount(String entity) {
-		return daos.get(entity).getCount();
-	}
-
-	long getCount(String entity, String[] filterColumns, String filterValue) {
-		return daos.get(entity).getCount(filterColumns, filterValue);
-	}
-
-	List<?> findAll(String entity, int start, int length,
-			String orderColumnName, String orderDir, String[] filterColumns,
-			String filterValue) {
-		return daos.get(entity).findAll(start, length, orderColumnName, orderDir, filterColumns, filterValue);
 	}
 	
 }

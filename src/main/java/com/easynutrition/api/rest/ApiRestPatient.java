@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.easynutrition.api.rest.view.ApiRestView.ApiRestViewPatientOnly;
 import com.easynutrition.business.facade.BusinessFacadePatient;
 import com.easynutrition.business.facade.BusinessFacadeTable;
+import com.easynutrition.business.facade.BusinessFacadeTable.Entity;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
@@ -30,7 +31,7 @@ public class ApiRestPatient {
 			@RequestParam("start") int start, @RequestParam("length") int length,
 			@RequestParam("order[0][column]") int orderColumn, @RequestParam("order[0][dir]") String orderDir,
 			@RequestParam("search[value]") String filterValue, HttpServletRequest req) {
-		return facadeTable.patientsTable("patient", draw, start, length, orderColumn, orderDir, filterValue, req);
+		return facadeTable.getTable(Entity.PATIENT, draw, start, length, orderColumn, orderDir, filterValue, req);
 	}
 
 	@RequestMapping(value = "/rest/patient/{id}", method = RequestMethod.DELETE)

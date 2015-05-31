@@ -17,19 +17,11 @@ public class ApiWebEvaluation {
 	private BusinessFacadePatient facadePatient;
 
 	
-	@PreAuthorize("hasRole('ADMIN') OR @businessFacadePatient.findById(#patientId).getEmail().equals(authentication.name)")
-	@RequestMapping(value = "/patient/{patientId}/evaluations", method = RequestMethod.GET)
-	public String evaluationsGet(@PathVariable("patientId") Long patientId, Model model) {
-		model.addAttribute("patient", facadePatient.findById(patientId));
-		model.addAttribute("patientId", patientId);
-		model.addAttribute("evaluations", facadePatient.findEvaluations(patientId));
-		return "evaluations";
-	}
-	
-	@PreAuthorize("hasRole('ADMIN') OR @businessFacadePatient.findById(#patientId).getEmail().equals(authentication.name)")
+	@PreAuthorize("hasRole('ADMIN')")
 	@RequestMapping(value = "/patient/{patientId}/evaluation", method = RequestMethod.GET)
 	public String evaluationGet(@PathVariable("patientId") Long patientId, Model model) {
 		// shows evaluation page
+		model.addAttribute("patient", facadePatient.findById(patientId));
 		model.addAttribute("evaluation", new DataEntityEvaluation());
 		return "evaluation";
 	}

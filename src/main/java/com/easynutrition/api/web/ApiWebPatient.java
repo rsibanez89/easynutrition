@@ -54,7 +54,6 @@ public class ApiWebPatient {
 		// shows patient profile
 		model.addAttribute("patient", facadePatient.findById(patientId));
 		model.addAttribute("patientId", patientId);
-		model.addAttribute("evaluations", facadePatient.findEvaluations(patientId));
 		return "profile";
 	}
 	
@@ -76,7 +75,7 @@ public class ApiWebPatient {
 		
 		if (!result.hasErrors()) {
 			// persists patient
-			facadePatient.createPatient(patient, principal.getName(), locale, sendmail);
+			facadePatient.merge(patient, principal.getName(), locale, sendmail);
 			
 			// goes to home
 			return "redirect:/home";

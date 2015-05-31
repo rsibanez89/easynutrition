@@ -26,43 +26,41 @@
 				</div>
 			</div>
 			
-			<c:choose>
-				<c:when test="${evaluations.size()==0}">
-					<em><spring:message code="profile.evaluations.empty"/></em>
-				</c:when>
-				<c:otherwise>
-					<div class="panel-body">
-						<div class="row">                    
-			               <easy:chart id="weight-chart" label="profile.weight"/>
-			               <easy:chart id="height-chart" label="profile.height"/>
-			           	</div>
-					</div>
-					
-					<div class="panel-body">
-						<div class="row">                     
-			               <easy:chart id="waist-chart" label="profile.waist"/>
-			               <easy:chart id="hip-chart" label="profile.hip"/>
-			           	</div>
-					</div>
+			<div id="dataEmpty">
+				<em><spring:message code="profile.evaluations.empty"/></em>
+			</div>
+			<div id="dataNonEmpty" style="display: none;">
+				<div class="panel-body">
+					<div class="row">                    
+		               <easy:chart id="weight-chart" label="profile.weight"/>
+		               <easy:chart id="height-chart" label="profile.height"/>
+		           	</div>
+				</div>
+				
+				<div class="panel-body">
+					<div class="row">                     
+		               <easy:chart id="waist-chart" label="profile.waist"/>
+		               <easy:chart id="hip-chart" label="profile.hip"/>
+		           	</div>
+				</div>
 
-					<div class="panel-body">
-						<div class="table-responsive">
-							<table id="evaluations" class="table table-striped table-bordered table-hover">
-								<thead>
-									<tr>
-										<th><spring:message code="profile.date"/></th>
-										<th><spring:message code="profile.weight"/></th>
-										<th><spring:message code="profile.height"/></th>
-										<th><spring:message code="profile.observation"/></th>
-									</tr>
-								</thead>
-								<tbody>
-								</tbody>
-							</table>
-						</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table id="evaluations" class="table table-striped table-bordered table-hover">
+							<thead>
+								<tr>
+									<th><spring:message code="profile.date"/></th>
+									<th><spring:message code="profile.weight"/></th>
+									<th><spring:message code="profile.height"/></th>
+									<th><spring:message code="profile.observation"/></th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
 					</div>
-				</c:otherwise>
-			</c:choose>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

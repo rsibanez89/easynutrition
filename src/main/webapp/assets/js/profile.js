@@ -9,40 +9,49 @@ $(document).ready(function(){
         function(i18n) {
 			// get evaluations
             $.ajax({
-                url: absoluteUrl('rest/patient/' + patientId + '/evaluations'),
+                url: absoluteUrl('rest/patient/' + patientId + '/evaluations/chart'),
                 success: function(data) {
                 	handleData(i18n, data);
                 }
             });
    	});
 
-	// table columns
-	var columns = [
-	    { data: 'date', 
-	      render: function (data, type, row) {
-	    	  return dateFormat(data);
-	      }
-	    },
-	    { data: 'weight' },
-	    { data: 'height' },
-	    { data: 'observation' }
-	];
-	
-	// table columns to filter
-	var columnsFilter = ['date', 'weight', 'height', 'observation'];
-	
-	// table loading
-	dataTableCreate('#evaluations', 'rest/patient/' + patientId + '/evaluations/table', columns, columnsFilter);
-	
-	
     // FUNCTIONS
     function handleData(i18n, data) {
     	if (data.length > 0) {
+    		// change visibility
+    		$('#dataEmpty').css('display', 'none');
+    		$('#dataNonEmpty').css('display', 'block');
+
+    		// load charts
     		morrisLine('weight-chart', data, 'weight', i18n.weight);
     		morrisLine('height-chart', data, 'height', i18n.height);
     		morrisLine('waist-chart', data, 'waistCircumference', i18n.waist);
     		morrisLine('hip-chart', data, 'hipCircumference', i18n.hip);
+    		
+    		// load table
+    		loadTable();
     	}
+    }
+    
+    function loadTable() {
+    	// table columns
+    	var columns = [
+    	    { data: 'date', 
+    	      render: function (data, type, row) {
+    	    	  return dateFormat(data);
+    	      }
+    	    },
+    	    { data: 'weight' },
+    	    { data: 'height' },
+    	    { data: 'observation' }
+    	];
+    	
+    	// table columns to filter
+    	var columnsFilter = ['date', 'weight', 'height', 'observation'];
+    	
+    	// table loading
+    	dataTableCreate('#evaluations', 'rest/patient/' + patientId + '/evaluations/table', columns, columnsFilter);
     }
     
 	function morrisLine(element, data, ykey, label) {

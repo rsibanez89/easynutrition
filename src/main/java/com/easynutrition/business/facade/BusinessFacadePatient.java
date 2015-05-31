@@ -1,6 +1,5 @@
 package com.easynutrition.business.facade;
 
-import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.easynutrition.business.mail.BusinessMailSender;
-import com.easynutrition.data.dao.DataDaoEvaluation;
 import com.easynutrition.data.dao.DataDaoPatient;
 import com.easynutrition.data.dao.DataDaoUser;
 import com.easynutrition.data.dao.DataDaoUserRole;
-import com.easynutrition.data.entity.DataEntityEvaluation;
 import com.easynutrition.data.entity.DataEntityPatient;
 import com.easynutrition.data.entity.DataEntityUser;
 import com.easynutrition.data.type.DataTypeUserRole;
@@ -23,8 +20,6 @@ import com.easynutrition.data.type.DataTypeUserRole;
 public class BusinessFacadePatient {
 	@Autowired
 	private DataDaoPatient daoPatient;
-	@Autowired
-	private DataDaoEvaluation daoEvaluation;
 	@Autowired
 	private DataDaoUser daoUser;
 	@Autowired
@@ -40,35 +35,13 @@ public class BusinessFacadePatient {
 		return daoPatient.findById(id);
 	}
 	
-	public List<DataEntityPatient> findAll() {
-		return daoPatient.findAll("id");
-	}
-
-	public List<DataEntityEvaluation> findEvaluations(Long patientId) {
-		return daoEvaluation.findByPatientId(patientId);
-	}
-
-	public long getCount() {
-		return daoPatient.getCount();
-	}
-
-	public long getCount(String[] filterColumns, String filterValue) {
-		return daoPatient.getCount(filterColumns, filterValue);
-	}
-
-	public List<DataEntityPatient> findAll(int start, int length,
-			String orderColumnName, String orderDir, String[] filterColumns,
-			String filterValue) {
-		return daoPatient.findAll(start, length, orderColumnName, orderDir, filterColumns, filterValue);
-	}
-
 	public void delete(Long patientId) {
 		DataEntityPatient patient = daoPatient.findById(patientId);
 		daoPatient.delete(patientId);
 		daoUser.delete(patient.getEmail());
 	}
 
-	public void createPatient(DataEntityPatient patient, String nutricionist, Locale locale, boolean sendmail) {
+	public void merge(DataEntityPatient patient, String nutricionist, Locale locale, boolean sendmail) {
 		// checks if it is a create action
 		if (patient.getId() == null && !patient.getEmail().isEmpty()) {
 			// gets data
